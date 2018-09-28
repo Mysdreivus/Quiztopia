@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuizTopia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" id="login">
+        <h1>QuizTopia</h1>
+        <input type="email" placeholder="Email" id="email_field"/>
+        <br>
+        <input type="password" placeholder="Password" id="pwd_field"/>
+        <br>
+        <button onclick="login()">Log in</button>
+        <br>
+        <button onclick="signUp()">Sign up</button>
+    </div>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBKw0tu8aUk-yM1LrwbAiUBhDSLXM4k_ws",
+            authDomain: "quiztopia-a2317.firebaseapp.com",
+            databaseURL: "https://quiztopia-a2317.firebaseio.com",
+            projectId: "quiztopia-a2317",
+            storageBucket: "quiztopia-a2317.appspot.com",
+            messagingSenderId: "211283495934"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
