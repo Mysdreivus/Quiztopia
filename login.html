@@ -22,6 +22,18 @@
         <br>
         <button onclick="signUp()">Sign up</button>
     </div>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -34,9 +46,7 @@
         };
         firebase.initializeApp(config);
     </script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
     <script src="login.js"></script>
 </body>
 </html>

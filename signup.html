@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="signUp.js"></script>
 </head>
 <body>
     <div class="container" id="login">
@@ -18,28 +19,40 @@
         <br>
         <input type="password" placeholder="Password" id="pwd_field"/>
         <br>
+        <input type="text" placeholder="First Name" id="fname"/>
+        <input type="text" placeholder="Last Name" id="lname"/>
+        <br>
         <input type="text" placeholder="User Name" id ="user_name"/>
+        <br>
+        <input type="text" placeholder="Country" id="country"/>
+        <br>
+        <input type="text" placeholder="Date of Birth" id="dob"/>
         <br>
         <button onclick="signUpCreate()">Submit</button>
     </div>
 
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBKw0tu8aUk-yM1LrwbAiUBhDSLXM4k_ws",
-        authDomain: "quiztopia-a2317.firebaseapp.com",
-        databaseURL: "https://quiztopia-a2317.firebaseio.com",
-        projectId: "quiztopia-a2317",
-        storageBucket: "",
-        messagingSenderId: "211283495934"
-    };
-    firebase.initializeApp(config);
-    </script>
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
 
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
-    <script src="signup.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBKw0tu8aUk-yM1LrwbAiUBhDSLXM4k_ws",
+            authDomain: "quiztopia-a2317.firebaseapp.com",
+            databaseURL: "https://quiztopia-a2317.firebaseio.com",
+            projectId: "quiztopia-a2317",
+            storageBucket: "quiztopia-a2317.appspot.com",
+            messagingSenderId: "211283495934"
+        };
+        firebase.initializeApp(config);
+    </script>
 </body>
 </html>
