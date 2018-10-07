@@ -3,15 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QuizTopia</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
+    <title>Login Quiztopia</title>
+
+    <!-- Latest compiled and minified CSS COMMENTED BOOTSTRAP OUT BECAUSE IT CHANGES LABEL FORMATTING
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
+    <link rel="stylesheet" href="css/LoginSignUp.css" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+    <div class="page-wrapper sign-up-bg p-t-70 p-b-70 70 font-poppins" id="login">
+        <h1 id="quiz-title" class="p-b-70">QUIZTOPIA</h1>
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Login</h2>
+
+                    <!-- Removed <form method="post"></form> so that signUp embedded link on button would work -->
+
+
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">email</label>
+                                <input class="input--style-4" type="text" name="email" id="email_field">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">password</label>
+                                <input class="input--style-4" type="password" name="password" id="pwd_field">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Login -->
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="p-t-15">
+                                <button class="btn btn--radius-2 btn--blue" onclick="login()" >Login</button>
+                            </div>
+                        </div>
+                        <!-- Sign up button -->
+                        <div class="col-2">
+                            <div class="p-t-15">
+                                <button class="btn btn--radius-2 btn--green" onclick="signUp()">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORIGINAL CODE
     <div class="container" id="login">
         <h1>QuizTopia</h1>
         <input type="email" placeholder="Email" id="email_field"/>
@@ -22,10 +70,10 @@
         <br>
         <button onclick="signUp()">Sign up</button>
     </div>
+    -->
 
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
-
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
