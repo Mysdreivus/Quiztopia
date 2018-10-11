@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Quiztopia</title>
+    <link rel="shortcut icon" href="images/question-mark.ico">
+    <title>Login On Quiztopia</title>
 
     <!-- Latest compiled and minified CSS COMMENTED BOOTSTRAP OUT BECAUSE IT CHANGES LABEL FORMATTING
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -15,42 +16,57 @@
 
 </head>
 <body>
-
     <div class="page-wrapper sign-up-bg p-t-70 p-b-70 70 font-poppins" id="login">
-        <h1 id="quiz-title" class="p-b-70">QUIZTOPIA</h1>
+        <!--
+        <h1 id="quiz-title" class="p-b-70"> >QUIZTOPIA</h1>
+        -->
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Login</h2>
-
-                    <!-- Removed <form method="post"></form> so that signUp embedded link on button would work -->
-
-
+                    <h1 id="quiz-title" class="p-b-70">QUIZTOPIA</h1>
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">email</label>
-                                <input class="input--style-4" type="text" name="email" id="email_field">
+                                </br>
+                                <input class="input--style-4" type="email" name="email" id="email_field" placeholder="jean.eyre
+
+@gmail.com">
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">password</label>
-                                <input class="input--style-4" type="password" name="password" id="pwd_field">
+                                </br>
+                                <input class="input--style-4" type="password" name="password" id="pwd_field" placeholder="Jean_1234">
                             </div>
                         </div>
                     </div>
-                    <!-- Login -->
                     <div class="row row-space">
+
+                        <!-- Login -->
+
                         <div class="col-2">
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--blue" onclick="login()" >Login</button>
+                                <button class="btn btn--radius-2 btn--blue" onclick="signin()" >Login</button>
                             </div>
                         </div>
+
                         <!-- Sign up button -->
+
                         <div class="col-2">
                             <div class="p-t-15">
                                 <button class="btn btn--radius-2 btn--green" onclick="signUp()">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forget Password -->
+
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="p-t-15">
+                                <label class="label"><a href="forgetPassword.html">Forget Password?</a></label>
                             </div>
                         </div>
                     </div>
@@ -58,19 +74,6 @@
             </div>
         </div>
     </div>
-
-    <!-- ORIGINAL CODE
-    <div class="container" id="login">
-        <h1>QuizTopia</h1>
-        <input type="email" placeholder="Email" id="email_field"/>
-        <br>
-        <input type="password" placeholder="Password" id="pwd_field"/>
-        <br>
-        <button onclick="login()">Log in</button>
-        <br>
-        <button onclick="signUp()">Sign up</button>
-    </div>
-    -->
 
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
@@ -81,20 +84,20 @@
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyBKw0tu8aUk-yM1LrwbAiUBhDSLXM4k_ws",
-            authDomain: "quiztopia-a2317.firebaseapp.com",
-            databaseURL: "https://quiztopia-a2317.firebaseio.com",
-            projectId: "quiztopia-a2317",
-            storageBucket: "quiztopia-a2317.appspot.com",
-            messagingSenderId: "211283495934"
+            apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+            authDomain: "quiztopia-35e04.firebaseapp.com",
+            databaseURL: "https://quiztopia-35e04.firebaseio.com",
+            projectId: "quiztopia-35e04",
+            storageBucket: "quiztopia-35e04.appspot.com",
+            messagingSenderId: "485501403479"
         };
         firebase.initializeApp(config);
     </script>
 
-    <script src="login.js"></script>
+    <script src="signin.js"></script>
 </body>
 </html>
