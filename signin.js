@@ -5,6 +5,7 @@ function  signUp() {
 function signin() {
     var email = document.getElementById("email_field").value;
     var password = document.getElementById("pwd_field").value;
+    var signedIn = true;
     if (email.length < 4) {
         alert('Please enter an email address.');
         return;
@@ -16,18 +17,18 @@ function signin() {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == 'auth/wrong-password') {
-            alert('Wrong password');
-        } else {
-            alert(errorMessage);
-        }
-        return;
+            alert(error);
+            signedIn = false;
+        })
+        .then(function () {
+            if (signedIn) {
+                firebase.auth().onAuthStateChanged(function (user) {
+                    if (user) {
+                        alert("User email: " + user.email);
+                        window.location.href = "home.html";
+                    }
+                });
+            }
         });
-    var user = firebase.auth().currentUser;
-    if (user) {
-        window.location.href = "home.html";
-    }
 }
 
