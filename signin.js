@@ -3,6 +3,7 @@ function  signUp() {
 }
 
 function signin() {
+    alert("Entered signin");
     var email = document.getElementById("email_field").value;
     var password = document.getElementById("pwd_field").value;
     var signedIn = true;
@@ -24,8 +25,15 @@ function signin() {
             if (signedIn) {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        alert("User email: " + user.email);
+                        // var databaseRef = firebase.database().ref("users/" + user.uid);
                         window.location.href = "home.html";
+                        alert("Welcome!");
+                        /*
+                        var f_name = databaseRef.ref("/fname");
+                        var l_name = databaseRef.ref("/lname");
+                        alert("First name: " + f_name);
+                        alert("Welcome " + f_name + " " + l_name);
+                        */
                     }
                 });
             }
