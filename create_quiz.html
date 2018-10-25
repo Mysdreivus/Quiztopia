@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="shortcut icon" href="images/question-mark.ico">
+	<title>Create Quiz</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/create_quiz.css" media="true">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<header class="jumbotron">
+			<div class="container">
+				<div class="row row-header">
+					<!-- main heading -->
+					<h1>QUIZ INFORMATION</h1>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="row row-content">
+				<h>Quiz Name</h>
+				<br>
+				<input type="text" id="quiz_name">
+			</div>
+			<br>
+			<div class="row row-content">
+				<h>Quiz Description</h>
+				<br>
+				<input type="text" id="quiz_description">
+			</div>
+			<br>
+			<div class="row row-content">
+				<h>Category:</h>
+				<br>
+				<select id="category">
+					<option value="Sports">Sports</option>
+					<option value="Movies">Movies</option>
+					<option value="History">History</option>
+					<option value="Geography">Geography</option>
+					<option value="Astronomy">Astronomy</option>
+					<option value="Literature">Literature</option>
+					<option value="Science">Science</option>
+				</select>
+			</div>
+			<br>
+			<div class="row row-content">
+				<h>Question 1</h>
+				<div>
+					<h>Question</h>
+					<br>
+					<input type ="text" id="question_1">
+					<br>
+					<h>Correct Answer</h>
+					<br>
+					<input type="text" id="correct_answer_1">
+					<br>
+					<h>Wrong Answers</h>
+					<br>
+					<input type="text" id="wrong_answer1">
+					<input type="text" id="wrong_answer2">
+					<input type="text" id="wrong_answer3">
+				</div>
+			</div>
+			<br>
+			<!--
+                        <div class="row">
+                            <h>Question 2</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 3</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 4</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 5</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 6</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 7</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 8</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 9</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <h>Question 10</h>
+                            <div>
+                                <h>Question</h>
+                                <br>
+                                <input type ="text" placeholder="Enter question here">
+                                <br>
+                                <h>Correct Answer</h>
+                                <br>
+                                <input type="text" id="correct_answer">
+                                <br>
+                                <h>Wrong Answers</h>
+                                <br>
+                                <input type="text" id="wrong_answer1">
+                                <input type="text" id="wrong_answer2">
+                                <input type="text" id="wrong_answer3">
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
+            </div>
+            -->
+			<div>
+				<input type="button" onclick="submitQuiz()" value="Submit">
+			</div>
+		</div>
+	</div>
+
+     <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+            authDomain: "quiztopia-35e04.firebaseapp.com",
+            databaseURL: "https://quiztopia-35e04.firebaseio.com",
+            projectId: "quiztopia-35e04",
+            storageBucket: "quiztopia-35e04.appspot.com",
+            messagingSenderId: "485501403479"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+	<script src="create_quiz.js"></script>
+	<script src="xyz.js"></script>
+</body>
+</html>
