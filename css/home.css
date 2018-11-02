@@ -34,14 +34,18 @@ button
 }
 
 .home-bg {
-    background:
-        /* top, transparent red, faked with gradient */
+    background: #ff7a5a;
+    /*
             linear-gradient(
                     rgba(255, 0, 0, 0.45),
                     rgba(255, 0, 0, 0.45)
-            ),
-            url("../images/questionMark.jpg");
+            );
+    */
     background-size: cover;
+}
+
+.new-home-bg {
+
 }
 
 .page-wrapper {
@@ -97,7 +101,6 @@ button
 }
 
 .wrapper--w680 {
-    max-width: 680px;
 }
 
 /* CARD INFORMATION, Adapted from bootstraps examples online */
@@ -230,8 +233,22 @@ button
 /* ALL IDS WILL BE BELOW FOR EASE OF FINDING*/
 
 #quiz-title {
+    padding-left: 26%;
+    font-size: 64px;
+    font-weight: bold;
+    color: black;
+}
+
+.logo {
     text-align: center;
-    font-size: 68px;
+    font-size: 64px;
+    font-weight: bold;
+    color: black;
+}
+
+#quizzes {
+    text-align: center;
+    font-size: 64px;
     font-weight: bold;
     color: black;
 }
@@ -247,4 +264,189 @@ button
     font-size: 30px;
     font-weight: bold;
     color: black;
+}
+
+.quiz-names {
+    font-size: 20px;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.author-names
+{
+    font-size: 18px;
+    font-family: "Times New Roman", sans-serif;
+    color: black;
+}
+
+.quiz-decs {
+    font-size: 16px;
+    font-family: "Times New Roman", sans-serif;
+    color: black;
+}
+
+/*
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}*/
+
+/*****SIDEBAR***/
+
+body {
+    overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    border-radius: 10px;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #fbc8d8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper-2 {
+    z-index: 1000;
+    position: fixed;
+    border-radius: 10px;
+    right: 250px;
+    width: 0;
+    height: 100%;
+    margin-right: -250px;
+    overflow-y: auto;
+    background: #fbc8d8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    font-size: large;
+    display: block;
+    text-decoration: none;
+    color: #000000;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+#sidebar-roundup
+{
+    border-radius: 3px;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
 }
