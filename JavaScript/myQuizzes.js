@@ -50,7 +50,7 @@ function updateUI(userId) {
 function createQuiz() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user)
-            window.location.href = "./../create_quiz.html";
+            window.location.href = "../HTML/create_quiz.html";
     })
 }
 
