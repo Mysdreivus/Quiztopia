@@ -25,7 +25,7 @@ function signin() {
             if (signedIn) {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        window.location.href = "myquizzes/myQuizzes.html";
+                        window.location.href = "../HTML/home.html";
                     }
                 });
             }

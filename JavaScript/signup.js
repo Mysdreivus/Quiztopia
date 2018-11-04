@@ -45,7 +45,7 @@ function signUpCreate() {
                                     category: ''
                                 }
                         });
-                        location.href = "myquizzes/myQuizzes.html";
+                        location.href = "../HTML/home.html";
                     }
                 });
             }
