@@ -3,11 +3,12 @@ function submitQuiz() {
     if (user) {
         alert("Found user");
         let userId = user.uid;
-        let done = submitQuizHelper(userId);
-        if (done == true) {
-            alert("Created the quiz!");
-            window.location.href = "../HTML/myQuizzes.html";
-        }
+        submitQuizHelper(userId).then(
+            function() {
+                alert("Created the quiz!");
+                window.location.href = "../HTML/myQuizzes.html";
+            }
+        );
     }
     else {
         alert("User is null");
@@ -64,25 +65,33 @@ function submitQuizHelper(userId) {
         questions: questions
     };
 
+    let quizCreatedData = {
+        name: quiz_name,
+        category: category,
+        description: quiz_description,
+        owner: userId
+    };
+
+
     // Pushing information to quizzes as well as keep the quiz information under user information as well
     let updateKey = firebase.database().ref().child("quizzes").push().key;
     alert("the key is: " + updateKey);
 
     // TODO: push doesn't work without a value
+    let checkDone = false;
     let updates = {};
     updates["/quizzes/" + updateKey] = data;
-    firebase.database().ref().update(updates).then(
-        function () {
-            firebase.database().ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(category).then(
-                function () {
-                    firebase.database().ref("quizzIds/").child(category + "/" + updateKey).set(true).then(
-                        function() {
-                            alert("Updated stuffs in firebase!");
-                            return true;
+    firebase.database().ref().update(updates).then(function () {
+            firebase.database().ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData)
+                .then(function () {
+                        firebase.database().ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData)
+                            .then(function() {
+                                    alert("Updated stuffs in firebase!");
                         }
-                    )
+                    );
                 }
-            )
+            );
         }
     );
+    alert("Entered end of submitQuizHelper");
 }
