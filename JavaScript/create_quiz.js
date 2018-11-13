@@ -1,16 +1,19 @@
 function submitQuiz() {
-    let userId;
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            alert("Found user");
-            userId = user.uid;
-            submitQuizHelper(userId);
-        }
-        else {
-            alert("User is null");
-        }
-    });
-    window.location.href = "create_quiz.html"
+    let user = firebase.auth().currentUser;
+    if (user) {
+        alert("Found user");
+        let userId = user.uid;
+        submitQuizHelper(userId).then(
+            function() {
+                alert("Created the quiz!");
+                window.location.href = "../HTML/myQuizzes.html";
+            }
+        );
+    }
+    else {
+        alert("User is null");
+        window.location.href = "signin.html";
+    }
 }
 
 function submitQuizHelper(userId) {
@@ -56,26 +59,39 @@ function submitQuizHelper(userId) {
 
     let data = {
         name: quiz_name,
+        category: category,
         description: quiz_description,
+        owner: userId,
         questions: questions
     };
 
+    let quizCreatedData = {
+        name: quiz_name,
+        category: category,
+        description: quiz_description,
+        owner: userId
+    };
+
+
     // Pushing information to quizzes as well as keep the quiz information under user information as well
-    let updateKey = firebase.database().ref("/quizzes/" + category).push(data).key;
-    alert("Pushed data and the key is: " + updateKey);
+    let updateKey = firebase.database().ref().child("quizzes").push().key;
+    alert("the key is: " + updateKey);
 
     // TODO: push doesn't work without a value
-    // let updates = {};
-    // updates["/quizzes/" + category + "/" + updateKey] = data;
-    // firebase.database().ref().update(updates);
-
-
-    // TODO: Using the key push the data into user_quizzes as well
-    firebase.database().ref("/users/" + userId + "/quizIds/").child(updateKey).set(category);
-
-
-    // updates["/users/" + userId + "/quizIds/" + userInfoKey] = category;
-    // firebase.database().ref().update(updates);
-
-    alert("Added stuffs to database");
+    let checkDone = false;
+    let updates = {};
+    updates["/quizzes/" + updateKey] = data;
+    firebase.database().ref().update(updates).then(function () {
+            firebase.database().ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData)
+                .then(function () {
+                        firebase.database().ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData)
+                            .then(function() {
+                                    alert("Updated stuffs in firebase!");
+                        }
+                    );
+                }
+            );
+        }
+    );
+    alert("Entered end of submitQuizHelper");
 }

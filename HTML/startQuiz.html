@@ -1,43 +1,49 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/question-mark.ico">
-    <title>Password Reset</title>
-
-    <!-- Latest compiled and minified CSS COMMENTED BOOTSTRAP OUT BECAUSE IT CHANGES LABEL FORMATTING
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
-    <link rel="stylesheet" href="css/LoginSignUp.css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../css/home.css" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
 
-<div class="page-wrapper sign-up-bg p-t-70 p-b-70 70 font-poppins" id="login">
-    <div class="wrapper wrapper--w680">
-        <div class="card card-4">
-            <div class="card-body">
-                <p> Enter a valid email address. QuizTopia will send you a password reset link.</p>
-            </br>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <input class="input--style-4" type="email" name="email" id="email_field_reset">
-                        </div>
-                    </div>
-                <div class="row row-space">
-                    <div class="col-12">
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--green" onclick="forgetPassword()">Send Password Reset Email</button>
-                        </div>
-                    </div>
+    <!-- Bootstrap Included-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="b-container">
+        <div class="row-content"></div>
+        <div class="row-content">
+            <div class="b-col"></div>
+            <div class="b-col">
+                <div class="row-header" id="quiz-name">Quiz Name</div>
+                <div class="row-content">
+                    <p id="author-name">By Author</p>
+                    <p id="category-name"> Category name </p>
+                    <p id="description">Description of the quiz</p>
+                </div>
+                <div class="row-footer">
+                    <button type="button" class="btn btn-success" id="start-button">Start Quiz</button>
                 </div>
             </div>
+            <div class="b-col"></div>
         </div>
+        <div class="row-content"></div>
     </div>
-</div>
 
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
@@ -47,7 +53,6 @@
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
-
 
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 <script>
@@ -63,6 +68,8 @@
     firebase.initializeApp(config);
 </script>
 
-<script src="forgetPassword.js"></script>
+<script src="../JavaScript/startQuiz.js"></script>
+
+
 </body>
 </html>
