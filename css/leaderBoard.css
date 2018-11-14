@@ -33,6 +33,12 @@ button
     border-radius: 5px;
 }
 
+.btn
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .home-bg {
     background: #ff7a5a;
     /*
@@ -242,7 +248,7 @@ button
 
 .logo {
     text-align: center;
-    font-size: 64px;
+    font-size: 4vw;
     font-weight: bold;
     color: black;
 }
@@ -456,7 +462,7 @@ body {
 
 #leaderboard {
     padding-left: 17%;
-    font-size: 68px;
+    font-size: 4vw;
     font-weight: bold;
     color: black;
 }
