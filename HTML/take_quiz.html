@@ -18,6 +18,8 @@
         </header>
     </div>
     <div class="container">
+        <!-- TODO: This is timer -->
+        <p id="timer"></p>
         <div class="card">
             <div class="card-body">
                 <h id="question_1">Question</h>
@@ -76,7 +78,8 @@
             -->
         </div>
     </div>
-    <button onclick="submitQuiz()">Submit</button>
+    <button onclick="submitQuiz()" id="submit-button">Submit</button>
+    <button onclick="revealAnswer()" id="reveal-ans-button">Reveal Answer</button>
 
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
