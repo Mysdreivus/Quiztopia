@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="shortcut icon" href="../images/question-mark.ico">
-    <title>My Quizzes</title>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../css/home.css" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Bootstrap Included-->
+
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/myQuizzes.css" type="text/css">
+
 </head>
 <body>
     <header class="jumbotron">
@@ -21,140 +35,124 @@
         </div>
     </header>
     <br>
-    <div class="row row-header">
-        <!-- Vertifcal nav bar -->
-        <div class="col-sm-2 col-xs-2">
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Sign Out</a></li>
-            </ul>
-        </div>
-        <!-- quiz cards -->
-        <div class="col-sm-7 col-xs-8">
-            <div class="card">
-                <div class="card-body">
-                    <button type="button" class="btn btn-success" onclick="createQuiz()">Create Quiz</button>
-                </div>
+
+        <div class="row row-header">
+            <!-- Vertifcal nav bar -->
+            <div class="col-sm-2 col-xs-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
             </div>
-            <div>
-                <h id="quiz_name_1"></h>
-                <p class="card-text" id="quiz_description_1"></p>
+    <!--new-->
+            <!--<div class="p-t-15">-->
+            <!--<nav class="navbar navbar-default" style="border-radius: 20px;">-->
+                <!--<div class="container-fluid">-->
+                    <!--<div class="navbar-header font-poppins">-->
+                        <!--<ul class="nav navbar-nav navbar-center">-->
+                            <!--<li><a id="usr-name">WELCOME USERNAME</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</nav>-->
+        <!--</div>-->
+
+            <!-- quiz cards -->
+            <div class="col-sm-7 col-xs-8">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-success" onclick="createQuiz()">Create Quiz</button>
+                    </div>
+                        <div class="card-body" >
+                            <div class="card-body">
+                                <!--	quiz 1 info		-->
+                                <div class="quizBox" id="quizBox1">Quiz 1
+                                    <p id="quizTitle1"> Quiz Title:</p>
+                                    <p id="quizCat1">Category:</p>
+                                    <button type="button" id="editQuizBox1">Edit</button>
+                                    <button type="button" id="deleteQuizBox1">Delete</button>
+                                </div><br>
+                                <!--	quiz 2 info		-->
+                                <div class="quizBox" id="quizBox2">Quiz 2
+                                    <p id="quizTitle2"> Quiz Title:</p>
+                                    <p id="quizCat2">Category:</p>
+                                    <button type="button" id="editQuizBox2">Edit</button>
+                                    <button type="button" id="deleteQuizBox2">Delete</button>
+                                </div><br>
+                                <!--	quiz 3 info		-->
+                                <div class="quizBox" id="quizBox3">Quiz 3
+                                    <p id="quizTitle3"> Quiz Title:</p>
+                                    <p id="quizCat3">Category:</p>
+                                    <button type="button" id="editQuizBox3">Edit</button>
+                                    <button type="button" id="deleteQuizBox3">Delete</button>
+                                </div><br>
+                                <!--	quiz 4 info		-->
+                                <div class="quizBox" id="quizBox4">Quiz 4
+                                    <p id="quizTitle4"> Quiz Title:</p>
+                                    <p id="quizCat4">Category:</p>
+                                    <button type="button" id="editQuizBox4">Edit</button>
+                                    <button type="button" id="deleteQuizBox4">Delete</button>
+                                </div><br>
+                                <!--	quiz 5 info		-->
+                                <div class="quizBox" id="quizBox5">Quiz 5
+                                    <p id="quizTitle5"> Quiz Title:</p>
+                                    <p id="quizCat5">Category:</p>
+                                    <button type="button" id="editQuizBox5">Edit</button>
+                                    <button type="button" id="deleteQuizBox5">Delete</button>
+                                </div><br>
+                            </div>
+                        </div>
+
+                </div>
             </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title" id="quiz_name_2"></div>
-                    <p class="card-text" id="quiz_description_2"></p>
-                </div>
+            <!--<button type="button" id="nextQuizSet">Next</button>-->
+            <!--<button type="button" id="prevQuizSet">Back</button>-->
+
+
+                <!--<div>-->
+                    <!--<h id="quiz_name_1"></h>-->
+                    <!--<p class="card-text" id="quiz_description_1"></p>-->
+                <!--</div>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-body">-->
+                        <!--<div class="card-title" id="quiz_name_2"></div>-->
+                        <!--<p class="card-text" id="quiz_description_2"></p>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
-        </div>
-        <!-- Category div -->
-        <div class="col-sm-3 col-xs-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Category</div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">History</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Geography</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">Entertainment</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Sports</button>
+
+                <!-- Category div -->
+                <div class="col-sm-3 col-xs-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Category</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary btn-block">History</button>
+                                    <br>
+                                    <button class="btn btn-primary btn-block">Geography</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary btn-block">Entertainment</button>
+                                    <br>
+                                    <button class="btn btn-primary btn-block">Sports</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
-    </div>
-
-    <!--
-    <div class="row">
-    <div class="side" style="align-content: center">
-      <h2 >Menu</h2>
-
-      <button class="buttons" style="height:60px;" >My Quizzes</button><br>
-      <button class="buttons" style="height:60px;">Leaders</button><br>
-      <button class="buttons" style="height:60px;">Challenge</button><br>
-      <button class="buttons" style="height:60px;">Settings</button><br>
-
-      or<br>
-
-      <a href="#" class="buttons" style="height:60px;">My Quizzes</a><br>
-      <a href="#" class="buttons" style="height:60px;">Leaders</a><br>
-      <a href="#" class="buttons" style="height:60px;">Challenge</a><br>
-      <a href="#" class="buttons" style="height:60px;">Settings</a><br>
-
-    </div>
-    <div class="main" >
-      <h1 style="text-align: center">My Quizzes</h1>
-
-      <br>
-
-      <div style="height:200px; ">
-          <button class="createQ" >Create Quiz</button>
-      </div>
-      <h3 style="text-align: center">Completed and Saved Quizzes</h3>
 
 
-      <div class="placeholderA"  style="auto" >
-          Look @ God!!
 
-          <div class="questionGroup" style="display:block">
-              <div class="quizBox">Quiz 1
-                <p> Quiz Title:</p>
-                <p>Category:</p>
-              </div><br>
-              <div class="quizBox">Quiz 2
-                 <p> Quiz Title:</p>
-                  <p>Category:</p>
 
-              </div><br>
-              <div class="quizBox">Quiz 3
-                <p> Quiz Title:</p>
-                <p>Category</p></div><br>
-              <div class="quizBox">Quiz 4
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-          </div>
-
-          <div class="questionGroup" style="display:none" >
-              <div class="quizBox">Quiz 5
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 6
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 7
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 8
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-          </div>
-
-          <div class="questionGroup" style="display:none" >
-              <div class="quizBox">Quiz 9
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 10
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 11
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-              <div class="quizBox">Quiz 12
-                <p> Quiz Title:</p>
-                <p>Category:</p></div><br>
-          </div>
-          <button type="button" id="showQuestionGroup">Show More Quizzes</button>
-          -->
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
     <!-- Add additional services that you want to use -->
