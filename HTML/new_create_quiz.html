@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <title>Create Quiz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/new_create_quiz.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="home-bg page-wrapper font-poppins">
+    <div class="row row-header">
+        <div class="p-t-130 p-b-170">
+            <div class="wrapper wrapper--w960 p-t-30">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <div class="p-t-30">
+                            <h1 id="quiz-title">QUIZ INFORMATION</h1>
+                        </div>
+
+                        <div class="card-body">
+                            <h1 class="create-quiz-titles">Quiz Name:</h1>
+                            <br/>
+                            <br/>
+                            <input class="input--style-4" type="text" id="quiz_name">
+                        </div>
+
+                        <div class="card-body">
+                            <h1 class="create-quiz-titles">Quiz Description:</h1>
+                            <br/>
+                            <br/>
+                            <input class="input--style-4" type="text" id="quiz_description">
+                        </div>
+
+                        <div class="card-body">
+                            <h1 class="create-quiz-titles">Category:</h1>
+                            <br>
+                            <select class="select_bar" id="category">
+                                <option disabled selected value>Select an option</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Movies">Movies</option>
+                                <option value="History">History</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Astronomy">Astronomy</option>
+                                <option value="Literature">Literature</option>
+                                <option value="Science">Science</option>
+                            </select>
+                        </div>
+
+                        <!-- Selecting Wrong and correct answers -->
+
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h1 class="create-quiz-titles">Question:</h1>
+                            </div>
+
+                            <!--
+                            <div class="card-subtitle">
+                                <h1 class="answer-question">Question</h1>
+                            </div>
+                            -->
+
+                            <div class="p-t-15"><input class="input--style-4" type="text" id="question_1"/></div>
+                            <br/>
+                            <br>
+                            <div class="answer-question p-t-15">Correct Answer</div>
+                            <input class="input--style-4" type="text" id="correct_answer_1"/>
+
+                            <div class="p-t-15 answer-question">Wrong Answers</div>
+                            <div><input class="input--style-4" type="text" id="wrong_answer1_1"/></div>
+                            <div class="p-t-15"><input class="input--style-4" type="text" id="wrong_answer1_2"/></div>
+                            <div class="p-t-15"><input class="input--style-4" type="text" id="wrong_answer1_3"/></div>
+                        </div>
+
+                        <!-- Button Goes here not sure if this is OKAY ask Henchhing-->
+                        <div class="card-body">
+                            <button class="btn btn--radius-2 btn--blue" onclick="submitQuiz()" >Submit</button>
+                        </div>
+
+                        <!--
+                        <div class="card-body">
+                            <input type="button" onclick="submitQuiz()" value="Submit">
+                        </div>
+                        -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+        authDomain: "quiztopia-35e04.firebaseapp.com",
+        databaseURL: "https://quiztopia-35e04.firebaseio.com",
+        projectId: "quiztopia-35e04",
+        storageBucket: "quiztopia-35e04.appspot.com",
+        messagingSenderId: "485501403479"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="../JavaScript/create_quiz.js"></script>
+
+</body>
+</html>
