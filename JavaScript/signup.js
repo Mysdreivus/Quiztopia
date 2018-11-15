@@ -44,7 +44,6 @@ function signUpCreate() {
                                 alert(error2.message);
                             })
                             .then( function() {
-                                alert("Entered updaing leaderboard part");
                                 databaseRef.ref('leaderboard').once('value')
                                     .catch(function (error3) {
                                         alert(error3.message);

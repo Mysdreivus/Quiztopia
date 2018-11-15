@@ -3,7 +3,6 @@ function  signUp() {
 }
 
 function signin() {
-    alert("Entered signin");
     var email = document.getElementById("email_field").value;
     var password = document.getElementById("pwd_field").value;
     var signedIn = true;
