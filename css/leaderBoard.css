@@ -33,6 +33,12 @@ button
     border-radius: 5px;
 }
 
+.btn
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .home-bg {
     background: #ff7a5a;
     /*
@@ -92,11 +98,6 @@ button
     margin: 0 auto;
 }
 
-.wrapper--480 {
-    max-width: 480px;
-}
-
-
 .wrapper--w960 {
     max-width: 960px;
 }
@@ -106,7 +107,7 @@ button
 }
 
 .wrapper--w680 {
-    max-width: 680px;
+    max-width: 780px;
 }
 
 /* CARD INFORMATION, Adapted from bootstraps examples online */
@@ -239,15 +240,16 @@ button
 /* ALL IDS WILL BE BELOW FOR EASE OF FINDING*/
 
 #quiz-title {
-    text-align: center;
-    font-size: 4vw;
+    padding-left: 26%;
+    font-size: 64px;
     font-weight: bold;
     color: black;
 }
 
+
 .logo {
     text-align: center;
-    font-size: 64px;
+    font-size: 4vw;
     font-weight: bold;
     color: black;
 }
@@ -457,138 +459,37 @@ body {
     }
 }
 
-/* ADDED NEW */
+/* LEADERBOARD STUFF */
 
-#start-quiz
-{
-    padding-left: 26%;
-    font-size: 4vw; /* responsive text */
+#leaderboard {
+    padding-left: 17%;
+    font-size: 4vw;
     font-weight: bold;
     color: black;
 }
 
-/* BUTTON */
-/* ==========================================================================
-   #BUTTON
-   ========================================================================== */
-.btn {
+.row-leaderboard {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #AFAFAF;
+}
+
+.name-leaderboard {
+    padding-left: 5%;
+    position: relative;
     display: inline-block;
-    line-height: 50px;
-    padding: 0 50px;
-    -webkit-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    font-size: 18px;
-    color: #fff;
-    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    width: 50%;
+    line-height: 45px;
+    font-size: large;
 }
 
-.btn--radius {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.btn--radius-2 {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-
-.btn--pill {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-}
-
-.btn--green {
-    background: #57b846;
-}
-
-.btn--yellowgreen {
-    background: yellowgreen;
-}
-
-.btn--yellow {
-    background: #f3fb62;
-}
-
-.btn--green:hover {
-    background: #4dae3c;
-}
-
-.btn--blue {
-    background: #4272d7;
-}
-
-.btn--blue:hover {
-    background: #3868cd;
-}
-
-/* Starting Quiz stuffs  */
-
-#quiz-name {
-    font-size: 6vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: bold;
-    color: black;
-}
-
-#author-name {
-    font-size: 2vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    color: black;
-}
-
-#category-name {
-    font-size: 1.5vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: normal;
-    color: black;
-}
-
-#description {
-    font-size: 1vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: lighter;
-    color: black;
-}
-
-/* Take Quiz */
-#take-quiz {
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-    color: black;
-}
-
-#logo-responsive {
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-    color: black;
-}
-
-
-#quiz-question {
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-}
-
-/*
-#question_1 {
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-} */
-
-#quiz-answer-1 {
-    text-align: left;
-    font-size: 1vw;
-    font-weight: lighter;
+.score-leaderboard {
+    padding-right: 10%;
+    text-align: right;
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    font-size: large;
 }
