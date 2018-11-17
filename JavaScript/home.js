@@ -8,6 +8,11 @@ window.onload = function () {
 
 // TODO: EventListener needs to be added for each quiz 
 function updateHomeUI(user) {
+    // Testing the getInfoFromHTTP function...
+    let p = {"category" : "Astronomy", "uid" : "THISisAuserID"};
+    getInfoFromHTTP("https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes", p);
+    // End of test...
+
     if (user) {
         let databaseRef = firebase.database();
         let quizInfoMap = {};
@@ -60,4 +65,35 @@ function logout() {
         alert(error);
     })
 
+}
+
+// Getting untaken & not created quizzes from Firebase...
+
+// Retrieve info from an URL & a dictionary of parameters...
+function getInfoFromHTTP(url, params) {
+    if(params != null) {
+        let keys = Object.keys(params);
+        console.log(keys.length);
+        if(keys.length > 0) {
+            url = url.concat("?");
+            
+            let count = 0;
+            for(key in keys) {
+                url = url.concat(keys[key]).concat("=").concat(params[keys[key]]);
+                if(count < keys.length - 1) {
+                    url = url.concat("&");
+                } count++;
+            }
+        }
+    }
+    // console.log(url);
+    const request = new XMLHttpRequest();
+    let response;
+    request.open("GET", url, false);
+    request.onload = function() {
+        response = request.responseText;
+    }
+    request.send();
+    console.log(response);
+    return response;
 }
