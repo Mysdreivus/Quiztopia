@@ -46,14 +46,14 @@
             </div>
 
         </div>
-
-        <div class="row row-header p-t-70">
+        <p id="timer">Time</p>
+        <div class="row row-content p-t-70">
             <div class="col-sm-12">
                 <div class="wrapper wrapper--w960">
                     <div class="card card-4">
                         <div class="card-body">
                             <!-- This is the question -->
-                            <div><h1 id="quiz-question">Who was the first super saiyan god?</h1></div>
+                            <div><h1 id="question_1">Who was the first super saiyan god?</h1></div>
 
 
                             <form action="" id="answer_1">
@@ -71,6 +71,8 @@
 
 
     </div>
+    <button onclick="submitQuiz()" id="submit-button">Submit Quiz</button>
+    <button onclick="revealAnswer()" id="reveal-ans-button">Reveal Answer</button>
 
     <!--
     <div class="container p-t-15">
@@ -81,16 +83,14 @@
         </header>
     </div>
     -->
-
+    <!--
     <div class="container">
-        <!-- TODO: This is timer -->
         <p id="timer"></p>
         <div class="card">
             <div class="card-body">
                 <h1 id="question_1">Question</h1>
 
-                <!-- Default unchecked -->
-                <!--
+
                 <div class="custom-control custom-radio">
                     <input type="radio" class="custom-control-input" id="option1" name="defaultExampleRadios">
                     <label class="custom-control-label" for="option1">Option 1</label>
@@ -101,7 +101,7 @@
                     <input type="radio" class="custom-control-input" id="option4" name="defaultExampleRadios">
                     <label class="custom-control-label" for="option4">Option 4</label>
                 </div>
-                -->
+
 
                 <form action="" id="answer_1">
                     <div id="option1_1"></div>
@@ -113,6 +113,7 @@
 
         </div>
     </div>
+    -->
                     <!--
                     <div class="radio">
                         <label id="option1_1">Option 1</label>
