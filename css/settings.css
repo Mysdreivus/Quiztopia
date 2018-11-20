@@ -1,0 +1,599 @@
+
+/*
+No need for work in progress image anymore
+body {
+    background-image: url("../images/home.png");
+}
+*/
+/* Check LoginSignUp.css for correct implementations */
+
+body,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
+figure,
+hr,
+fieldset, legend {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+a {
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+button
+{
+    border-radius: 5px;
+}
+
+.btn
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-bg {
+    background: #ff7a5a;
+    /*
+            linear-gradient(
+                    rgba(255, 0, 0, 0.45),
+                    rgba(255, 0, 0, 0.45)
+            );
+    */
+    background-size: cover;
+}
+
+.new-home-bg {
+
+}
+
+.page-wrapper {
+    min-height: 100vh;
+}
+
+.p-t-15 {
+    padding-top: 15px;
+}
+
+.p-t-130 {
+    padding-top: 130px;
+}
+
+.p-t-70 {
+    padding-top: 70px;
+}
+
+.p-t-10 {
+    padding-top: 10px;
+}
+
+.p-b-100 {
+    padding-bottom: 100px;
+}
+
+.p-b-15 {
+    padding-bottom: 15px;
+}
+
+.p-b-30 {
+    padding-bottom: 30px;
+}
+
+.p-b-70 {
+    padding-bottom: 40px;
+}
+
+.p-l-15 {
+    padding-left: 15px;
+}
+
+.p-r-15 {
+    padding-right: 15px;
+}
+.font-poppins {
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+/* RESPONSIVE WRAPPER */
+.wrapper--vw70-r {
+    max-width: 70vw;
+}
+
+/* WRAPPER INFORMATION*/
+
+.wrapper {
+    margin: 0 auto;
+}
+
+.wrapper--w960 {
+    max-width: 960px;
+}
+
+.wrapper--w780 {
+    max-width: 780px;
+}
+
+.wrapper--w680 {
+    max-width: 780px;
+}
+
+/* CARD INFORMATION, Adapted from bootstraps examples online */
+
+.card {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff2ef;
+}
+
+.card-4 {
+    background: #fff2ef;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card-4 .card-body {
+    padding: 40px 40px;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+    .card-4 .card-body {
+        padding: 50px 40px;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.sidenav
+{
+    height: 100%;
+    border-radius: 10px;
+    top: 249px;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    background-color: #fbe4df;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f78876;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav-two {padding-top: 15px;}
+    .sidenav-two a {font-size: 18px;}
+}
+
+.sidenav-two
+{
+    height: 100%;
+    border-radius: 10px;
+    top: 249px;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    right: 0px;
+    background-color: #fbe4df;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav-two a {
+    padding: 6px 8px 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+}
+
+.sidenav-two a:hover {
+    color: #f78876;
+}
+
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+.navbar-nav.navbar-center
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.b-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*
+.buttons {
+    padding-left: 25px;
+    text-align:center;
+}
+
+.buttons:after {
+    content:'';
+    display:inline-block;
+    width:99.5%;/* generates an extra transparent line
+}
+*/
+
+/* ALL IDS WILL BE BELOW FOR EASE OF FINDING*/
+
+#quiz-title {
+    padding-left: 26%;
+    font-size: 64px;
+    font-weight: bold;
+    color: black;
+}
+
+
+.logo {
+    text-align: center;
+    font-size: 4vw;
+    font-weight: bold;
+    color: black;
+}
+
+#quizzes {
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: black;
+}
+
+#usr-name {
+    font-size: 32px;
+    color: black;
+    display: inline-block;
+}
+
+#category {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.quiz-names {
+    font-size: 20px;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.author-names
+{
+    font-size: 18px;
+    font-family: "Times New Roman", sans-serif;
+    color: black;
+}
+
+.quiz-decs {
+    font-size: 16px;
+    font-family: "Times New Roman", sans-serif;
+    color: black;
+}
+
+/*****SIDEBAR***/
+
+body {
+    overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    border-radius: 10px;
+    left: 10%;
+    width: 0;
+    height: 100%;
+    margin-left: -10%;
+    overflow-y: auto;
+    background: #fff2ef;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    font-size: large;
+    display: block;
+    text-decoration: none;
+    color: #000000;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #ff5656;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+#sidebar-roundup
+{
+    border-radius: 3px;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+/* SETTINGS STUFF */
+
+#settings-header {
+    text-align: center;
+    font-size: 5vw;
+    font-weight: bold;
+    color: black;
+}
+
+.settings-options {
+    text-align: left;
+    font-size: 1.5vw;
+    font-weight: bold;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    color: black;
+}
+
+/**** SOME ADDED STUFFS FOR INPUT BOX FORMATTING****/
+input {
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.input--style-2 {
+    width: 40%;
+    line-height: 3vw;
+    background: #fafafa;
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.input--style-4 {
+    line-height: 3vw;
+    background: #fafafa;
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.input--style-4::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #666;
+}
+
+.input--style-4:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #666;
+    opacity: 1;
+}
+
+.input--style-4::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #666;
+    opacity: 1;
+}
+
+.input--style-4:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #666;
+}
+
+.input--style-4:-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #666;
+}
+
+/* BUTTON */
+/* ==========================================================================
+   #BUTTON
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    line-height: 50px;
+    padding: 0 50px;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+.btn--radius {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.btn--radius-2 {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.btn--pill {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.btn--green {
+    background: #57b846;
+}
+
+.btn--red {
+    background: #ff505c;
+}
+
+.btn--yellowgreen {
+    background: yellowgreen;
+}
+
+.btn--yellow {
+    background: #f3fb62;
+}
+
+.btn--green:hover {
+    background: #4dae3c;
+}
+
+.btn--blue {
+    background: #4272d7;
+}
+
+.btn--blue:hover {
+    background: #3868cd;
+}

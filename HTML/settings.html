@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <title>Settings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/settings.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="home-bg page-wrapper font-poppins">
+
+    <div class="row row-header">
+
+        <div class="col-sm-12 col-xs-12">
+            <div class="wrapper wrapper--vw70-r">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <h1 id="settings-header">SETTINGS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row row-header p-t-15">
+
+        <div class="col-sm-2 col-xs-2">
+            <div id="sidebar-wrapper">
+
+                <ul class="sidebar-nav">
+                    <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+                    <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
+                    <li class="p-t-15"><a href="#">My Quizzes</a></li>
+                    <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                    <li class="p-t-15"><a href="#">Help</a></li>
+                    <li class="p-t-15"><a href="#">Logout</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-sm-8 col-xs-8">
+            <div class="wrapper wrapper--vw70-r">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="card-body">
+                                <h1 class="settings-options p-b-15">Change password:</h1>
+                                <br/>
+                                <input class="input--style-2" type="password" id="change-password" placeholder="New Password">
+                                <input style="margin-left: 2vw;" class="input--style-2" type="password" id="change-password-2" placeholder="Re-enter Password">
+                            </div>
+                            <div class="card-body">
+                                <h1 class="settings-options">Toggle Incoming Challenges Notification</h1>
+                            </div>
+                            <div class="card-body">
+                                <!-- Implement these two functions if we want this functionality -->
+                                <button class="btn btn--radius-2 btn--blue" onclick="toggleOn()" >ON</button>
+                                <button style="margin-left: 2vw;" class="btn btn--radius-2 btn--red" onclick="toggleOff()" >OFF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+</body>
+</html>
