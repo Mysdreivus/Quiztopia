@@ -1,50 +1,53 @@
+let dataRef = firebase.database();
+// TODO: uncomment this for the final push
+let questionIds = ["question_1" /*, "question_2", "question_3", "question_4", "question_5", "question_6"
+                        ,"question_7", "question_8", "question_9", "question_10" */];
+
+let correctAnswerIds = ["correct_answer_1" /*, "correct_answer_2", "correct_answer_3", "correct_answer_4"
+                            ,"correct_answer_5", "correct_answer_6", "correct_answer_7", "correct_answer_8"
+                            ,"correct_answer_9", "correct_answer_10" */];
+
+let wrongAnswersIds = [["wrong_answer1_1", "wrong_answer1_2", "wrong_answer1_3"]
+    /*
+                        ,["wrong_answer2_1", "wrong_answer2_2", "wrong_answer2_3"]
+                        ,["wrong_answer3_1", "wrong_answer3_2", "wrong_answer3_3"]
+                        ,["wrong_answer4_1", "wrong_answer4_2", "wrong_answer4_3"]
+                        ,["wrong_answer5_1", "wrong_answer5_2", "wrong_answer5_3"]
+                        ,["wrong_answer6_1", "wrong_answer6_2", "wrong_answer6_3"]
+                        ,["wrong_answer7_1", "wrong_answer7_2", "wrong_answer7_3"]
+                        ,["wrong_answer8_1", "wrong_answer8_2", "wrong_answer8_3"]
+                        ,["wrong_answer9_1", "wrong_answer9_2", "wrong_answer9_3"]
+                        ,["wrong_answer10_1", "wrong_answer10_2", "wrong_answer10_3"]
+                        */];
+
 function submitQuiz() {
+    // see if the user is authenticated
     let user = firebase.auth().currentUser;
+
     if (user) {
-        alert("Found user");
         let userId = user.uid;
-        submitQuizHelper(userId).then(
-            function() {
-                alert("Created the quiz!");
-                window.location.href = "../HTML/myQuizzes.html";
-            }
-        );
+        // get user personal information
+        dataRef.ref("users/"+ userId + "/personalInfo").once('value')
+            .then(function (info) {
+                info = info.val();
+                let author = info.fname + " " + info.lname;
+                alert("Authro name is " + author);
+                return author;
+            })
+            .then((author) => submitQuizHelper(userId, author))
+            .catch((error) => error.message);
     }
     else {
-        alert("User is null");
         window.location.href = "signin.html";
     }
 }
 
-function submitQuizHelper(userId) {
-    let questionIds = ["question_1" /*, "question_2", "question_3", "question_4", "question_5", "question_6"
-                        ,"question_7", "question_8", "question_9", "question_10" */];
-
-    let correctAnswerIds = ["correct_answer_1" /*, "correct_answer_2", "correct_answer_3", "correct_answer_4"
-                            ,"correct_answer_5", "correct_answer_6", "correct_answer_7", "correct_answer_8"
-                            ,"correct_answer_9", "correct_answer_10" */];
-
-    let wrongAnswersIds = [["wrong_answer1_1", "wrong_answer1_2", "wrong_answer1_3"]
-        /*
-                            ,["wrong_answer2_1", "wrong_answer2_2", "wrong_answer2_3"]
-                            ,["wrong_answer3_1", "wrong_answer3_2", "wrong_answer3_3"]
-                            ,["wrong_answer4_1", "wrong_answer4_2", "wrong_answer4_3"]
-                            ,["wrong_answer5_1", "wrong_answer5_2", "wrong_answer5_3"]
-                            ,["wrong_answer6_1", "wrong_answer6_2", "wrong_answer6_3"]
-                            ,["wrong_answer7_1", "wrong_answer7_2", "wrong_answer7_3"]
-                            ,["wrong_answer8_1", "wrong_answer8_2", "wrong_answer8_3"]
-                            ,["wrong_answer9_1", "wrong_answer9_2", "wrong_answer9_3"]
-                            ,["wrong_answer10_1", "wrong_answer10_2", "wrong_answer10_3"]
-                            */];
-
+function submitQuizHelper(userId, author) {
+    // get user input
     let quiz_name = document.getElementById("quiz_name").value;
     let category = document.getElementById("category").value;
     let quiz_description = document.getElementById("quiz_description").value;
 
-    alert("User id is: " + userId + "\nQuiz name is: " + quiz_name + "\nQuiz description is: " + quiz_description
-        + "\nCategory name is: " + category);
-
-    alert("Going to add these information to firbase");
     let questions = {};
 
     for (let i = 0; i < questionIds.length; i++) {
@@ -57,10 +60,12 @@ function submitQuizHelper(userId) {
         };
     }
 
+    // structure input data to upload to firebase
     let data = {
         name: quiz_name,
         category: category,
         description: quiz_description,
+        author: author,
         owner: userId,
         questions: questions
     };
@@ -69,29 +74,24 @@ function submitQuizHelper(userId) {
         name: quiz_name,
         category: category,
         description: quiz_description,
+        author: author,
         owner: userId
     };
 
 
     // Pushing information to quizzes as well as keep the quiz information under user information as well
     let updateKey = firebase.database().ref().child("quizzes").push().key;
-    alert("the key is: " + updateKey);
 
-    // TODO: push doesn't work without a value
-    let checkDone = false;
     let updates = {};
     updates["/quizzes/" + updateKey] = data;
-    firebase.database().ref().update(updates).then(function () {
-            firebase.database().ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData)
-                .then(function () {
-                        firebase.database().ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData)
-                            .then(function() {
-                                    alert("Updated stuffs in firebase!");
-                        }
-                    );
-                }
-            );
-        }
-    );
-    alert("Entered end of submitQuizHelper");
+
+    // uploading data in the firebase
+    dataRef.ref().update(updates)
+        .then(() => dataRef.ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData))
+        .then(() => dataRef.ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData))
+        .catch((error) => alert(error.message))
+        .then(function() {
+            location.href = "../HTML/myQuizzes.html";
+        })
+        .catch((error) => alert(error.message));
 }

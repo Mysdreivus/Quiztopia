@@ -1,5 +1,5 @@
 let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
-let user = null;
+let user;
 let answers = [];
 let numQuestions = 10;      // TODO: use this when there are 10 questions
 // TODO: these 3 arrays needs to be updated in final push
@@ -37,7 +37,7 @@ window.onload = function () {
 
         // starts the timer
         // noinspection JSAnnotator
-        document.getElementById("timer").innerHTML = 0 + ":" + 30;
+        document.getElementById("timer").innerHTML = 5 + ":" + 00;
         startTimer();
     })
 }

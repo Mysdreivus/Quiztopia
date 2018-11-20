@@ -1,10 +1,10 @@
 // TODO: modify updateHomeUI
 // TODO: JSON.parse the result obtained from getInfoFromHTTP
-// let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
+let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
 let URL = "https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes";
 let initialCategory = "Random";
-// let quizIds = ['quiz-id-1', 'quiz-id-2', 'quiz-id-3', 'quiz-id-4', 'quiz-id-5'];
- let quizNames = [['quiz-name-1', 'author-1', 'desc-1'], ['quiz-name-2', 'author-2', 'desc-2']
+let quizIds = ['quiz-id-1', 'quiz-id-2', 'quiz-id-3', 'quiz-id-4', 'quiz-id-5'];
+let quizNames = [['quiz-name-1', 'author-1', 'desc-1'], ['quiz-name-2', 'author-2', 'desc-2']
     , ['quiz-name-3', 'author-3', 'desc-3'], ['quiz-name-4', 'author-4', 'desc-4']
     , ['quiz-name-5', 'author-5', 'desc-5']];
 
@@ -13,6 +13,7 @@ let databaseRef = firebase.database();
 
 window.onload = function () {
     firebase.auth().onAuthStateChanged(function (user) {
+        // location.href="../HTML/create_quiz.html";
         updateHomeUI(initialCategory, user.uid);
         // updateHomeUI(user);
         // let result = getInfoFromHTTP("https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes",
@@ -31,8 +32,19 @@ function updateHomeUI(category, userId) {
 
     // retrieves quizzes from firebase and parses it
     data = getInfoFromHTTP(URL, dataToSend);
+
+    // parse the data properly
+    data = parseData(data);
     alert(data);
-    // updateQuizInfo(data);
+
+    let quizData;
+    // go through data available
+    for (let i = 0; i < data.length; i++) {
+        quizData = JSON.parse(data[i]);
+        updateQuizInfo(quizData, i);
+        setEventListener(quizData, i);
+    }
+
 
     /*
     databaseRef.ref("users/" + user.uid + "/toBeTaken").once("value")
@@ -58,11 +70,56 @@ function updateHomeUI(category, userId) {
     */
 }
 
+function setEventListener(quizInformation, index) {
+    alert("entered setEventListener");
+    document.getElementById(quizIds[index]).addEventListener('click', function () {
+        Cookies.set('name', quizInformation.name);
+        Cookies.set('description', quizInformation.description);
+        Cookies.set('author', quizInformation.author);
+        Cookies.set('category', quizInformation.category);
+        Cookies.set('id', quizInformation.quizID);
+        location.href = "../HTML/startQuiz.html";
+    });
+}
+
+/*
+function setEventListener(quizInformation, index) {
+    document.getElementById(quizIds[index]).addEventListener('click', function () {
+        Cookies.set('name', quizInformation.name);
+        Cookies.set('description', quizInformation.description);
+        Cookies.set('author', quizInformation.owner);
+        Cookies.set('category', quizInformation.category);
+        Cookies.set('id', childSnapShot.key);
+        location.href = "../HTML/startQuiz.html";
+    });
+}
+*/
+
+// splits the string data into array of strings for parsing as JSON objects
+function parseData(data) {
+    let parsedData  = [];
+    let i = 1;
+    let j = i;
+    while (j < data.length) {
+        if ((data[j] === ",") && (data[j-1] === '}')) {
+            parsedData.push(data.slice(i,j));
+            j++;
+            i=j;
+        }
+        else if ((data[j] === "0") && (data[j-1] === ",")) {
+            parsedData.push(data.slice(i, j-1));
+            break;
+        }
+        j++;
+    }
+    return parsedData;
+}
+
 // updates the quiz info UI
-function updateQuizInfo(obj) {
-    document.getElementById(quizNames[0][0]).innerHTML = obj.name;
-    document.getElementById(quizNames[0][2]).innerHTML = obj.description;
-    document.getElementById(quizNames[0][1]).innerHTML = obj.owner;
+function updateQuizInfo(obj, idx) {
+    document.getElementById(quizNames[idx][0]).innerHTML = obj.name;
+    document.getElementById(quizNames[idx][2]).innerHTML = obj.description;
+    document.getElementById(quizNames[idx][1]).innerHTML = obj.author;
 }
 
 // updates welcome user UI
