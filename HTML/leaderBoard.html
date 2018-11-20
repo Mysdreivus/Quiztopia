@@ -25,28 +25,144 @@
 </head>
 
 <body>
-<!-- Add sidebar, col-sm-2 -->
+    <!-- Add sidebar, col-sm-2 -->
 
-<!-- Main leaderboard takes up col-sm-6 -->
+    <!-- Main leaderboard takes up col-sm-6 -->
 
-<div class="home-bg page-wrapper font-poppins">
-    <div class="row row-header">
+    <div class="home-bg page-wrapper font-poppins">
+        <div class="row row-header">
 
-        <div class="col-sm-2 col-xs-2">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <h1 class="logo">LOGO</h1>
+            <div class="col-sm-3 col-xs-3">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <!-- <h1 class="logo">LOGO</h1> -->
+                            <img src="../images/logo.png" height="100%" width="100%">
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-9 col-xs-9">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <h1 id="leaderboard">LEADERBOARD</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-sm-8 col-xs-8">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <h1 id="leaderboard">LEADERBOARD</h1>
+        <div class = "row row-content p-t-15">
+
+            <div class="col-sm-2 col-xs-2">
+                <div id="sidebar-wrapper">
+
+                    <ul class="sidebar-nav">
+                        <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+                        <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
+                        <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
+                        <li class="p-t-15"><a href="#">Settings</a></li>
+                        <li class="p-t-15"><a href="#">Help</a></li>
+                        <li class="p-t-15"><a href="#">Logout</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div style="padding-left: 9%;" class="col-sm-7 col-xs-7">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <h1 id="category">CATEGORY</h1>
+                                <div class="name-leaderboard" id="player-1">Player1</div><div class="score-leaderboard" id="player-1-point">430</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard" id="player-2">Player2</div><div class="score-leaderboard" id="player-2-point">200</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard" id="player-3">Player4</div><div class="score-leaderboard" id="player-3-point">150</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard" id="player-4">Player5</div><div class="score-leaderboard" id="player-4-point">50</div>
+                            </div>
+                            <!--
+                            // TODO: uncomment this on final production phase
+                            // TODO: give ids to both player div as well as point div
+                            <div class="row">
+                                <div class="name-leaderboard">Player6</div><div class="score-leaderboard">40</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player7</div><div class="score-leaderboard">30</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player8</div><div class="score-leaderboard">20</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player9</div><div class="score-leaderboard">10</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player10</div><div class="score-leaderboard">5</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player11</div><div class="score-leaderboard">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player12</div><div class="score-leaderboard">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player13</div><div class="score-leaderboard">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="name-leaderboard">Player14</div><div class="score-leaderboard">0</div>
+                            </div>
+                            -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO: some categories won't work coz we don't have that category in database -->
+            <div style="padding-right: 40px;" class="col-sm-3 col-xs-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Category</div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Geography" onclick="updateUI(this.id)">Geography</button>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" id="Movies" onclick="updateUI(this.id)">Movies</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Sports</button>
+                            </div>
+
+                        </div>
+
+                        <div class="row p-t-15">
+
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" id="Math" onclick="updateUI(this.id)">Math</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Physics" onclick="updateUI(this.id)">Physics</button>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" id="Science" onclick="updateUI(this.id)">Science</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Food" onclick="updateUI(this.id)">Food</button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -54,117 +170,31 @@
 
     </div>
 
-    <div class = "row row-content p-t-15">
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
 
-        <div class="col-sm-2 col-xs-2">
-            <div id="sidebar-wrapper">
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+            authDomain: "quiztopia-35e04.firebaseapp.com",
+            databaseURL: "https://quiztopia-35e04.firebaseio.com",
+            projectId: "quiztopia-35e04",
+            storageBucket: "quiztopia-35e04.appspot.com",
+            messagingSenderId: "485501403479"
+        };
+        firebase.initializeApp(config);
+    </script>
 
-                <ul class="sidebar-nav">
-                    <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
-                    <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
-                    <li class="p-t-15"><a href="#">My Quizzes</a></li>
-                    <li class="p-t-15"><a href="#">Settings</a></li>
-                    <li class="p-t-15"><a href="#">Help</a></li>
-                    <li class="p-t-15"><a href="#">Logout</a></li>
-                </ul>
+    <script src="../JavaScript/leaderBoard.js"></script>
 
-            </div>
-        </div>
-
-        <div style="padding-left: 9%;" class="col-sm-7 col-xs-7">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <h1 id="category">CATEGORY</h1>
-                            <div class="name-leaderboard">Player1</div><div class="score-leaderboard">430</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player2</div><div class="score-leaderboard">200</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player4</div><div class="score-leaderboard">150</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player5</div><div class="score-leaderboard">50</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player6</div><div class="score-leaderboard">40</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player7</div><div class="score-leaderboard">30</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player8</div><div class="score-leaderboard">20</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player9</div><div class="score-leaderboard">10</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player10</div><div class="score-leaderboard">5</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player11</div><div class="score-leaderboard">0</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player12</div><div class="score-leaderboard">0</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player13</div><div class="score-leaderboard">0</div>
-                        </div>
-                        <div class="row">
-                            <div class="name-leaderboard">Player14</div><div class="score-leaderboard">0</div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="padding-right: 40px;" class="col-sm-3 col-xs-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">Category</div>
-                <div class="panel-body">
-                    <div class="row">
-
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">History</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Geography</button>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">Entertainment and blah</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Sports</button>
-                        </div>
-
-                    </div>
-
-                    <div class="row p-t-15">
-
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">Math</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Physics</button>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">Science</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Food</button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 
 </body>
 
