@@ -1,8 +1,12 @@
 // creates a new user
+let email, password, createdUser, first_name, last_name, user_id;
+// database reference
+let databaseRef = firebase.database();
+
 function signUpCreate() {
-    var email = document.getElementById("email_field").value;
-    var password = document.getElementById("pwd_field").value;
-    var createdUser = true;
+    createdUser = true;
+    getInfo();
+
     if (email.length < 11) {
         alert('Please enter an email address.');
         return;
@@ -16,7 +20,6 @@ function signUpCreate() {
             "* contains at least one upper case character\n");
         return;
     }
-    let databaseRef = firebase.database();
     
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .catch(function (error1) {
@@ -27,46 +30,57 @@ function signUpCreate() {
             if (createdUser) {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        let first_name = document.getElementById("fname").value;
-                        let last_name = document.getElementById("lname").value;
-                        let user_id = user.uid;
-
-                        // putting user information in firebase
-                        databaseRef.ref('users/' + user_id).set({
-                            personalInfo: {
-                                email: email,
-                                fname: first_name,
-                                lname: last_name,
-                                points: 0
-                            }
-                        })
-                            .catch(function (error2) {
-                                alert(error2.message);
+                        // sending verfication email
+                        user.sendEmailVerification()
+                            .then(function () {
+                            // verfication email sent
                             })
-                            .then( function() {
-                                databaseRef.ref('leaderboard').once('value')
-                                    .catch(function (error3) {
-                                        alert(error3.message);
-                                    })
-                                    .then(function (snapshot) {
-                                        alert("1st key is: " + snapshot.key);
-                                        snapshot.forEach(function (childSnapshot) {
-                                            alert("key is: " + childSnapshot.key);
-                                            databaseRef.ref().child("leaderboard/" + childSnapshot.key + "/"
-                                                + user_id).set(0);
-                                        });
-                                    })
-                                    .catch(function (error4) {
-                                        alert(error4.message);
-                                    })
-                                    .then(function () {
-                                        location.href = "../HTML/home.html";
-                                    });
+                            .then(function () {
+                                user_id = user.uid;
+                                updateUserInfo(user_id);
+                            })
+                            .then(() => {
+                                initializeLeaderboard(user_id);
+                            })
+                            .then(() => {
+                                // redirect to homepage
+                                location.href = "../HTML/signin.html";
                             });
                     }
                 });
             }
         });
+}
+
+// updates users personal info
+function updateUserInfo(user_id) {
+    // putting user information in firebase
+    databaseRef.ref('users/' + user_id).set({
+        personalInfo: {
+            email: email,
+            fname: first_name,
+            lname: last_name,
+            points: 0
+        }
+    });
+}
+
+// initializes user points in the leaderboard
+function initializeLeaderboard(user_id) {
+    databaseRef.ref('leaderboard').once('value')
+        .then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                databaseRef.ref().child("leaderboard/" + childSnapshot.key + "/"
+                    + user_id).set(0);
+            });
+        })
+}
+// gets user info
+function getInfo() {
+    email = document.getElementById("email_field").value;
+    password = document.getElementById("pwd_field").value;
+    first_name = document.getElementById("fname").value;
+    last_name = document.getElementById("lname").value;
 }
 
 

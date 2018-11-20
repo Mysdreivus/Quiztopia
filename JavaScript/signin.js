@@ -24,7 +24,12 @@ function signin() {
             if (signedIn) {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        window.location.href = "../HTML/home.html";
+                        if (user.emailVerified) {
+                            window.location.href = "../HTML/home.html";
+                        }
+                        else {
+                            alert("Please verfiy your email!");
+                        }
                     }
                 });
             }
