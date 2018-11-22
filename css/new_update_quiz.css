@@ -43,9 +43,9 @@ button
     */
     background-size: cover;
 }
-/* RESPONSIVE WRAPPER */
-.wrapper--vw70-r {
-    max-width: 70vw;
+
+.new-home-bg {
+
 }
 
 .page-wrapper {
@@ -357,7 +357,23 @@ body {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #fff2ef;
+    background: #fbc8d8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper-2 {
+    z-index: 1000;
+    position: fixed;
+    border-radius: 10px;
+    right: 250px;
+    width: 0;
+    height: 100%;
+    margin-right: -250px;
+    overflow-y: auto;
+    background: #fbc8d8;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -404,8 +420,8 @@ body {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #ff5656;
-    background: rgba(251, 181, 176, 0.2);
+    color: #fff;
+    background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav li a:active,
@@ -443,7 +459,7 @@ body {
     }
 
     #sidebar-wrapper {
-        width: 15vw;
+        width: 250px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -628,27 +644,6 @@ body {
     width: 100%;
 }
 
-/**** HELP STUFF ****/
-#help-header {
-    text-align: center;
-    font-size: 5vw;
-    font-weight: bolder;
-    color: black;
-}
-
-.help-titles {
-    text-align: left;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-}
-
-.help-description {
-    text-align: left;
-    font-size: 1vw;
-    font-weight: normal;
-    color: black;
-}
 /**** SOME ADDED STUFFS FOR INPUT BOX FORMATTING****/
 input {
     outline: none;
