@@ -1,5 +1,3 @@
-// TODO: modify updateHomeUI
-// TODO: JSON.parse the result obtained from getInfoFromHTTP
 let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
 let URL = "https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes";
 let initialCategory = "Random";
@@ -13,17 +11,17 @@ let databaseRef = firebase.database();
 
 window.onload = function () {
     firebase.auth().onAuthStateChanged(function (user) {
-        // location.href="../HTML/create_quiz.html";
-        updateHomeUI(initialCategory, user.uid);
-        // updateHomeUI(user);
-        // let result = getInfoFromHTTP("https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes",
-            // {category: "Movies", uid: user.uid});
+        // if the user is authenticated
+        if (user) {
+            updateHomeUI(initialCategory, user.uid);
+        }
+        else {
+            JSalert();
+            // location.href = "../HTML/signin.html";
+        }
     });
 }
 
-
-
-// TODO: EventListener needs to be added for each quiz 
 function updateHomeUI(category, userId) {
     welcomeUser(userId);
 
@@ -35,8 +33,8 @@ function updateHomeUI(category, userId) {
 
     // parse the data properly
     data = parseData(data);
-    alert(data);
 
+    // TODO: pagination needs to be made here
     let quizData;
     // go through data available
     for (let i = 0; i < data.length; i++) {
@@ -44,34 +42,10 @@ function updateHomeUI(category, userId) {
         updateQuizInfo(quizData, i);
         setEventListener(quizData, i);
     }
-
-
-    /*
-    databaseRef.ref("users/" + user.uid + "/toBeTaken").once("value")
-        .then(function (snapshot) {
-            // get information of the quiz and update the UI with it
-            snapshot.forEach(function (childSnapShot) {
-                let quizInformation = childSnapShot.val();
-                document.getElementById(quizNames[index][0]).innerHTML = quizInformation.name;
-                document.getElementById(quizNames[index][2]).innerHTML = quizInformation.description;
-                document.getElementById(quizNames[index][1]).innerHTML = quizInformation.owner;
-
-                document.getElementById(quizIds[index]).addEventListener('click', function () {
-                    Cookies.set('name', quizInformation.name);
-                    Cookies.set('description', quizInformation.description);
-                    Cookies.set('author', quizInformation.owner);
-                    Cookies.set('category', quizInformation.category);
-                    Cookies.set('id', childSnapShot.key);
-                    location.href = "../HTML/startQuiz.html";
-                });
-                index += 1;
-            });
-        });
-    */
 }
 
+// sets event listener for each quiz card
 function setEventListener(quizInformation, index) {
-    alert("entered setEventListener");
     document.getElementById(quizIds[index]).addEventListener('click', function () {
         Cookies.set('name', quizInformation.name);
         Cookies.set('description', quizInformation.description);
@@ -81,19 +55,6 @@ function setEventListener(quizInformation, index) {
         location.href = "../HTML/startQuiz.html";
     });
 }
-
-/*
-function setEventListener(quizInformation, index) {
-    document.getElementById(quizIds[index]).addEventListener('click', function () {
-        Cookies.set('name', quizInformation.name);
-        Cookies.set('description', quizInformation.description);
-        Cookies.set('author', quizInformation.owner);
-        Cookies.set('category', quizInformation.category);
-        Cookies.set('id', childSnapShot.key);
-        location.href = "../HTML/startQuiz.html";
-    });
-}
-*/
 
 // splits the string data into array of strings for parsing as JSON objects
 function parseData(data) {
@@ -133,15 +94,6 @@ function welcomeUser(userId) {
         });
 }
 
-// signs out user
-function logout() {
-    firebase.auth().signOut().then(function () {
-        location.href = "../HTML/signin.html";
-    }).catch(function (error) {
-        alert(error);
-    });
-}
-
 // Getting untaken & not created quizzes from Firebase...
 
 // Retrieve info from an URL & a dictionary of parameters...
@@ -161,7 +113,6 @@ function getInfoFromHTTP(url, params) {
             }
         }
     }
-    alert("New URL is " + url);
     // console.log(url);
     const request = new XMLHttpRequest();
     let response;
@@ -173,3 +124,56 @@ function getInfoFromHTTP(url, params) {
     console.log(response);
     return response;
 }
+
+function JSalert() {
+    swal({
+        title: "Authentication Error",
+        text: "Redirecting to Login Page!",
+        type: "warning"
+    })
+        .then(() => location.href = "../HTML/signin.html");
+}
+
+// signs out user
+function logout() {
+    swal({
+        title: "Sign Out",
+        text: "You will be redirected to Sign in screen.",
+        type: "warning",
+        buttons: {
+            cancel: true,
+            confirm: "Sign out"
+        }
+    })
+        .then( val => {
+            if (val){
+                firebase.auth().signOut().then(function () {
+                    location.href = "../HTML/signin.html";
+                }).catch(function (error) {
+                    alert(error);
+                });
+            }
+        });
+}
+
+/*
+function JSalert(){
+    swal({   title: "Your account will be deleted permanently!",
+            text: "Are you sure to proceed?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Remove My Account!",
+            cancelButtonText: "I am not sure!",
+            closeOnConfirm: false,
+            closeOnCancel: false },
+        function(isConfirm){
+            if (isConfirm)
+            {
+                swal("Account Removed!", "Your account is removed permanently!", "success");
+            }
+            else {
+                swal("Hurray", "Account is not removed!", "error");
+            } });
+}
+*/
