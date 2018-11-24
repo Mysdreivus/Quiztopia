@@ -42,10 +42,6 @@ function signUpCreate() {
                             .then(() => {
                                 initializeLeaderboard(user_id);
                             })
-                            .then(() => {
-                                // redirect to homepage
-                                location.href = "../HTML/signin.html";
-                            });
                     }
                 });
             }
@@ -73,7 +69,12 @@ function initializeLeaderboard(user_id) {
                 databaseRef.ref().child("leaderboard/" + childSnapshot.key + "/"
                     + user_id).set(0);
             });
+            return;
         })
+        .then(() => {
+            // redirect to homepage
+            location.href = "../HTML/signin.html";
+        });
 }
 // gets user info
 function getInfo() {
