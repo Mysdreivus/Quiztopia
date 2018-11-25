@@ -11,12 +11,10 @@ window.onload = function () {
 
 const setupUI = async (uid, qid) => {
     let q = await getQuiz(uid, qid);
-    console.log(q);
     let name = q["name"];
     let category = q["category"];
     let description = q["description"];
-    let questions = [];
-    // TODO... For each question in q[questions]... assign each question... & update UI...
+    let questions = q["questions"];
     document.getElementById("quiz_name").value = name;
     document.getElementById("quiz_description").value = description;
     let select = document.getElementById("category");
@@ -27,14 +25,28 @@ const setupUI = async (uid, qid) => {
             break;
         }
     }
-    
+
+    let questionCount = 1;
+    let wrongAnswerCount = 1;
+    for(question in questions) {
+        console.log(questions[question]);
+        document.getElementById(question).value = questions[question]["question"];
+        document.getElementById("correct_answer_".concat(questionCount)).value = questions[question]["correct_answer"];
+        document.getElementById("wrong_answer".concat(questionCount)
+        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers1"];
+        document.getElementById("wrong_answer".concat(questionCount)
+        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers2"];
+        document.getElementById("wrong_answer".concat(questionCount)
+        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers3"];
+        questionCount++;
+    }
 
 }
   
 
 async function getQuiz(uid, qid) {
     var db = firebase.database();
-    return db.ref(`users/${uid}/quizzesCreated/${qid}`).once("value").then(function(snap){ // TODO -> Det if the root is this node or go directly to the category...
+    return db.ref(`quizzes/${qid}`).once("value").then(function(snap){
         if(snap.val() !== null) {
             return snap.val();
         } else {
