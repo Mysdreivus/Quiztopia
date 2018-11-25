@@ -19,7 +19,8 @@
 
     <div class="row row-header">
 
-        <div class="col-sm-12 col-xs-12">
+        <div class="col-sm-2 col-xs-2"></div>
+        <div class="col-sm-8 col-xs-8">
             <div class="wrapper wrapper--vw70-r">
                 <div class="card card-4">
                     <div class="card-body">
@@ -39,10 +40,10 @@
                 <ul class="sidebar-nav">
                     <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
                     <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
-                    <li class="p-t-15"><a href="#">My Quizzes</a></li>
+                    <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
                     <li class="p-t-15"><a href="settings.html">Settings</a></li>
-                    <li class="p-t-15"><a href="#">Help</a></li>
-                    <li class="p-t-15"><a href="#">Logout</a></li>
+                    <li class="p-t-15"><a href="help.html">Help</a></li>
+                    <li class="p-t-15"><a href="signin.html">Logout</a></li>
                 </ul>
 
             </div>
@@ -53,12 +54,21 @@
                 <div class="card card-4">
                     <div class="card-body">
                         <div class="row">
+
+                            <div class="card-body">
+                                <h1 class="settings-options p-b-15">Change Username:</h1>
+                                <br/>
+                                <input class="input--style-2" type="text" id="change-username" placeholder="New Username">
+                                <input style="margin-left: 2vw;" class="input--style-2" type="text" id="change-username-2" placeholder="Re-enter Username">
+                            </div>
+
                             <div class="card-body">
                                 <h1 class="settings-options p-b-15">Change password:</h1>
                                 <br/>
                                 <input class="input--style-2" type="password" id="change-password" placeholder="New Password">
                                 <input style="margin-left: 2vw;" class="input--style-2" type="password" id="change-password-2" placeholder="Re-enter Password">
                             </div>
+
                             <div class="card-body">
                                 <h1 class="settings-options">Toggle Incoming Challenges Notification</h1>
                             </div>

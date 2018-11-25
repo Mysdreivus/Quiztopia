@@ -540,8 +540,8 @@ input {
    ========================================================================== */
 .btn {
     display: inline-block;
-    line-height: 50px;
-    padding: 0 50px;
+    line-height: 3vw;
+    padding: 0 3vw;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
