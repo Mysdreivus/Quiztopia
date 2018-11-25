@@ -62,6 +62,7 @@ function submitQuizHelper(userId, author) {
 
     // structure input data to upload to firebase
     let data = {
+        active: true,
         name: quiz_name,
         category: category,
         description: quiz_description,
@@ -71,6 +72,7 @@ function submitQuizHelper(userId, author) {
     };
 
     let quizCreatedData = {
+        active: true,
         name: quiz_name,
         category: category,
         description: quiz_description,

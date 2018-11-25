@@ -1,28 +1,33 @@
+let userID;
+let spotIDs = ["quizBox1", "quizBox2", "quizBox3", "quizBox4", "quizBox5"];
+let quizNameIds = ['quiz-name-1', 'quiz-name-2', 'quiz-name-3', 'quiz-name-4', 'quiz-name-5'];
+let descIds = ['desc-1', 'desc-2', 'desc-3', 'desc-4', 'desc-5'];
+let categoryIds = ["category-1", "category-2", "category-3", "category-4", "category-5"];
+
+let currentPage = 1;
+const quizzesPerPage = 5; // TODO -> The team decided we'll use 5...
+let deleted = false;
+let deletedID;
+let q;
+
 window.onload = function () {
-    /*
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            updateUI(user.uid);
+            // updateUI(user.uid);
+            userID = user.uid;
+            refreshUI();
+        }
+        else {
+            JSalert();
         }
     });
-    */
-    // updateUI();
 }
 
-
-
-var currentPage = 1;
-const quizzesPerPage = 5; // TODO -> The team decided we'll use 5...
-var deleted = false;
-var deletedID;
-
-let userID = "fl1sqcZj32cGmeOXXKYr4pJaUBg2"; // TODO -> Make it generic so it works for every user...
-
 const refreshUI = async () => {
-    let q = await getUserQuizzes("fl1sqcZj32cGmeOXXKYr4pJaUBg2");
-    console.log("finished reading quizzes: ", q);
+    // get user quizzes
+    q = await getUserQuizzes();
     if(deleted) { // Delete from the front-end (Cloud Function could take some milis...)
-        console.log("Must remove quiz with ID = ", deletedID);
+        // console.log("Must remove quiz with ID = ", deletedID);
         for(x in q) {
             console.log(x);
             if(q[x]["quizID"] === deletedID) {
@@ -33,7 +38,6 @@ const refreshUI = async () => {
         }
         deleted = false;
     }
-
     while((currentPage !== 0) && (q.length <= (currentPage - 1) * quizzesPerPage)){ // If all the quizzes of a page have been deleted...
         currentPage--;
     }
@@ -41,50 +45,12 @@ const refreshUI = async () => {
     let p = fillQuizzesInPage(q, currentPage); // Update UI...
     console.log("finished filling screen: ", q);
 }
-  
-  refreshUI();
 
-function updateUI() {
-    let quizNameList = ['quiz_name_1', 'quiz_name_2'];
-    let quizDescriptionList = ['quiz_description_1', 'quiz_description_2'];
-    let quizzesRef = firebase.database().ref("/quizzes/Literature");
-    let i = 0;
-    quizzesRef.limitToLast(2).once("value")
-        .then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                let quizName = childSnapshot.val().name;
-                let quizDescription = childSnapshot.val().description;
-                alert("quizName: " + quizName);
-                document.getElementById(quizNameList[i]).innerHTML = quizName;
-                document.getElementById(quizDescriptionList[i]).innerHTML = quizDescription;
-                i += 1;
-            });
-        });
-};
-
-/*
-function updateUI(userId) {
-    alert("User id is: " + userId);
-    let quizzesRef = firebase.database().ref("/quizzes/Literature");
-    alert("key is: " + quizzesRef.key);
-    quizzesRef.limitToLast(2).once("value")
-        .then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                alert("key " + childSnapshot.key);
-                let quizName = childSnapshot.val().name;
-                let quizDescription = childSnapshot.val().description;
-                alert("quizName: " + quizName);
-                document.getElementById('quiz-name-1').innerText = quizName;
-                document.getElementById('quiz-description-1').innerText = quizDescription
-            })
-        });
-};
-*/
-
-async function getUserQuizzes(uid) {
+// returns quizzes list created by the user
+async function getUserQuizzes() {
     let userQuizzes = [];
-    var db = firebase.database();
-    return db.ref(`users/${uid}/quizzesCreated`).once("value").then(function(snap){
+    let db = firebase.database();
+    return db.ref(`users/${userID}/quizzesCreated`).once("value").then(function(snap){
         if(snap.val() !== null) {
             var keys = Object.keys(snap.val());
             for(q in keys){
@@ -103,89 +69,69 @@ async function getUserQuizzes(uid) {
     });
 }
 
-
+//
+// @param1 array list of quiz information
+// @param2 int page number
 function fillQuizzesInPage(q, page) {
+    // empty the divs
+    emptyDivs();
     let first = ((page - 1) * quizzesPerPage); // First quiz index...
     let last = first + quizzesPerPage;
     last = (last > q.length) ? q.length : last;
-    let spotIDs = ["quizBox1", "quizBox2", "quizBox3", "quizBox4", "quizBox5"];
-
-    // Clear each container...
-    for(spot in spotIDs) {
-        let s = document.getElementById(spotIDs[spot]);
-        s.innerHTML = "";
-    }
-
-    if(q.length === 0) { // If no quizzes...
-        let s = document.getElementById("quizBox1");
-        s.innerHTML = "<h3>No quizzes created so far.</h3>";
-        return;
-    }
-
-    let buttons = document.getElementById("next_prev");
-    buttons.innerHTML = "";
-
-    if(page > 1) { // Not it the first page...
-        let prevText = document.createTextNode("Prev");
-        let prev = document.createElement("button");
-        prev.appendChild(prevText);
-        prev.onclick = function() {
-            currentPage--;
-            fillQuizzesInPage(q, currentPage);
-        };
-        buttons.appendChild(prev);
-    }
-    let lastPage = q.length / quizzesPerPage;
-    if(page < lastPage) { // Not in last page...
-        let nextText = document.createTextNode("Next");
-        let next = document.createElement("button");
-        next.appendChild(nextText);
-        next.onclick = function() {
-            currentPage++;
-            fillQuizzesInPage(q, currentPage);
-        };
-        buttons.appendChild(next);
-    }
-
+    let count = 0;
     for(first; first < last; first++) { // Generate each QuizEntry (HTML...)
-        displayQuizEntry(spotIDs, first, quizzesPerPage, q)
+        displayQuizEntry(spotIDs, first, quizzesPerPage, q, count);
+        count++;
     }
 }
 
-function displayQuizEntry(spots, index, qPerPage, entries) {
-    let s = document.getElementById(spots[index % qPerPage]);
-    let name = document.createElement("h3");
-    let nameText = document.createTextNode("Quiz Name: ".concat(entries[index]["quizName"])); 
-    name.appendChild(nameText); 
-    let category = document.createElement("h5");
-    let categoryText = document.createTextNode("Category: ".concat(entries[index]["category"]));
-    category.appendChild(categoryText);
-    let description = document.createElement("h5");
-    let descriptionText = document.createTextNode("Description: ".concat(entries[index]["description"]));
-    description.appendChild(descriptionText);
-    s.appendChild(name);
-    s.appendChild(category);
-    s.appendChild(description);
-    // TODO -> Update!!!
-    let div = document.createElement("div");
-    let del = document.createElement("button");
-    let buttonText = document.createTextNode("Delete");
-    let edit = document.createElement("button");
-    let editText = document.createTextNode("Edit");
-    edit.appendChild(editText);
-    edit.onclick = function() {
-        updateQuiz(userID, entries[index]["quizID"]);
-    };
-    div.appendChild(edit);
-    del.appendChild(buttonText);
-    del.onclick = function() {
-        console.log(entries[index]);
-        deleteQuiz(userID, entries[index]["quizID"]);
-    };
-    div.appendChild(del);
-    s.appendChild(div);
+function emptyDivs() {
+    for (let i =0; i < spotIDs.length; i++) {
+        document.getElementById(quizNameIds[i]).innerHTML = '';
+        document.getElementById(descIds[i]).innerHTML = '';
+        document.getElementById(categoryIds[i]).innerHTML = '';
+    }
+}
+//
+// @param1 array of spotIds
+// @param2 int
+// @param3 int
+// @param4 array of quiz information
+function displayQuizEntry(spots, index, qPerPage, entries, i) {
+    // let s = document.getElementById(spots[index % qPerPage]);
+
+    // TODO: henchhing's changes
+    document.getElementById(quizNameIds[i]).innerHTML = entries[index]["quizName"];
+    document.getElementById(descIds[i]).innerHTML = entries[index]["description"];
+    document.getElementById(categoryIds[i]).innerHTML = entries[index]["category"];
+
+    // attaching event listener
+    attachListener(spotIDs[i], entries[index]["quizID"]);
 }
 
+// attaches listener to each quiz
+function attachListener(id, quizID) {
+    document.getElementById(id).addEventListener('click', function () {
+        swal({
+            text: "Select one of the folllowing task to do!",
+            buttons: {
+                Edit: true,
+                Delete: "delete"
+            }
+        })
+            .then( val => {
+                if (val === "Edit") {
+                    updateQuiz(userID, quizID);
+                }
+                else {
+                    deleteQuiz(userID, quizID);
+                }
+            });
+    });
+}
+
+// stores quiz as well as user id in local storage
+// redirects user to update quiz page
 function updateQuiz(user, qid) {
     console.log("User: ", user, " QID: ", qid);
     localStorage.setItem("quizID", qid);    
@@ -193,19 +139,75 @@ function updateQuiz(user, qid) {
     location.href = "../HTML/update_quiz.html";
 }
 
+// sets the active field of the quiz in quizzes Created to false
+// cloud function does rest of the job
+// sets deleted to be false
+// refreses the UI once again
 function deleteQuiz(user, qid) {
     console.log("User: ", user, " QID: ", qid);
-    firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false);
-    deletedID = qid;
-    deleted = true;
-    refreshUI();
+    firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false)
+        .then(() => {
+            deletedID = qid;
+            deleted = true;
+            refreshUI();
+        })
 }
 
-
+// redirects user to create quiz page
 function createQuiz() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user)
-            window.location.href = "../HTML/create_quiz.html";
-    })
+    window.location.href = "../HTML/create_quiz.html";
 }
 
+// logout function that pops up a confirmation box
+function logout() {
+    swal({
+        title: "Sign Out",
+        text: "You will be redirected to Sign in screen.",
+        type: "warning",
+        buttons: {
+            cancel: true,
+            confirm: "Sign out"
+        }
+    })
+        .then( val => {
+            if (val){
+                firebase.auth().signOut().then(function () {
+                    location.href = "../HTML/signin.html";
+                }).catch(function (error) {
+                    alert(error);
+                });
+            }
+        });
+}
+
+// alerts user about the  authentication error and redirects to sign in page
+function JSalert() {
+    swal({
+        title: "Authentication Error",
+        text: "Redirecting to Login Page!",
+        type: "warning"
+    })
+        .then(() => location.href = "../HTML/signin.html");
+}
+
+function next() {
+    let lastPage = q.length / quizzesPerPage;
+    // creating next button if it's the last page
+    if(currentPage < lastPage) { // Not in last page...
+        currentPage++;
+        fillQuizzesInPage(q, currentPage);
+    }
+    else {
+        swal("Oops!", "You can't go next than this!", "error");
+    }
+}
+
+function Previous() {
+    if(currentPage > 1) {
+        currentPage--;
+        fillQuizzesInPage(q, currentPage);
+    }
+    else {
+        swal("Oops!", "You can't go previous than this!", "error");
+    }
+}

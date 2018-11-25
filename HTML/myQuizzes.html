@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
 <head>
 
     <meta charset="UTF-8">
@@ -26,134 +22,109 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 
 <body>
-<!-- USE BOOTSTRAP COLUMN DIVIDER FOR SPLITTING -->
-<div class="home-bg page-wrapper font-poppins">
-    <!--logo and title-->
-    <div class="row">
-        <div class="col-sm-2 col-xs-2">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <h1 class="logo">LOGO</h1>
+    <!-- USE BOOTSTRAP COLUMN DIVIDER FOR SPLITTING -->
+    <div class="home-bg page-wrapper font-poppins">
+        <!--logo and title-->
+        <div class="row row-header">
+            <div class="col-sm-2 col-xs-4">
+                <div class="wrapper wrapper--w480">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <h1 class="logo">LOGO</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-10 col-xs-8">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <h1 id="quiz-title">QUIZTOPIA</h1>
+            <div class="col-sm-10 col-xs-8">
+                <div class="wrapper p-r-15">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <h1 id="quiz-title">QUIZTOPIA</h1>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <div class="p-t-15">
-        <nav class="navbar navbar-default" style="border-radius: 20px;">
-            <div class="container-fluid">
-                <div class="navbar-header font-poppins">
-                    <ul class="nav navbar-nav navbar-center">
-                        <li><a id="usr-name"></a></li>
+        <div class="row row-content p-t-15">
+            <div class="col-sm-2 col-xs-2">
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+                        <li class="p-t-15"><a href="leaderBoard.html">Leader board</a></li>
+                        <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
+                        <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                        <li class="p-t-15"><a href="help.html">Help</a></li>
+                        <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </div>
-    <div class="row row-content">
-        <div class="col-sm-2 col-xs-2">
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li style="padding-top: 40px;"><a href="#">Dashboard</a></li>
-                    <li class="p-t-15"><a href="#">Leader board</a></li>
-                    <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
-                    <li class="p-t-15"><a href="#">Settings</a></li>
-                    <li class="p-t-15"><a href="#">Help</a></li>
-                    <li class="p-t-15" onclick="logout()">Logout</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="col-sm-7 col-xs-8">
-            <div class="wrapper wrapper--w680">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <!--	quiz 1 info		-->
-                        <!--need css for quizBox-->
-                        <div class="quizBox" id="quizBox1">
-                            <!-- <header id="quizTitle1"> Quiz Title:</header>
-                            <p id="quizCat1">Category:</p>
-                            <button type="button" id="editQuizBox1">Edit</button>
-                            <button type="button" id="deleteQuizBox1">Delete</button> -->
-                        </div><br>
-                        <!--	quiz 2 info		-->
-                        <div class="quizBox" id="quizBox2">
-                            <!-- <header id="quizTitle2"> Quiz Title:</header>
-                            <p id="quizCat2">Category:</p>
-                            <button type="button" id="editQuizBox2">Edit</button>
-                            <button type="button" id="deleteQuizBox2">Delete</button> -->
-                        </div><br>
-                        <!--	quiz 3 info		-->
-                        <div class="quizBox" id="quizBox3">
-                            <!-- <header id="quizTitle3"> Quiz Title:</header>
-                            <p id="quizCat3">Category:</p>
-                            <button type="button" id="editQuizBox3">Edit</button>
-                            <button type="button" id="deleteQuizBox3">Delete</button> -->
-                        </div><br>
-                        <!--	quiz 4 info		-->
-                        <div class="quizBox" id="quizBox4">
-                            <!-- <header id="quizTitle4"> Quiz Title:</header>
-                            <p id="quizCat4">Category:</p>
-                            <button type="button" id="editQuizBox4">Edit</button>
-                            <button type="button" id="deleteQuizBox4">Delete</button> -->
-                        </div><br>
-                        <!--	quiz 5 info		-->
-                        <div class="quizBox" id="quizBox5">
-                            <!-- <header id="quizTitle5"> Quiz Title:</header>
-                            <p id="quizCat5">Category:</p>
-                            <button type="button" id="editQuizBox5">Edit</button>
-                            <button type="button" id="deleteQuizBox5">Delete</button> -->
-                        </div><br>
-                        <!---->
-                        <br>
-                        <div id="next_prev">
-                            <!-- <button type="button" class="btn btn-primary">Next</button>
-                            <button type="button" class="btn btn-primary">Previous</button> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--keep-->
-        <div class="col-sm-3 col-xs-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Category</div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">History</button>
+            <div class="col-sm-10 col-xs-10">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary btn-success" onclick="createQuiz()">Create Quiz</button>
+                            <!--	quiz 1 info		-->
+                            <!--need css for quizBox-->
+                            <div id="quizBox1">
+                                <header id="quiz-name-1" class="quiz-names"></header>
+                                <p id="category-1"></p>
+                                <p id="desc-1"></p>
+                            </div>
+
+                            <!--	quiz 2 info		-->
+                            <div id="quizBox2">
+                                <header id="quiz-name-2" class="quiz-names"></header>
+                                <p id="category-2"></p>
+                                <p id="desc-2"></p>
+                            </div>
+
+                            <!--	quiz 3 info		-->
+                            <div id="quizBox3">
+                                <header id="quiz-name-3" class="quiz-names"></header>
+                                <p id="category-3"></p>
+                                <p id="desc-3"></p>
+                            </div>
+
+                            <!--	quiz 4 info		-->
+                            <div id="quizBox4">
+                                <header id="quiz-name-4" class="quiz-names"></header>
+                                <p id="category-4"></p>
+                                <p id="desc-4"></p>
+                            </div>
+
+                            <!--	quiz 5 info		-->
+                            <div id="quizBox5">
+                                <header id="quiz-name-5" class="quiz-names"></header>
+                                <p id="category-5"></p>
+                                <p id="desc-5"></p>
+                            </div>
+
+                            <!---->
                             <br>
-                            <button class="btn btn-primary btn-block">Geography</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-primary btn-block">Entertainment</button>
-                            <br>
-                            <button class="btn btn-primary btn-block">Sports</button>
+                            <div id="next_prev">
+                                <!-- <button type="button" class="btn btn-primary">Next</button>
+                                <button type="button" class="btn btn-primary">Previous</button> -->
+                            </div>
+                            <ul class="pager">
+                                <li class="previous"><a onclick="Previous()">Previous</a></li>
+                                <li class="next"><a onclick="next()">Next</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</body>
 
 
 
