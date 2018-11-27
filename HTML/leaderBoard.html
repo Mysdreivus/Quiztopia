@@ -22,6 +22,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- helper functions -->
+    <script src="../JavaScript/helperFunctions.js"></script>
+
 </head>
 
 <body>
@@ -64,9 +69,9 @@
                         <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
                         <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
                         <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
-                        <li class="p-t-15"><a href="#">Settings</a></li>
-                        <li class="p-t-15"><a href="#">Help</a></li>
-                        <li class="p-t-15"><a href="#">Logout</a></li>
+                        <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                        <li class="p-t-15"><a href="help.html">Help</a></li>
+                        <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
                     </ul>
 
                 </div>
@@ -79,16 +84,16 @@
 
                             <div class="row">
                                 <h1 id="category">CATEGORY</h1>
-                                <div class="name-leaderboard" id="player-1">Player1</div><div class="score-leaderboard" id="player-1-point">430</div>
+                                <div class="name-leaderboard" id="player-1"></div><div class="score-leaderboard" id="player-1-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-2">Player2</div><div class="score-leaderboard" id="player-2-point">200</div>
+                                <div class="name-leaderboard" id="player-2"></div><div class="score-leaderboard" id="player-2-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-3">Player4</div><div class="score-leaderboard" id="player-3-point">150</div>
+                                <div class="name-leaderboard" id="player-3"></div><div class="score-leaderboard" id="player-3-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-4">Player5</div><div class="score-leaderboard" id="player-4-point">50</div>
+                                <div class="name-leaderboard" id="player-4"></div><div class="score-leaderboard" id="player-4-point"></div>
                             </div>
                             <!--
                             // TODO: uncomment this on final production phase
@@ -134,7 +139,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
+                                <button class="btn btn-primary btn-block" id="Random" onclick="updateUI(this.id)">Random</button>
                                 <br>
                                 <button class="btn btn-primary btn-block" id="Geography" onclick="updateUI(this.id)">Geography</button>
                             </div>
@@ -142,7 +147,7 @@
                             <div class="col-sm-6">
                                 <button class="btn btn-primary btn-block" id="Movies" onclick="updateUI(this.id)">Movies</button>
                                 <br>
-                                <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Sports</button>
+                                <button class="btn btn-primary btn-block" id="Sports" onclick="updateUI(this.id)">Sports</button>
                             </div>
 
                         </div>
@@ -150,15 +155,15 @@
                         <div class="row p-t-15">
 
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="Math" onclick="updateUI(this.id)">Math</button>
+                                <button class="btn btn-primary btn-block" id="Literature" onclick="updateUI(this.id)">Literature</button>
                                 <br>
-                                <button class="btn btn-primary btn-block" id="Physics" onclick="updateUI(this.id)">Physics</button>
+                                <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
                             </div>
 
                             <div class="col-sm-6">
                                 <button class="btn btn-primary btn-block" id="Science" onclick="updateUI(this.id)">Science</button>
                                 <br>
-                                <button class="btn btn-primary btn-block" id="Food" onclick="updateUI(this.id)">Food</button>
+                                <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Astronomy</button>
                             </div>
 
                         </div>

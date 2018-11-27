@@ -1,3 +1,4 @@
+// TODO: check if the user sends blank input
 let dataRef = firebase.database();
 // TODO: uncomment this for the final push
 let questionIds = ["question_1" /*, "question_2", "question_3", "question_4", "question_5", "question_6"
@@ -31,14 +32,13 @@ function submitQuiz() {
             .then(function (info) {
                 info = info.val();
                 let author = info.fname + " " + info.lname;
-                alert("Authro name is " + author);
                 return author;
             })
             .then((author) => submitQuizHelper(userId, author))
-            .catch((error) => error.message);
+            .catch((error) => swal("Oops!", error.message, "error"));
     }
     else {
-        window.location.href = "signin.html";
+        JSalert();
     }
 }
 
@@ -91,9 +91,8 @@ function submitQuizHelper(userId, author) {
     dataRef.ref().update(updates)
         .then(() => dataRef.ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData))
         .then(() => dataRef.ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData))
-        .catch((error) => alert(error.message))
         .then(function() {
             location.href = "../HTML/myQuizzes.html";
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => swal("Oops!", error.message, "error"));
 }
