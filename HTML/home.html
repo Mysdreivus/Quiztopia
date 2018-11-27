@@ -85,45 +85,50 @@
                     <div class="card card-4">
                         <div class="card-body">
                             <div id="quiz-id-1">
-                                <header id="quiz-name-1" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-1" class="author-names">Gordon, Ruel</p>
-                                <p id="desc-1">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-1" class="quiz-names"></header>
+                                <p id="author-1" class="author-names"></p>
+                                <p id="desc-1"></p>
                             </div>
 
                             <div id="quiz-id-2">
-                                <header id="quiz-name-2" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-2" class="author-names">Gordon, Ruel</p>
-                                <p id="category-2">Category1</p>
-                                <p id="desc-2">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-2" class="quiz-names"></header>
+                                <p id="author-2" class="author-names"></p>
+                                <p id="category-2"></p>
+                                <p id="desc-2"></p>
                             </div>
 
                             <div id="quiz-id-3">
-                                <header id="quiz-name-3" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-3" class="author-names">Gordon, Ruel</p>
-                                <p id="desc-3">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-3" class="quiz-names"></header>
+                                <p id="author-3" class="author-names"></p>
+                                <p id="desc-3"></p>
                             </div>
 
                             <div id="quiz-id-4">
-                                <header id="quiz-name-4" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-4" class="author-names">Gordon, Ruel</p>
-                                <p id="desc-4">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-4" class="quiz-names"></header>
+                                <p id="author-4" class="author-names"></p>
+                                <p id="desc-4"></p>
                             </div>
 
                             <div id="quiz-id-5">
-                                <header id="quiz-name-5" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-5" class="author-names">Gordon, Ruel</p>
-                                <p id="desc-5">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-5" class="quiz-names"></header>
+                                <p id="author-5" class="author-names"></p>
+                                <p id="desc-5"></p>
                             </div>
 
                             <div id="quiz-id-6">
-                                <header id="quiz-name-6" class="quiz-names">Dragon Ball Z Trivia</header>
-                                <p id="author-6" class="author-names">Gordon, Ruel</p>
-                                <p id="desc-6">In this quiz you will test your knowledge about the Z-Fighters</p>
+                                <header id="quiz-name-6" class="quiz-names"></header>
+                                <p id="author-6" class="author-names"></p>
+                                <p id="desc-6"></p>
                             </div>
                             <br>
-                            <div id="next-button">
+                            <!-- <div id="next-button">
+                                <button type="button" onClick="prev()" class="btn btn-primary">Prev</button>
                                 <button type="button" class="btn btn-primary">Next</button>
-                            </div>
+                            </div> -->
+                            <ul class="pager">
+                                <li class="previous"><a onclick="prev()">Prev</a></li>
+                                <li class="next"><a onclick="next()">Next</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -135,14 +140,14 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block">History</button>
+                                <button class="btn btn-primary btn-block" onClick="history()">History</button>
                                 <br>
-                                <button class="btn btn-primary btn-block">Geography</button>
+                                <button class="btn btn-primary btn-block" onClick="geography()">Geography</button>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block">Entertainment</button>
+                                <button class="btn btn-primary btn-block" onClick="movies()">Movies</button>
                                 <br>
-                                <button class="btn btn-primary btn-block">Sports</button>
+                                <button class="btn btn-primary btn-block" onClick="sports()">Sports</button>
                             </div>
                         </div>
                     </div>
