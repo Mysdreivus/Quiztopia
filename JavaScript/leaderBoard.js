@@ -7,8 +7,16 @@ let playerIds = ['player-1', 'player-2', 'player-3', 'player-4'];
 let playerPointIds = ['player-1-point', 'player-2-point', 'player-3-point', 'player-4-point'];
 let dataRef = firebase.database();
 window.onload = function () {
-    // initially user will see the overall leaderboard
-    updateUI(overall);
+    firebase.auth().onAuthStateChanged(function (user) {
+        // if the user is authenticated
+        if (user) {
+            // initially user will see the overall leaderboard
+            updateUI(overall);
+        }
+        else {
+            JSalert();
+        }
+    });
 }
 
 // updates the UI of the page
@@ -19,7 +27,8 @@ function updateUI(category) {
         })
         .then(data => {
             return updateHelper(data);
-        });
+        })
+        .catch((error) => swal("Oops!", error.message, "error"));
 }
 
 // updates the point as well as call updsateName
@@ -56,5 +65,6 @@ function updateName(key, playerId) {
             // updating user name
             document.getElementById(playerId).innerText = info.val().fname + " " + info.val().lname;
             return;
-        });
+        })
+        .catch((error) => swal("Oops!", error.message, "error"));
 }

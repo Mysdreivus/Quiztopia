@@ -28,6 +28,9 @@ window.onload = function () {
     });
 }
 
+// updates UI
+// @param1 string category name
+// @param2 string user id
 function updateHomeUI(category, userId) {
     welcomeUser(userId);
 
@@ -94,7 +97,6 @@ function welcomeUser(userId) {
 }
 
 // Getting untaken & not created quizzes from Firebase...
-
 // Retrieve info from an URL & a dictionary of parameters...
 function getInfoFromHTTP(url, params) {
     if(params != null) {
@@ -124,38 +126,7 @@ function getInfoFromHTTP(url, params) {
     return response;
 }
 
-function JSalert() {
-    swal({
-        title: "Authentication Error",
-        text: "Redirecting to Login Page!",
-        type: "warning"
-    })
-        .then(() => location.href = "../HTML/signin.html");
-}
-
-// signs out user
-function logout() {
-    swal({
-        title: "Sign Out",
-        text: "You will be redirected to Sign in screen.",
-        type: "warning",
-        buttons: {
-            cancel: true,
-            confirm: "Sign out"
-        }
-    })
-        .then( val => {
-            if (val){
-                firebase.auth().signOut().then(function () {
-                    location.href = "../HTML/signin.html";
-                }).catch(function (error) {
-                    alert(error);
-                });
-            }
-        });
-}
-
-// FROM HERE...
+// shows next list of questions to the user
 function next() {
     let lastPage = data.length / quizzesPerPage;
     // creating next button if it's the last page
@@ -168,6 +139,7 @@ function next() {
     }
 }
 
+// show previous list of questions to the user
 function prev() {
     if(currentPage > 1) {
         currentPage--;
@@ -178,6 +150,7 @@ function prev() {
     }
 }
 
+// assigns empty html value to each div
 function emptyDivs() {
     for (let i =0; i < quizNames.length; i++) {
         for(let j = 0; j < NUM_LABELS_PER_QUIZ; j++) {
@@ -205,45 +178,8 @@ function fillQuizzesInPage(q, page) {
 }
 
 // Category OnClick Listeners...
-
-function history() {
-    category = "History";
+// updates the UI with question from particular category
+// @param1 string category name
+function categoryOnClick(category) {
     updateHomeUI(category, userId);
 }
-
-function geography() {
-    category = "Geography";
-    updateHomeUI(category, userId);
-}
-
-function movies() {
-    category = "Movies";
-    updateHomeUI(category, userId);
-}
-
-function sports() {
-    category = "Sports";
-    updateHomeUI(category, userId);
-}
-
-/*
-function JSalert(){
-    swal({   title: "Your account will be deleted permanently!",
-            text: "Are you sure to proceed?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Remove My Account!",
-            cancelButtonText: "I am not sure!",
-            closeOnConfirm: false,
-            closeOnCancel: false },
-        function(isConfirm){
-            if (isConfirm)
-            {
-                swal("Account Removed!", "Your account is removed permanently!", "success");
-            }
-            else {
-                swal("Hurray", "Account is not removed!", "error");
-            } });
-}
-*/
