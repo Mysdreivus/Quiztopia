@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../css/home.css" media="all">
+
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Bootstrap Included-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="jumbotron col-sm-3">
+            <h1> Logo </h1>
+        </div>
+        <div class="jumbotron col-sm-9" style="margin-bottom: 0">
+            <h1>QuizTopia</h1>
+        </div>
+    </div>
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+        authDomain: "quiztopia-35e04.firebaseapp.com",
+        databaseURL: "https://quiztopia-35e04.firebaseio.com",
+        projectId: "quiztopia-35e04",
+        storageBucket: "quiztopia-35e04.appspot.com",
+        messagingSenderId: "485501403479"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="../JavaScript/home.js"></script>
+
+
+</body>
+</html>

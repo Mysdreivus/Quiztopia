@@ -23,17 +23,14 @@ window.onload = function () {
     });
 }
 
+// TODO: This method needs to be fixed
 const refreshUI = async () => {
     // get user quizzes
     q = await getUserQuizzes();
     if(deleted) { // Delete from the front-end (Cloud Function could take some milis...)
-        // console.log("Must remove quiz with ID = ", deletedID);
-        for(x in q) {
-            console.log(x);
+        for(let x in q) {
             if(q[x]["quizID"] === deletedID) {
-                var index = q.indexOf(x);
-                console.log("index = ", index, " value: ", q[index]);
-                q.splice(index, 1); // Remove that element...
+                q.splice(x, 1); // Remove that element...
             }
         }
         deleted = false;
@@ -42,8 +39,7 @@ const refreshUI = async () => {
         currentPage--;
     }
 
-    let p = fillQuizzesInPage(q, currentPage); // Update UI...
-    console.log("finished filling screen: ", q);
+    fillQuizzesInPage(q, currentPage); // Update UI...
 }
 
 // returns quizzes list created by the user
@@ -56,12 +52,10 @@ async function getUserQuizzes() {
             for(q in keys){
                 var key = keys[q];
                 console.log(key);
-                quiz = snap.val()[key];
+                let quiz = snap.val()[key];
                 quiz = {"quizID" : key, "quizName" : quiz['name'], "category" : quiz['category'], "description" : quiz['description']};
                 userQuizzes.push(quiz);
             }
-            console.log("USERQUIZZES: ", userQuizzes);
-            console.log(userQuizzes.length);
             return userQuizzes;
         } else {
             return [];
@@ -85,6 +79,7 @@ function fillQuizzesInPage(q, page) {
     }
 }
 
+// sets inner HTML to be empty string
 function emptyDivs() {
     for (let i =0; i < spotIDs.length; i++) {
         document.getElementById(quizNameIds[i]).innerHTML = '';
@@ -92,7 +87,7 @@ function emptyDivs() {
         document.getElementById(categoryIds[i]).innerHTML = '';
     }
 }
-//
+
 // @param1 array of spotIds
 // @param2 int
 // @param3 int
@@ -123,7 +118,7 @@ function attachListener(id, quizID) {
                 if (val === "Edit") {
                     updateQuiz(userID, quizID);
                 }
-                else {
+                if (val === "Delete") {
                     deleteQuiz(userID, quizID);
                 }
             });
@@ -133,7 +128,6 @@ function attachListener(id, quizID) {
 // stores quiz as well as user id in local storage
 // redirects user to update quiz page
 function updateQuiz(user, qid) {
-    console.log("User: ", user, " QID: ", qid);
     localStorage.setItem("quizID", qid);    
     localStorage.setItem("userID", user);    
     location.href = "../HTML/update_quiz.html";
@@ -144,13 +138,14 @@ function updateQuiz(user, qid) {
 // sets deleted to be false
 // refreses the UI once again
 function deleteQuiz(user, qid) {
-    console.log("User: ", user, " QID: ", qid);
+    alert("quiz id is: " + qid);
     firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false)
         .then(() => {
             deletedID = qid;
             deleted = true;
             refreshUI();
         })
+        .then((error) => swal("Oops!", error.message, "error"));;
 }
 
 // redirects user to create quiz page
@@ -173,9 +168,8 @@ function logout() {
             if (val){
                 firebase.auth().signOut().then(function () {
                     location.href = "../HTML/signin.html";
-                }).catch(function (error) {
-                    alert(error);
-                });
+                })
+                    .then((error) => swal("Oops!", error.message, "error"));
             }
         });
 }
@@ -187,7 +181,8 @@ function JSalert() {
         text: "Redirecting to Login Page!",
         type: "warning"
     })
-        .then(() => location.href = "../HTML/signin.html");
+        .then(() => location.href = "../HTML/signin.html")
+        .then((error) => swal("Oops!", error.message, "error"));;
 }
 
 function next() {

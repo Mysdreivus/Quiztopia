@@ -28,6 +28,9 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <!-- helper functions -->
+    <script src="../JavaScript/helperFunctions.js"></script>
+
 </head>
 
 <body>
@@ -73,8 +76,8 @@
                         <li style="padding-top: 40px;"><a href="#">Dashboard</a></li>
                         <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
                         <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
-                        <li class="p-t-15"><a href="#">Settings</a></li>
-                        <li class="p-t-15"><a href="#">Help</a></li>
+                        <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                        <li class="p-t-15"><a href="help.html">Help</a></li>
                         <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
                     </ul>
                 </div>
@@ -121,10 +124,6 @@
                                 <p id="desc-6"></p>
                             </div>
                             <br>
-                            <!-- <div id="next-button">
-                                <button type="button" onClick="prev()" class="btn btn-primary">Prev</button>
-                                <button type="button" class="btn btn-primary">Next</button>
-                            </div> -->
                             <ul class="pager">
                                 <li class="previous"><a onclick="prev()">Prev</a></li>
                                 <li class="next"><a onclick="next()">Next</a></li>
@@ -140,14 +139,22 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" onClick="history()">History</button>
+                                <button class="btn btn-primary btn-block" id="Random" onclick="categoryOnClick(this.id)">Random</button>
                                 <br>
-                                <button class="btn btn-primary btn-block" onClick="geography()">Geography</button>
+                                <button class="btn btn-primary btn-block" id="History" onClick="categoryOnClick(this.id)">History</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Geography" onclick="categoryOnClick(this.id)">Geography</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Literature" onclick="categoryOnClick(this.id)">Literature</button>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" onClick="movies()">Movies</button>
+                                <button class="btn btn-primary btn-block" id="Sports" onclick="categoryOnClick(this.id)">Sports</button>
                                 <br>
-                                <button class="btn btn-primary btn-block" onClick="sports()">Sports</button>
+                                <button class="btn btn-primary btn-block" id="Science" onclick="categoryOnClick(this.id)">Science</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Astronomy" onclick="categoryOnClick(this.id)">Astronomy</button>
+                                <br>
+                                <button class="btn btn-primary btn-block" id="Movies" onclick="categoryOnClick(this.id)">Movies</button>
                             </div>
                         </div>
                     </div>
