@@ -7,6 +7,20 @@ body {
 */
 /* Check LoginSignUp.css for correct implementations */
 
+.custom-form-left {
+    padding-top: 5px;
+    padding-right: 0;
+}
+.custom-form-middle {
+    padding-top: 10px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+.custom-form-right {
+    padding-top: 5px;
+    padding-left: 0px;
+}
+
 body,
 h1, h2, h3, h4, h5, h6,
 blockquote, p, pre,
@@ -18,16 +32,18 @@ fieldset, legend {
     padding: 0;
 }
 
+/*
 body {
     font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
     font-weight: 400;
     font-size: 14px;
 }
-
+*/
+/*
 a {
     font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }
-
+*/
 button
 {
     border-radius: 5px;
@@ -118,7 +134,7 @@ button
 
 
 .wrapper--w960 {
-    max-width: 960px;
+    max-width: 760px;
 }
 
 .wrapper--w780 {
@@ -258,11 +274,18 @@ button
 
 /* ALL IDS WILL BE BELOW FOR EASE OF FINDING*/
 
-#quiz-title {
+.quiz-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     text-align: center;
-    font-size: 4vw;
-    font-weight: bold;
+    /* font-size: 4vw; */
     color: black;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    text-align: left;
 }
 
 .logo {
@@ -285,12 +308,14 @@ button
     display: inline-block;
 }
 
+/*
 #category {
     text-align: center;
     font-size: 1.7vw;
     font-weight: bolder;
     color: black;
 }
+*/
 
 .quiz-names {
     font-size: 20px;
@@ -658,7 +683,7 @@ input {
 }
 
 .input--style-4 {
-    line-height: 50px;
+    line-height: 40px;
     background: #fafafa;
     -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);

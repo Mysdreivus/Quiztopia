@@ -33,51 +33,51 @@
     <!-- Add sidebar, col-sm-2 -->
 
     <!-- Main leaderboard takes up col-sm-6 -->
-
+    <!--
     <div class="home-bg page-wrapper font-poppins">
-        <div class="row row-header">
-
-            <div class="col-sm-3 col-xs-3">
-                <div class="wrapper wrapper--w680">
-                    <div class="card card-4">
-                        <div class="card-body">
-                            <!-- <h1 class="logo">LOGO</h1> -->
-                            <img src="../images/logo.png" height="100%" width="100%">
-                        </div>
+    -->
+    <div class="container-fluid">
+        <div class="row equal">
+            <div class="col-sm-2 hidden-xs" >
+                <div class="card card-4" style="height: 100%;">
+                    <div class="card-body">
+                        <!-- <h1 class="logo">LOGO</h1> -->
+                        <img src="../images/logo.png" width="100%" height="100%">
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-9 col-xs-9">
-                <div class="wrapper wrapper--w680">
-                    <div class="card card-4">
-                        <div class="card-body">
-                            <h1 id="leaderboard">LEADERBOARD</h1>
-                        </div>
+            <div class="col-sm-10 col-xs-9" >
+                <div class="card card-4" style="height: 100%;">
+                    <div class="card-body">
+                        <h1 id="leaderboard">Leaderboard</h1>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
+        <br>
+        <div class = "row row-content p-t-15 equal">
 
-        <div class = "row row-content p-t-15">
-
-            <div class="col-sm-2 col-xs-2">
-                <div id="sidebar-wrapper">
-
-                    <ul class="sidebar-nav">
-                        <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
-                        <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
-                        <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
-                        <li class="p-t-15"><a href="settings.html">Settings</a></li>
-                        <li class="p-t-15"><a href="help.html">Help</a></li>
-                        <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
-                    </ul>
-
+            <div class="col-sm-2 hidden-xs">
+                <div class="card card-4" style="height: 100%">
+                    <div class="card-body">
+                        <ul class="sidebar-nav" style="height: 100%">
+                            <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+                            <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
+                            <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
+                            <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                            <li class="p-t-15"><a href="help.html">Help</a></li>
+                            <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
+            <!--
             <div style="padding-left: 9%;" class="col-sm-7 col-xs-7">
+            -->
+            <div class="col-sm-7">
                 <div class="wrapper wrapper--w680">
                     <div class="card card-4">
                         <div class="card-body">
@@ -130,42 +130,46 @@
                 </div>
             </div>
             <!-- TODO: some categories won't work coz we don't have that category in database -->
-            <div style="padding-right: 40px;" class="col-sm-3 col-xs-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Category</div>
-                    <div class="panel-body">
-                        <div class="row">
+            <div style="padding-right: 40px;" class="col-sm-3 hidden-xs">
+                <div class="card card-4" style="height: 100%">
+                    <div class="card-body">
+                        <div class="panel panel-default wrap-panel">
+                            <div class="panel-heading">Category</div>
+                            <div class="panel-body">
+                                <div class="row">
 
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="Random" onclick="updateUI(this.id)">Random</button>
-                                <br>
-                                <button class="btn btn-primary btn-block" id="Geography" onclick="updateUI(this.id)">Geography</button>
+                                    <div class="col-sm-6">
+                                        <button class="btn btn-primary btn-block" id="Random" onclick="updateUI(this.id)">Random</button>
+                                        <br>
+                                        <button class="btn btn-primary btn-block" id="Geography" onclick="updateUI(this.id)">Geography</button>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <button class="btn btn-primary btn-block" id="Movies" onclick="updateUI(this.id)">Movies</button>
+                                        <br>
+                                        <button class="btn btn-primary btn-block" id="Sports" onclick="updateUI(this.id)">Sports</button>
+                                    </div>
+
+                                </div>
+
+                                <div class="row p-t-15">
+
+                                    <div class="col-sm-6">
+                                        <button class="btn btn-primary btn-block" id="Literature" onclick="updateUI(this.id)">Literature</button>
+                                        <br>
+                                        <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <button class="btn btn-primary btn-block" id="Science" onclick="updateUI(this.id)">Science</button>
+                                        <br>
+                                        <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Astronomy</button>
+                                    </div>
+
+                                </div>
+
                             </div>
-
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="Movies" onclick="updateUI(this.id)">Movies</button>
-                                <br>
-                                <button class="btn btn-primary btn-block" id="Sports" onclick="updateUI(this.id)">Sports</button>
-                            </div>
-
                         </div>
-
-                        <div class="row p-t-15">
-
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="Literature" onclick="updateUI(this.id)">Literature</button>
-                                <br>
-                                <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" id="Science" onclick="updateUI(this.id)">Science</button>
-                                <br>
-                                <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Astronomy</button>
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
             </div>

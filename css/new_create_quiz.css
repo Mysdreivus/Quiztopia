@@ -6,7 +6,20 @@ body {
 }
 */
 /* Check LoginSignUp.css for correct implementations */
+.heading {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    padding: 3% 0%;
+}
 
+.sub-heading {
+    padding: 5% 5%;
+}
+
+.inner-bg {
+    padding: 5% 5%;
+}
 body,
 h1, h2, h3, h4, h5, h6,
 blockquote, p, pre,
@@ -34,7 +47,7 @@ button
 }
 
 .home-bg {
-    background: #ff7a5a;
+    background-color: lightskyblue;
     /*
             linear-gradient(
                     rgba(255, 0, 0, 0.45),
@@ -135,7 +148,7 @@ button
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    background: #fff2ef;
+    background: #ffffff;
 }
 
 .card-4 {
