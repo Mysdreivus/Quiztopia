@@ -1,46 +1,67 @@
+let author = null;
 window.onload = function () {
-    // Getting information from localStorage...
-    let qid = localStorage.getItem("quizID");
-    let uid = localStorage.getItem("userID");
-    localStorage.setItem("quizID", -1);    
-    localStorage.setItem("userID", -1); 
-    
-    // Retrieve info from Firebase & setup content...
-    setupUI(uid, qid);
+    firebase.auth().onAuthStateChanged(function (user) {
+        // if the user is authenticated
+        if (user) {
+            userId = user.uid;
+            // Getting information from localStorage...
+            let qid = localStorage.getItem("quizID");
+            let uid = localStorage.getItem("userID");
+            localStorage.setItem("quizID", -1);
+            localStorage.setItem("userID", -1);
+
+            firebase.database().ref("users/"+ userId + "/personalInfo").once('value')
+                .then(function (info) {
+                    info = info.val();
+                    author =  info.fname + " " + info.lname;
+                    return;
+                })
+                .then(() => setupUI(userId, qid))  // Retrieve info from Firebase & setup content...
+                .catch((error) => swal("Oops!", error.message, "error"));
+        }
+        else {
+            JSalert();
+            // location.href = "../HTML/signin.html";
+        }
+    });
 }
 
 const setupUI = async (uid, qid) => {
     let q = await getQuiz(uid, qid);
-    let name = q["name"];
-    let category = q["category"];
-    let description = q["description"];
-    let questions = q["questions"];
-    document.getElementById("quiz_name").value = name;
-    document.getElementById("quiz_description").value = description;
-    let select = document.getElementById("category");
-    // https://stackoverflow.com/questions/19611557/how-to-set-default-value-for-html-select
-    for(var i, j = 0; i = select.options[j]; j++) {
-        if(i.value == category) {
-            select.selectedIndex = j;
-            break;
-        }
-    }
 
-    let questionCount = 1;
-    let wrongAnswerCount = 1;
-    for(question in questions) {
-        console.log(questions[question]);
-        document.getElementById(question).value = questions[question]["question"];
-        document.getElementById("correct_answer_".concat(questionCount)).value = questions[question]["correct_answer"];
-        document.getElementById("wrong_answer".concat(questionCount)
-        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers1"];
-        document.getElementById("wrong_answer".concat(questionCount)
-        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers2"];
-        document.getElementById("wrong_answer".concat(questionCount)
-        .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers3"];
-        questionCount++;
-    }
+    // deleting the quiz
+    deleteQuiz(uid, qid)
+        .then(() => {
+            let name = q["name"];
+            let category = q["category"];
+            let description = q["description"];
+            let questions = q["questions"];
+            document.getElementById("quiz_name").value = name;
+            document.getElementById("quiz_description").value = description;
+            let select = document.getElementById("category");
+            // https://stackoverflow.com/questions/19611557/how-to-set-default-value-for-html-select
+            for(var i, j = 0; i = select.options[j]; j++) {
+                if(i.value === category) {
+                    select.selectedIndex = j;
+                    break;
+                }
+            }
 
+            let questionCount = 1;
+            let wrongAnswerCount = 1;
+            for(question in questions) {
+                console.log(questions[question]);
+                document.getElementById(question).value = questions[question]["question"];
+                document.getElementById("correct_answer_".concat(questionCount)).value = questions[question]["correct_answer"];
+                document.getElementById("wrong_answer".concat(questionCount)
+                    .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers1"];
+                document.getElementById("wrong_answer".concat(questionCount)
+                    .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers2"];
+                document.getElementById("wrong_answer".concat(questionCount)
+                    .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers3"];
+                questionCount++;
+            }
+        });
 }
   
 
@@ -58,17 +79,17 @@ async function getQuiz(uid, qid) {
 function submitQuiz() { // TODO -> Determine how it will be implemented...
     let user = firebase.auth().currentUser;
     if (user) {
-        alert("Found user");
         let userId = user.uid;
         submitQuizHelper(userId).then(
+            // TODO: Fix this
             function() {
-                alert("Created the quiz!");
+                swal("Success", "Updated the quiz!", "success");
                 window.location.href = "../HTML/myQuizzes.html";
             }
         );
     }
     else {
-        alert("User is null");
+        JSalert();
         window.location.href = "signin.html";
     }
 }
@@ -98,10 +119,6 @@ function submitQuizHelper(userId) {
     let category = document.getElementById("category").value;
     let quiz_description = document.getElementById("quiz_description").value;
 
-    alert("User id is: " + userId + "\nQuiz name is: " + quiz_name + "\nQuiz description is: " + quiz_description
-        + "\nCategory name is: " + category);
-
-    alert("Going to add these information to firbase");
     let questions = {};
 
     for (let i = 0; i < questionIds.length; i++) {
@@ -113,16 +130,19 @@ function submitQuizHelper(userId) {
             wrong_answers3: document.getElementById(wrongAnswersIds[i][2]).value
         };
     }
-
+    alert("Author name is: " + author);
     let data = {
+        active: true,
         name: quiz_name,
         category: category,
         description: quiz_description,
+        author: author,
         owner: userId,
         questions: questions
     };
 
     let quizCreatedData = {
+        active: true,
         name: quiz_name,
         category: category,
         description: quiz_description,
@@ -132,23 +152,28 @@ function submitQuizHelper(userId) {
 
     // Pushing information to quizzes as well as keep the quiz information under user information as well
     let updateKey = firebase.database().ref().child("quizzes").push().key;
-    alert("the key is: " + updateKey);
 
     // TODO: push doesn't work without a value
-    let checkDone = false;
     let updates = {};
     updates["/quizzes/" + updateKey] = data;
-    firebase.database().ref().update(updates).then(function () {
+    firebase.database().ref().update(updates).then(() => {
             firebase.database().ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData)
-                .then(function () {
+                .then(() => {
                         firebase.database().ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData)
-                            .then(function() {
-                                    alert("Updated stuffs in firebase!");
-                        }
-                    );
-                }
-            );
-        }
-    );
-    alert("Entered end of submitQuizHelper");
+                            .then(() => {
+                                swal("Success!", "You have successfully updated the quiz", "success");
+                                location.href= "../HTML/myQuizzes.html";
+                            })
+                            .catch((error) => swal("Oops!", error.message, "error"))});
+                });
+}
+
+// sets the active field of the quiz in quizzes Created to false
+// cloud function does rest of the job
+// sets deleted to be false
+// refreses the UI once again
+function deleteQuiz(user, qid) {
+    alert("quiz id is: " + qid);
+    return firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false)
+        .catch((error) => swal("Oops!", error.message, "error"));
 }
