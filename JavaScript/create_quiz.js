@@ -91,6 +91,7 @@ function submitQuizHelper(userId, author) {
     dataRef.ref().update(updates)
         .then(() => dataRef.ref("/users/" + userId + "/quizzesCreated/").child(updateKey).set(quizCreatedData))
         .then(() => dataRef.ref().child("categories/" + category + "/" + updateKey).set(quizCreatedData))
+        .then(() => dataRef.ref().child("categories/Random/" + updateKey).set(quizCreatedData))
         .then(function() {
             location.href = "../HTML/myQuizzes.html";
         })
