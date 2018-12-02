@@ -6,7 +6,8 @@ let numQuestions = 6;      // TODO: use this when there are 6 questions
 let questionIds = ['question_1'];
 let options = [['option1_1', 'option1_2', 'option1_3', 'option1_4']];
 let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']];
-let numOptions = 4;
+
+const numOptions = 4;
 const possiblePts = 6;
 let quizId = null;
 let quizName = null;
@@ -58,7 +59,7 @@ function startTimer() {
     if (min < 0) {
         // checking if the user has already submitted or not
         // if not
-        if (!(document.getElementById("submit-button").disabled)) {
+        if ((document.getElementById("submit-button").disabled)) {
             swal({
                 title: "Time Up",
                 text: "You are out of time. Submitting the progress you have made so far",
@@ -68,6 +69,11 @@ function startTimer() {
                 .catch((error) => swal("Oops!", error.message, "error"));
             return;
             // TODO: from here as well should be directed to poppin container
+        }
+    }
+    else {
+        if (document.getElementById("submit-button").disabled) {
+            return;
         }
     }
     document.getElementById("timer").innerHTML = min + ":" + sec;
@@ -162,6 +168,8 @@ function submitQuiz() {
                                             // enabling reveal answer button
                                             // document.getElementById('reveal-ans-button').disabled = false;
                                             document.getElementById('submit-button').disabled = true;
+                                            // TODO:
+                                            // clearTimeout(sta)
                                             displayResult(points);
                                             // alert("After:\nTotal points is: " + totalPoints + "\nTotal Category points is: " + categoryPoints);
                                         })

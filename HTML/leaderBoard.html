@@ -59,13 +59,14 @@
         <br>
         <div class = "row row-content p-t-15 equal">
 
-            <div class="col-sm-2 hidden-xs">
+            <div class="col-sm-2 col-12-xs">
                 <div class="card card-4" style="height: 90%">
                     <div class="card-body">
                         <ul class="sidebar-nav" style="height: 100%">
                             <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
                             <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
                             <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
+                            <li class="p-t-15"><a href="challenge.html">Challenges</a></li>
                             <li class="p-t-15"><a href="settings.html">Settings</a></li>
                             <li class="p-t-15"><a href="help.html">Help</a></li>
                             <li class="p-t-15" onclick="logout()"><a>Logout</a></li>
@@ -82,89 +83,139 @@
                     <div class="card card-4">
                         <div class="card-body">
                             <div class="row">
-                                <h1 id="category">CATEGORY</h1>
-                                <div class="name-leaderboard" id="player-1"></div><div class="score-leaderboard" id="player-1-point"></div>
+                                <h1 id="category"></h1>
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player Name</th>
+                                    <th>Points</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="rank-1"></td>
+                                    <td id="player-1"></td>
+                                    <td id="player-1-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-2"></td>
+                                    <td id="player-2"></td>
+                                    <td id="player-2-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-3"></td>
+                                    <td id="player-3"></td>
+                                    <td id="player-3-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-4"></td>
+                                    <td id="player-4"></td>
+                                    <td id="player-4-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-5"></td>
+                                    <td id="player-5"></td>
+                                    <td id="player-5-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-6"></td>
+                                    <td id="player-6"></td>
+                                    <td id="player-6-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-7"></td>
+                                    <td id="player-7"></td>
+                                    <td id="player-7-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-8"></td>
+                                    <td id="player-8"></td>
+                                    <td id="player-8-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-9"></td>
+                                    <td id="player-9"></td>
+                                    <td id="player-9-point"></td>
+                                </tr>
+                                <tr>
+                                    <td id="rank-10"></td>
+                                    <td id="player-10"></td>
+                                    <td id="player-10-point"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--
+                            <div class="row">
+                                <div id="rank-1" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-1"></div><div class="score-leaderboard" id="player-1-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-2"></div><div class="score-leaderboard" id="player-2-point"></div>
+                                <div id="rank-2" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-2"></div><div class="score-leaderboard" id="player-2-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-3"></div><div class="score-leaderboard" id="player-3-point"></div>
+                                <div id="rank-3" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-3"></div><div class="score-leaderboard" id="player-3-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-4"></div><div class="score-leaderboard" id="player-4-point"></div>
+                                <div id="rank-4" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-4"></div><div class="score-leaderboard" id="player-4-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-5"></div><div class="score-leaderboard" id="player-5-point"></div>
+                                <div id="rank-5" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-5"></div><div class="score-leaderboard" id="player-5-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-6"></div><div class="score-leaderboard" id="player-6-point"></div>
+                                <div id="rank-6" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-6"></div><div class="score-leaderboard" id="player-6-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-7"></div><div class="score-leaderboard" id="player-7-point"></div>
+                                <div id="rank-7" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-7"></div><div class="score-leaderboard" id="player-7-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-8"></div><div class="score-leaderboard" id="player-8-point"></div>
+                                <div id="rank-8" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-8"></div><div class="score-leaderboard" id="player-8-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-9"></div><div class="score-leaderboard" id="player-9-point"></div>
+                                <div id="rank-9" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-9"></div><div class="score-leaderboard" id="player-9-point"></div>
                             </div>
                             <div class="row">
-                                <div class="name-leaderboard" id="player-10"></div><div class="score-leaderboard" id="player-10-point"></div>
+                                <div id="rank-10" class="rank-leaderboard"></div><div class="name-leaderboard" id="player-10"></div><div class="score-leaderboard" id="player-10-point"></div>
                             </div>
-                            <div class="row">
-                                <div class="name-leaderboard" id="player-11"></div><div class="score-leaderboard" id="player-11-point"></div>
-                            </div>
-                            <div class="row">
-                                <div class="name-leaderboard" id="player-12"></div><div class="score-leaderboard" id="player-12-point"></div>
-                            </div>
-                            <div class="row">
-                                <div class="name-leaderboard" id="player-13"></div><div class="score-leaderboard" id="player-13-point"></div>
-                            </div>
-
+                            -->
+                            <ul class="pager">
+                                <li class="previous"><a onclick="previous()">Previous</a></li>
+                                <li class="next"><a onclick="next()">Next</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- TODO: some categories won't work coz we don't have that category in database -->
-            <div style="padding-right: 40px;" class="col-sm-3 hidden-xs">
+            <div style="padding-right: 40px;" class="col-sm-3 col-xs-12">
                 <div class="card card-4" style="height: 90%">
                     <div class="card-body">
                         <div class="panel panel-default wrap-panel">
-                            <div class="panel-heading">Category</div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading panel-primary">Category</div>
+                            </div>
                             <div class="panel-body">
-                                <div class="row">
-
-                                    <div class="col-sm-6">
+                                <div class="row p-t-15">
+                                    <div class="col-sm-6 col-xs-12 category-button">
                                         <button class="btn btn-primary btn-block" id="Random" onclick="updateUI(this.id)">Random</button>
                                         <br>
                                         <button class="btn btn-primary btn-block" id="Geography" onclick="updateUI(this.id)">Geography</button>
-                                    </div>
-
-                                    <div class="col-sm-6">
+                                        <br>
                                         <button class="btn btn-primary btn-block" id="Movies" onclick="updateUI(this.id)">Movies</button>
                                         <br>
                                         <button class="btn btn-primary btn-block" id="Sports" onclick="updateUI(this.id)">Sports</button>
                                     </div>
-
-                                </div>
-
-                                <div class="row p-t-15">
-
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 col-xs-12 category-button">
                                         <button class="btn btn-primary btn-block" id="Literature" onclick="updateUI(this.id)">Literature</button>
                                         <br>
                                         <button class="btn btn-primary btn-block" id="History" onclick="updateUI(this.id)">History</button>
-                                    </div>
-
-                                    <div class="col-sm-6">
+                                        <br>
                                         <button class="btn btn-primary btn-block" id="Science" onclick="updateUI(this.id)">Science</button>
                                         <br>
                                         <button class="btn btn-primary btn-block" id="Astronomy" onclick="updateUI(this.id)">Astronomy</button>
                                     </div>
 
                                 </div>
-
                             </div>
                         </div>
                     </div>
