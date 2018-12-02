@@ -173,7 +173,6 @@ function submitQuizHelper(userId) {
 // sets deleted to be false
 // refreses the UI once again
 function deleteQuiz(user, qid) {
-    alert("quiz id is: " + qid);
     return firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false)
         .catch((error) => swal("Oops!", error.message, "error"));
 }
