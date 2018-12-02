@@ -94,7 +94,7 @@ function updateUI() {
     document.getElementById('quiz-category').innerHTML = "Category: " + quizCategory;
 
     // disabling Reveal Answer button in the beginning
-    document.getElementById('reveal-ans-button').disabled = true;
+    // document.getElementById('reveal-ans-button').disabled = true;
 
     let idx = 0;
 
@@ -160,7 +160,7 @@ function submitQuiz() {
                                         .then(function () {
                                             // disabling submit button
                                             // enabling reveal answer button
-                                            document.getElementById('reveal-ans-button').disabled = false;
+                                            // document.getElementById('reveal-ans-button').disabled = false;
                                             document.getElementById('submit-button').disabled = true;
                                             displayResult(points);
                                             // alert("After:\nTotal points is: " + totalPoints + "\nTotal Category points is: " + categoryPoints);

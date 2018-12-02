@@ -477,8 +477,7 @@ body {
 /* LEADERBOARD STUFF */
 
 #leaderboard {
-    padding-left: 17%;
-    font-family: "Times New Roman", "Times", sans-serif;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-size: 4vw;
     font-weight: bold;
     color: black;
