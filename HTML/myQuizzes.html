@@ -7,7 +7,7 @@
     <title>My Quizzes</title>
     <link rel="shortcut icon" href="../images/question-mark.ico">
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="../css/home.css" media="all">
+    <link rel="stylesheet" href="../css/myQuizzes.css" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -35,7 +35,7 @@
     <div class="container">
         <!--logo and title-->
         <div class="row row-header">
-            <div class="col-sm-2 col-xs-4">
+            <div class="col-sm-2 col-xs-4 n4mobile">
                 <div class="wrapper wrapper--w480">
                     <div class="card card-4">
                         <div class="card-body" style="background-size: cover">
@@ -48,11 +48,11 @@
                 </div>
             </div>
 
-            <div class="col-sm-10 col-xs-8">
+            <div class="col-sm-10 col-xs-8 webname">
                 <div class="wrapper p-r-15">
                     <div class="card card-4">
                         <div class="card-body">
-                            <h1 id="quiz-title">QUIZTOPIA</h1>
+                            <h1 id="quiz-title" >QUIZTOPIA</h1>
                         </div>
                     </div>
                 </div>
@@ -61,10 +61,11 @@
         </div>
 
         <div class="row row-content p-t-15">
-            <div class="col-sm-2 col-xs-2">
-                <div id="sidebar-wrapper">
-                    <ul class="sidebar-nav">
-                        <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+            <div class="col-sm-2 col-xs-2 sMenu">
+
+                <div id="sidebar-wrapper" >
+                    <ul class="sidebar-nav topnav">
+                        <li style="padding-top: 40px;"><a href="home.html" >Dashboard</a></li>
                         <li class="p-t-15"><a href="leaderBoard.html">Leader board</a></li>
                         <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
                         <li class="p-t-15"><a href="settings.html">Settings</a></li>
@@ -74,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-10 col-xs-10">
+            <div class="col-sm-10 col-xs-10 mContent">
                 <div class="wrapper wrapper--w680">
                     <div class="card card-4">
                         <div class="card-body">
@@ -89,9 +90,9 @@
 
                             <!--	quiz 2 info		-->
                             <div id="quizBox2">
-                                <header id="quiz-name-2" class="quiz-names"></header>
-                                <p id="category-2"></p>
-                                <p id="desc-2"></p>
+                                <header id="quiz-name-2" class="quiz-names">header</header>
+                                <p id="category-2">category</p>
+                                <p id="desc-2">description</p>
                             </div>
 
                             <!--	quiz 3 info		-->
@@ -136,28 +137,28 @@
 
 
 
-<!-- Firebase App is always required and must be first -->
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
-<!-- Add additional services that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+<!--&lt;!&ndash; Firebase App is always required and must be first &ndash;&gt;-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>-->
+<!--&lt;!&ndash; Add additional services that you want to use &ndash;&gt;-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>-->
 
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
-        authDomain: "quiztopia-35e04.firebaseapp.com",
-        databaseURL: "https://quiztopia-35e04.firebaseio.com",
-        projectId: "quiztopia-35e04",
-        storageBucket: "quiztopia-35e04.appspot.com",
-        messagingSenderId: "485501403479"
-    };
-    firebase.initializeApp(config);
-</script>
+<!--<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>-->
+<!--<script>-->
+    <!--// Initialize Firebase-->
+    <!--var config = {-->
+        <!--apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",-->
+        <!--authDomain: "quiztopia-35e04.firebaseapp.com",-->
+        <!--databaseURL: "https://quiztopia-35e04.firebaseio.com",-->
+        <!--projectId: "quiztopia-35e04",-->
+        <!--storageBucket: "quiztopia-35e04.appspot.com",-->
+        <!--messagingSenderId: "485501403479"-->
+    <!--};-->
+    <!--firebase.initializeApp(config);-->
+<!--</script>-->
 
 <script src="../JavaScript/myQuizzes.js"></script>
 </body>
@@ -181,3 +182,4 @@ Now you can add it to any column size at any screen size and it will work seamle
 
 
 -->
+
