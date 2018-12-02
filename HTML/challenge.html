@@ -20,17 +20,17 @@
 
     <div class="container">
         <div class="jumbotron">
-            Challenges
+            <h1>Challenges</h1>
         </div>
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Players</h3>
+                    <h3 class="panel-title">Create Challenges</h3>
                 </div>
                 <div class="panel-body">
-                    <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+                    <input type="text" class="form-control" id="dev-table-filter-1" data-action="filter" data-filters="#dev-table" placeholder="Search Player" />
                 </div>
-                <table class="table table-hover" id="dev-table">
+                <table class="table table-hover" id="dev-table-1">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -59,10 +59,50 @@
                         <td id="4"></td>
                         <td><button onclick="challenge('4')">Challenge</button> </td>
                     </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Accept Challenges</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" id="dev-table-filter-2" data-action="filter" data-filters="#dev-table" placeholder="Search Quiz" />
+                </div>
+                <table class="table table-hover" id="dev-table-2">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Challenge</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td id="11"></td>
+                        <td><button onclick="acceptChallenge('11')">Accept Challenge</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td id="12"></td>
+                        <td><button onclick="acceptChallenge('12')">Accept Challenge</button> </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td id="13"></td>
+                        <td><button onclick="acceptChallenge('13')">Accept Challenge</button> </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td id="14"></td>
+                        <td><button onclick="acceptChallenge('14')">Accept Challenge</button> </td>
+                    </tr>
                     <tr>
                         <td>5</td>
-                        <td id="5"></td>
-                        <td><button onclick="challenge('5')">Challenge</button> </td>
+                        <td id="15"></td>
+                        <td><button onclick="acceptChallenge('15')">Accept Challenge</button> </td>
                     </tr>
                     </tbody>
                 </table>
