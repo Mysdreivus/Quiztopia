@@ -1,55 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-<head>
 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Quizzes</title>
     <link rel="shortcut icon" href="../images/question-mark.ico">
-    <!-- Personal CSS -->
     <link rel="stylesheet" href="../css/myQuizzes.css" media="all">
-    <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-=======
-
-
-
-
-<head>
-
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>My Quizzes</title>
 	<link rel="shortcut icon" href="../images/question-mark.ico">
-	<!-- Personal CSS -->
-	<link rel="stylesheet" href="../css/home.css" media="all">
-	<!-- Font special for pages-->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
->>>>>>> Saraah
-
-	<!-- Bootstrap Included-->
-
-	<!-- Latest compiled and minified CSS -->
+	<!--<link rel="stylesheet" href="../css/home.css" media="all">-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
 
 
 <body>
-<<<<<<< HEAD
-    <!-- USE BOOTSTRAP COLUMN DIVIDER FOR SPLITTING -->
-    <!--
-    <div class="home-bg page-wrapper font-poppins">
-    -->
     <div class="container">
         <!--logo and title-->
         <div class="row row-header">
@@ -180,178 +148,4 @@
 
 <script src="../JavaScript/myQuizzes.js"></script>
 </body>
-=======
-<!-- USE BOOTSTRAP COLUMN DIVIDER FOR SPLITTING -->
-	<div class="home-bg page-wrapper font-poppins">
-		<!--logo and title-->
-		<div class="row">
-			<div class="col-sm-2 col-xs-2">
-				<div class="wrapper wrapper--w680">
-					<div class="card card-4">
-						<div class="card-body">
-							<h1 class="logo">LOGO</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-10 col-xs-8">
-				<div class="wrapper wrapper--w680">
-					<div class="card card-4">
-						<div class="card-body">
-							<h1 id="quiz-title">QUIZTOPIA</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="p-t-15">
-			<nav class="navbar navbar-default" style="border-radius: 20px;">
-				<div class="container-fluid">
-					<div class="navbar-header font-poppins">
-						<ul class="nav navbar-nav navbar-center">
-							<li><a id="usr-name"></a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="row row-content">
-			<div class="col-sm-2 col-xs-2">
-				<div id="sidebar-wrapper">
-					<ul class="sidebar-nav">
-						<li style="padding-top: 40px;"><a href="#">Dashboard</a></li>
-						<li class="p-t-15"><a href="#">Leader board</a></li>
-						<li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
-						<li class="p-t-15"><a href="#">Settings</a></li>
-						<li class="p-t-15"><a href="#">Help</a></li>
-						<li class="p-t-15" onclick="logout()">Logout</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-sm-7 col-xs-8">
-				<div class="wrapper wrapper--w680">
-					<div class="card card-4">
-						<div class="card-body">
-							<!--	quiz 1 info		-->
-							<!--need css for quizBox-->
-							<div class="quizBox" id="quizBox1">Quiz 1
-								<header id="quizTitle1"> Quiz Title:</header>
-								<p id="quizCat1">Category:</p>
-								<button type="button" id="editQuizBox1">Edit</button>
-								<button type="button" id="deleteQuizBox1">Delete</button>
-							</div><br>
-							<!--	quiz 2 info		-->
-							<div class="quizBox" id="quizBox2">Quiz 2
-								<header id="quizTitle2"> Quiz Title:</header>
-								<p id="quizCat2">Category:</p>
-								<button type="button" id="editQuizBox2">Edit</button>
-								<button type="button" id="deleteQuizBox2">Delete</button>
-							</div><br>
-							<!--	quiz 3 info		-->
-							<div class="quizBox" id="quizBox3">Quiz 3
-								<header id="quizTitle3"> Quiz Title:</header>
-								<p id="quizCat3">Category:</p>
-								<button type="button" id="editQuizBox3">Edit</button>
-								<button type="button" id="deleteQuizBox3">Delete</button>
-							</div><br>
-							<!--	quiz 4 info		-->
-							<div class="quizBox" id="quizBox4">Quiz 4
-								<header id="quizTitle4"> Quiz Title:</header>
-								<p id="quizCat4">Category:</p>
-								<button type="button" id="editQuizBox4">Edit</button>
-								<button type="button" id="deleteQuizBox4">Delete</button>
-							</div><br>
-							<!--	quiz 5 info		-->
-							<div class="quizBox" id="quizBox5">Quiz 5
-								<header id="quizTitle5"> Quiz Title:</header>
-								<p id="quizCat5">Category:</p>
-								<button type="button" id="editQuizBox5">Edit</button>
-								<button type="button" id="deleteQuizBox5">Delete</button>
-							</div><br>
-							<!---->
-							<br>
-							<div id="next-button">
-								<button type="button" class="btn btn-primary">Next</button>
-								<button type="button" class="btn btn-primary">Previous</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-<!--keep-->
-			<div class="col-sm-3 col-xs-2">
-				<div class="panel panel-default">
-					<div class="panel-heading">Category</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-sm-6">
-								<button class="btn btn-primary btn-block">History</button>
-								<br>
-								<button class="btn btn-primary btn-block">Geography</button>
-							</div>
-							<div class="col-sm-6">
-								<button class="btn btn-primary btn-block">Entertainment</button>
-								<br>
-								<button class="btn btn-primary btn-block">Sports</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-<!--
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
-Now you can add it to any column size at any screen size and it will work seamlessly with Bootstrap's responsive layout:
-
-<div class="row">
-    <div class="col-lg-1 col-centered"></div>
-</div>
-
-
--->
-    </body>
-
->>>>>>> Saraah
 </html>
-
-
-
-
-
-<!--
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
-Now you can add it to any column size at any screen size and it will work seamlessly with Bootstrap's responsive layout:
-
-<div class="row">
-    <div class="col-lg-1 col-centered"></div>
-</div>
-
-
-<<<<<<< HEAD
--->
-
-=======
--->
->>>>>>> Saraah
