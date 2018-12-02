@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="../css/home.css" media="all">
+    <link rel="stylesheet" href="../css/takequiz.css" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -20,20 +20,7 @@
 
     <div class="home-bg page-wrapper font-poppins">
 
-        <div class="row row-header">
-
-            <!-- Not sure if logo will be on this page
-            <div class="col-sm-2 col-xs-2">
-                <div class="wrapper wrapper--w680">
-                    <div class="card card-4">
-                        <div class="card-body">
-                            <h1 id="logo-responsive">LOGO</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            -->
-
+        <div class="row row-header p-t-15">
             <div class="col-sm-12 col-xs-12">
                 <div class="wrapper wrapper--w680">
                     <div class="card card-4">
@@ -47,107 +34,30 @@
             </div>
 
         </div>
-        <p id="timer">Time</p>
         <div class="row row-content p-t-70">
             <div class="col-sm-12">
                 <div class="wrapper wrapper--w960">
                     <div class="card card-4">
                         <div class="card-body">
-                            <!-- This is the question -->
+                            <p id="timer">Time</p>
                             <div><h1 id="question_1">Who was the first super saiyan god?</h1></div>
-
-
                             <form action="" id="answer_1">
                                 <div id="option1_1"></div>
                                 <div id="option1_2"></div>
                                 <div id="option1_3"></div>
                                 <div id="option1_4"></div>
                             </form>
-
                         </div>
+
+                        <div class="card-body">
+                            <button class="btn btn-primary" onclick="submitQuiz()" id="submit-button">Submit Quiz</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
-    <button onclick="submitQuiz()" id="submit-button">Submit Quiz</button>
-    <button onclick="revealAnswer()" id="reveal-ans-button">Reveal Answer</button>
-
-    <!--
-    <div class="container p-t-15">
-        <header class="jumbotron">
-            <h1 id="quiz-title"></h1>
-            <h2 id="quiz-author"></h2>
-            <h2 id="quiz-category"></h2>
-        </header>
-    </div>
-    -->
-    <!--
-    <div class="container">
-        <p id="timer"></p>
-        <div class="card">
-            <div class="card-body">
-                <h1 id="question_1">Question</h1>
-
-
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="option1" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="option1">Option 1</label>
-                    <input type="radio" class="custom-control-input" id="option2" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="option2">Option 2</label>
-                    <input type="radio" class="custom-control-input" id="option3" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="option3">Option 3</label>
-                    <input type="radio" class="custom-control-input" id="option4" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="option4">Option 4</label>
-                </div>
-
-
-                <form action="" id="answer_1">
-                    <div id="option1_1"></div>
-                    <div id="option1_2"></div>
-                    <div id="option1_3"></div>
-                    <div id="option1_4"></div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    -->
-                    <!--
-                    <div class="radio">
-                        <label id="option1_1">Option 1</label>
-                    </div>
-                    <div class="radio">
-                        <label id="option1_2">Option 2</label>
-                    </div>
-                    <div class="radio disabled">
-                        <label id="option1_3">Option 3</label>
-                    </div>
-                    <div class="radio disabled">
-                        <label id="option1_4">Option 4</label>
-                    </div>
-                    -->
-            <!--
-            <div class="card-body">
-                <h id="question_1">Question</h>
-                <form>
-                    <div class="radio">
-                        <label><input type="radio" id="option2_1" name="optradio" checked>Option 1</label>
-                    </div>
-                    <div class="radio">
-                        <label><input type="radio" id="option2_2" name="optradio">Option 2</label>
-                    </div>
-                    <div class="radio disabled">
-                        <label><input type="radio" id="option2_3" name="optradio" disabled>Option 3</label>
-                    </div>
-                    <div class="radio disabled">
-                        <label><input type="radio" id="option2_4" name="optradio" disabled>Option 4</label>
-                    </div>
-                </form>
-            </div>
-            -->
 
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
