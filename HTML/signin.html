@@ -13,6 +13,8 @@
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
 </head>
 <body>
     <div class="page-wrapper sign-up-bg p-t-70 p-b-70 70 font-poppins" id="login">
@@ -46,6 +48,17 @@
                             <div class="p-t-15">
                                 <button class="btn btn--radius-2 btn--green" onclick="signUp()">Sign Up</button>
                             </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="p-t-15">
+                                <button 
+                                class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button" 
+                                onclick="signInGoogle()"
+                                data-provider-id="google.com" data-upgraded=",MaterialButton">
+                                <span class="firebaseui-idp-icon-wrapper"><img class="firebaseui-idp-icon" alt="" 
+                                    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"></span>
+                                    <span class="firebaseui-idp-text firebaseui-idp-text-long">Sign in with Google</span>
+                                    <span class="firebaseui-idp-text firebaseui-idp-text-short">Google</span></button>                            </div>
                         </div>
                     </div>
                     <div class="row row-space">
