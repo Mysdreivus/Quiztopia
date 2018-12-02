@@ -255,8 +255,6 @@ button
     color: black;
 }
 
-/*****SIDEBAR***/
-
 body {
     overflow-x: hidden;
 }
@@ -454,7 +452,7 @@ body {
 /* Starting Quiz stuffs  */
 
 #quiz-name {
-    font-size: 6vw;
+    font-size: 4vw;
     font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-weight: bold;
     color: black;
