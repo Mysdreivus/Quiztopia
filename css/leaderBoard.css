@@ -72,7 +72,7 @@ button
 }
 
 .new-home-bg {
-
+    background: linear-gradient(#2193b0, #6dd5ed);
 }
 
 .page-wrapper {
@@ -137,11 +137,11 @@ button
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    background: #fff2ef;
+    background: #fff8be;
 }
 
 .card-4 {
-    background: #fff2ef;
+    background: #fff8be;
     opacity: 0.95;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -478,4 +478,12 @@ body {
         position: relative;
         margin-right: 0;
     }
+}
+
+#leaderboard {
+    padding-top: 0.5vw;
+    padding-left: 9vw;
+    font-size: 6vw;
+    font-weight: bold;
+    color: black;
 }
