@@ -13,3 +13,10 @@
 .panel-body{
     display: none;
 }
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: red;
+    color: white;
+
+}
