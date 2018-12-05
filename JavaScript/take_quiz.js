@@ -26,6 +26,7 @@ let dataRef = firebase.database();
 // method is called when the page is loaded
 window.onload = function () {
     firebase.auth().onAuthStateChanged(function (x) {
+        document.getElementById('return-home').disabled = true;
         user = x;
 
         quizId = Cookies.get('id');
@@ -182,6 +183,7 @@ function submitQuiz() {
                                             // enabling reveal answer button
                                             // document.getElementById('reveal-ans-button').disabled = false;
                                             document.getElementById('submit-button').disabled = true;
+                                            document.getElementById('return-home').disabled = false;
                                             // TODO:
                                             // clearTimeout(sta)
                                             displayResult(points);
