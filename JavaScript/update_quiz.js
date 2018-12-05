@@ -50,7 +50,9 @@ const setupUI = async (uid, qid) => {
             let questionCount = 1;
             let wrongAnswerCount = 1;
             for(question in questions) {
+
                 console.log(questions[question]);
+                console.log(question);
                 document.getElementById(question).value = questions[question]["question"];
                 document.getElementById("correct_answer_".concat(questionCount)).value = questions[question]["correct_answer"];
                 document.getElementById("wrong_answer".concat(questionCount)
@@ -60,6 +62,7 @@ const setupUI = async (uid, qid) => {
                 document.getElementById("wrong_answer".concat(questionCount)
                     .concat("_").concat(wrongAnswerCount++)).value = questions[question]["wrong_answers3"];
                 questionCount++;
+                wrongAnswerCount = 1;
             }
         });
 }
