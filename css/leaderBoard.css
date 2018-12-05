@@ -60,19 +60,9 @@ button
     text-overflow: ellipsis;
 }
 
-.home-bg {
-    background: #ff7a5a;
-    /*
-            linear-gradient(
-                    rgba(255, 0, 0, 0.45),
-                    rgba(255, 0, 0, 0.45)
-            );
-    */
-    background-size: cover;
-}
 
 .new-home-bg {
-    background: linear-gradient(#2193b0, #6dd5ed);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/dna.jpg");
 }
 
 .page-wrapper {
@@ -141,8 +131,8 @@ button
 }
 
 .card-4 {
-    background: #fff8be;
-    opacity: 0.95;
+    background-color: #fff2ef;
+    opacity: 0.90;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
