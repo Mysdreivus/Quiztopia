@@ -726,3 +726,7 @@ input {
     /* Microsoft Edge */
     color: #666;
 }
+
+.new-home-bg {
+    background: linear-gradient(#2193b0, #6dd5ed);
+}
