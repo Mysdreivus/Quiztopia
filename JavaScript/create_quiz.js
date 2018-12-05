@@ -65,6 +65,7 @@ function submitQuizHelper(userId, author) {
         name: quiz_name,
         category: category,
         description: quiz_description,
+        author: author,
         owner: userId
     };
 
