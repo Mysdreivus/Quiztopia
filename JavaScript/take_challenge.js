@@ -3,9 +3,17 @@ let user;
 let answers = [];
 const numQuestions = 5;      // TODO: use this when there are 6 questions
 // TODO: these 3 arrays needs to be updated in final push
-let questionIds = ['question_1'];
-let options = [['option1_1', 'option1_2', 'option1_3', 'option1_4']];
-let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']];
+const questionIds = ['question_1', 'question_2', 'question_3', 'question_4', 'question_5'];
+let options = [['option1_1', 'option1_2', 'option1_3', 'option1_4'],
+    ['option2_1', 'option2_2', 'option2_3', 'option2_4'],
+    ['option3_1', 'option3_2', 'option3_3', 'option3_4'],
+    ['option4_1', 'option4_2', 'option4_3', 'option4_4'],
+    ['option5_1', 'option5_2', 'option5_3', 'option5_4']];
+let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']
+    , ['val2_1', 'val2_2', 'val2_3', 'val2_4']
+    , ['val3_1', 'val3_2', 'val3_3', 'val3_4']
+    , ['val4_1', 'val4_2', 'val4_3', 'val4_4']
+    , ['val5_1', 'val5_2', 'val5_3', 'val5_4']];
 
 const numOptions = 4;
 const possiblePts = 6;
@@ -57,7 +65,6 @@ window.onload = function () {
         // TODO: change for take_challenge
         challengeType = Cookies.get('challenge_type');
         opponentId = Cookies.get('opponentId');
-        alert("Opponent id in take_challenge is: " + opponentId);
         if (challengeType === 'accepted_challenges') {
             opChallegneScore = Cookies.get('challenge_score');
             opOverallScore = Cookies.get('overall_score');
@@ -139,6 +146,7 @@ function updateUI() {
     // displaying questions
     dataRef.ref("quizzes/" + quizId + "/questions").once('value')
         .then(function (snapshot) {
+            idx = 0;
             snapshot.forEach(function (childsnapshot) {
                 let reqData = childsnapshot.val();
                 document.getElementById(questionIds[idx]).innerText = reqData.question;
@@ -160,6 +168,7 @@ function updateUI() {
 
                 // store the value of correct answer
                 answers.push(reqData.correct_answer);
+                idx += 1
             });
         })
         .then(() => {
@@ -207,7 +216,6 @@ function submitQuiz() {
 
 // TODO: New stuff
 function displayFinalResult(yourPt, oppPt) {
-    alert("Entered displayFinalResult");
     if (yourPt > oppPt) {   // Win
         // update database
         dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore - 15)
@@ -274,7 +282,6 @@ function displayFinalResult(yourPt, oppPt) {
 // displays the users result
 // @param1 int points achieved by the user
 function displayResult(points) {
-    alert("Entered displayResult()");
     let dataToSend = {
         points: pointsReceived,
         name: userName,
@@ -282,7 +289,6 @@ function displayResult(points) {
     };
     dataRef.ref().child("users/" + opponentId + "/acceptedChallenges/" + user.uid).set(dataToSend)
         .then(() => {
-            alert("Before swal message");
             swal({
                 title: "Quiz Result",
                 text: "You scored " + points + " out of " + possiblePts,
@@ -307,6 +313,7 @@ function calculatePoints() {
         for (let j=0; j<numOptions; j++) {
             if (document.getElementById(optionsVal[i][j]).checked) {
                 if (document.getElementById(optionsVal[i][j]).value === answers[i]) {
+                    alert("Answer is right");
                     ptsReceived++;
                 }
                 break;

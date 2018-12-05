@@ -2,7 +2,6 @@ const dataRef = firebase.database();
 window.onload = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            alert("user signed in");
             // User is signed in 
         }
         else {
