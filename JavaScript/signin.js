@@ -15,9 +15,10 @@ function signInGoogle() {
         first_name = user["displayName"];
         last_name = "";
         var ref = firebase.database().ref(`users/${user_id}`);
-        ref.once("value")
+        return ref.once("value")
         .then(function(snapshot) {
             if(snapshot.val() !== null) { // The account already exists...
+                console.log(snapshot.val());
                 return firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         if (user.emailVerified) {
@@ -38,16 +39,18 @@ function signInGoogle() {
                         points: 0
                     }
                 });
-                let addToLeaderboard = databaseRef.ref('leaderboard').once('value')
-                .then(function (snapshot) {
-                    snapshot.forEach(function (childSnapshot) {
-                        console.log(childSnapshot.length);
-                        databaseRef.ref().child("leaderboard/" + childSnapshot.key + "/"
-                            + user_id).set(0);
-                    });
-                    return;
-                });
-                Promise.all([addNode, addToLeaderboard]).then(
+                // let addToLeaderboard = databaseRef.ref('leaderboard').once('value')
+                // .then(function (snapshot) {
+                //     let operations = [];
+                //     snapshot.forEach(function (childSnapshot) {
+                //         console.log(childSnapshot.length);
+                //         let op = databaseRef.ref().child("leaderboard/" + childSnapshot.key + "/"
+                //             + user_id).set(0);
+                //         operations.push(op);
+                //     });
+                //     return Promise.all(operations);
+                // });
+                return Promise.all([addNode]).then(() => {
                     firebase.auth().onAuthStateChanged(function (user) {
                         if (user) {
                             if (user.emailVerified) {
@@ -57,7 +60,8 @@ function signInGoogle() {
                                 alert("Please verify your email!");
                             }
                         }
-                    }));
+                    });
+                });
             }
         }).catch(function(error) {
             console.log("error", error);
