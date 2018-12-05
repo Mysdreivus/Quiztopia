@@ -73,8 +73,6 @@ function signInGoogle() {
         var credential = error.credential;
         // ...
       });
-
-
 }
 
 function  signUp() {

@@ -8,10 +8,9 @@ const playerIds = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 const buttonIds = ['button-1', 'button-2', "button-3", "button-4", "button-5", "button-6", "button-7", "button-8", "button-9", "button-10"];
 let users = [];
 let incomingChallenges = [];
+let acceptedChallenges = [];
 let userName = null;
 let nameIdMap = {};
-let challengeIdMap = {};
-let ownerIdMap = {};
 let tabName;
 
 window.onload = function () {
@@ -46,12 +45,27 @@ function mainController(s) {
         tabName = s;
         return mainIncoming();
     }
-    /*
     else if (s === "accepted_challenges") {
         tabName = s;
-        getAcceptedChallenges(userId);
+        return mainAccepted();
     }
-    */
+}
+
+const mainAccepted = async () => {
+    idx = 0;
+    alert("Entered mainAccepted()");
+    let rawInChallenges = await getAcceptedChallenges(userId);
+    rawInChallenges.forEach(function (challenge) {
+        acceptedChallenges.push(challenge);
+    });
+    if (incomingChallenges.length >= maxChallenges) {
+        updateAcceptedChallengeUI(acceptedChallenges.slice(idx, idx+maxChallenges));
+        idx += maxChallenges;
+    }
+    else {
+        updateAcceptedChallengeUI(acceptedChallenges);
+        idx += incomingChallenges.length;
+    }
 }
 const main =  async () => {
     idx = 0;
@@ -78,13 +92,21 @@ const mainIncoming = async () => {
         incomingChallenges.push(challenge);
     });
     if (incomingChallenges.length >= maxChallenges) {
-        updateIncomingChallengeUI(incomingChallenges, slice(idx, idx+maxChallenges));
+        updateIncomingChallengeUI(incomingChallenges.slice(idx, idx+maxChallenges));
         idx += maxChallenges;
     }
     else {
-        updateIncomingChallengeUI(incomingChallenges.slice(idx, incomingChallenges.length));
+        updateIncomingChallengeUI(incomingChallenges);
         idx += incomingChallenges.length;
     }
+}
+
+// gets list of accepted challenges
+async function getAcceptedChallenges(uid) {
+    return dataRef.ref("users/" + uid + "/acceptedChallenges").once('value')
+        .then(function (challenges) {
+            return challenges;
+        });
 }
 
 // gets list of incoming challenges
@@ -95,7 +117,6 @@ async function getIncomingChallenges(uid) {
         });
 }
 
-// TODO: Fix this
 // updates the incoming challenges list
 function updateIncomingChallengeUI(slicedChallenges) {
     for (var i = 0; i < slicedChallenges.length; i++) {
@@ -119,23 +140,58 @@ function updateIncomingChallengeUI(slicedChallenges) {
     }
 }
 
-function setEventListener2(key, challengerId, buttonId, playerId) {
+// TODO: Fix this
+function updateAcceptedChallengeUI(slicedChallenges){
+    alert("updating accepted challenge UI");
+    for (var i = 0; i < slicedChallenges.length; i++) {
+        let rawData = slicedChallenges[i];
+        let key = rawData.key;
+        let reqData = rawData.val();
+        let optName = reqData.name;
+        let opPtsRecv = reqData.points;
+        let opId = reqData.userId;
+
+        document.getElementById(numIds[i]).innerText = i + 1;
+        document.getElementById(playerIds[i]).innerText = optName + " accepted your challenge. Now, it's your turn";
+        document.getElementById(buttonIds[i]).innerText = "Accept Challenge";
+        setEventListener3(opId, opPtsRecv, buttonIds[i], key);
+    }
+}
+
+// TODO: working
+const setEventListener3 = async (opId, opPtsRecv, buttonId, quizId) => {
+    let quizzes = await getQuizzes();
+
+    // get random quiz
+    let ranQuiz = randomQuiz(quizzes);
+
     document.getElementById(buttonId).addEventListener('click', function () {
-        // Cookies.set('id', challengeIdMap[playerId]);
+        alert("Entered listener");
+        Cookies.set('challenge_score', opPtsRecv);
+        Cookies.set('opponentId', opId);
+        Cookies.set('id', ranQuiz[0]);
+        Cookies.set("challenge_type", tabName);
+        dataRef.ref("users/" + userId + "/acceptedChallenges").child(quizId).remove()
+            .then(() => {
+                alert("Entered here");
+                location.href="../HTML/take_challenge.html";
+            })
+            .catch((error) => swal("Oops!", error.message, "error"));
+    })
+}
+
+function setEventListener2(key, challengerId, buttonId) {
+    document.getElementById(buttonId).addEventListener('click', function () {
         Cookies.set('id', key);
-        // Cookies.set('opponentId', ownerIdMap[playerId]);
         Cookies.set('opponentId', challengerId);
+        alert("opponent Id is: " + challengerId);
         Cookies.set('challenge_type', tabName);
         dataRef.ref("users/" + userId + "/incomingChallenges").child(key).remove()
             .then(() => {
-                location.href = "../HTML/take_quiz.html"
+                location.href = "../HTML/take_challenge.html"
             })
             .catch((error) => alert(error.message));
     });
-}
-
-async function getAcceptedChallenges(uid) {
-
 }
 
 // updates the users whom you can challenge
@@ -195,7 +251,7 @@ async function sendChallenge(ranQuiz, id) {
 async function getQuizzes() {
     return dataRef.ref("categories").once('value')
         .then(function (snapshot) {
-            return snapshot.val()
+            return snapshot.val();
         });
 }
 
@@ -208,21 +264,6 @@ var randomQuiz = function (obj) {
     i = keys.length * Math.random() << 0;
     return [keys[i], obj[keys[i]]];
 };
-
-
-/*
-// accepts challenege and delete the challenge from incoming challenges
-// TODO: challenge_type needs to be set
-// TODO: if tabName accepted set two values in cookies
-function acceptChallenge(divId) {
-    Cookies.set('id', challengeIdMap[divId]);
-    Cookies.set('opponentId', ownerIdMap[divId]);
-    Cookies.set('challenge_type', tabName);
-    dataRef.ref("users/" + userId + "/incomingChallenges").child(challengeIdMap[divId]).remove()
-        .then(() => location.href = "../HTML/take_quiz.html")
-        .catch((error) => alert(error.message));
-}
-*/
 
 // sets event listener for each quiz card
 function setEventListener(playerId, buttonId) {

@@ -19,7 +19,11 @@ let totalScore = null;
 let opponentId = null;
 let opChallegneScore = null;
 let opOverallScore = null;
+let lastQuiz;
+
+
 let pointsReceived = null;
+let userName;
 // TODO: ######
 
 let quizName = null;
@@ -43,12 +47,21 @@ window.onload = function () {
     firebase.auth().onAuthStateChanged(function (x) {
         user = x;
 
+        dataRef.ref("users/" + user.uid + "/personalInfo").once('value')
+            .then((data) => {
+                data = data.val();
+                userName = data.fname + " " + data.lname;
+            })
+            .catch((error) => swal("Oops!", error.message, "error"));
+
         // TODO: change for take_challenge
         challengeType = Cookies.get('challenge_type');
         opponentId = Cookies.get('opponentId');
+        alert("Opponent id in take_challenge is: " + opponentId);
         if (challengeType === 'accepted_challenges') {
             opChallegneScore = Cookies.get('challenge_score');
             opOverallScore = Cookies.get('overall_score');
+            lastQuiz = Cookies.get('quiz');
         }
         // TODO: ######
 
@@ -183,9 +196,6 @@ function submitQuiz() {
     else if (challengeType === "incoming_challenges") {
         displayResult(pointsReceived);
     }
-    else {
-        displayResult(pointsReceived);
-    }
 
     /*
     // get user category points from firebase
@@ -197,6 +207,7 @@ function submitQuiz() {
 
 // TODO: New stuff
 function displayFinalResult(yourPt, oppPt) {
+    alert("Entered displayFinalResult");
     if (yourPt > oppPt) {   // Win
         // update database
         dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore - 15)
@@ -214,11 +225,10 @@ function displayFinalResult(yourPt, oppPt) {
                     title: "Congratulations",
                     text: "You won!\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
                     type: "success"
-                });
-                return;
-            })
-            .then(() => {
-                    location.href = "../HTML/challenge.html";
+                })
+                    .then(() => {
+                        location.href = "../HTML/challenge.html";
+                    });
             })
             .catch((error) => swal("Oops!", error.message, "error"));
     }
@@ -229,21 +239,21 @@ function displayFinalResult(yourPt, oppPt) {
                 return dataRef.ref("leaderboard/Overall").child(opponentId).set(opOverallScore - 15);
             })
             .then(() => {
-                return dataRef.ref("leaderboard/Overall").child(user.uid).set(opOverallScore + 15);
+                return dataRef.ref("leaderboard/Overall").child(user.uid).set(totalScore + 15);
             })
             .then(() => {
-                return dataRef.ref("leaderboard/Challenge").child(user.uid).set(opChallegneScore + 15);
+                return dataRef.ref("leaderboard/Challenge").child(user.uid).set(challengePoints + 15);
             })
             .then(() => {
                 swal({
                     title: "Better Luck Next Time!",
                     text: "You lost\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
-                    type: "error"
-                });
-                return;
-            })
-            .then(() => {
-                location.href = "../HTML/challenge.html";
+                    type: "error",
+                    button: "ok"
+                })
+                    .then(() => {
+                        location.href = "../HTML/challenge.html";
+                    })
             })
             .catch((error) => swal("Oops!", error.message, "error"));
     }
@@ -264,17 +274,28 @@ function displayFinalResult(yourPt, oppPt) {
 // displays the users result
 // @param1 int points achieved by the user
 function displayResult(points) {
-    dataRef.ref("users/" + opponentId + "acceptedChallenges").child(user.uid).set(pointsReceived)
+    alert("Entered displayResult()");
+    let dataToSend = {
+        points: pointsReceived,
+        name: userName,
+        userId: user.uid,
+    };
+    dataRef.ref().child("users/" + opponentId + "/acceptedChallenges/" + user.uid).set(dataToSend)
         .then(() => {
+            alert("Before swal message");
             swal({
                 title: "Quiz Result",
                 text: "You scored " + points + " out of " + possiblePts,
-                type: "success"
-            });
-            return;
-        })
-        .then( () => {
-            location.href = "../HTML/challenge.html";
+                type: "success",
+                buttons: {
+                    Ok: true
+                }
+            })
+                .then((val) => {
+                    if (val) {
+                        location.href = "../HTML/challenge.html";
+                    }
+                });
         })
         .catch((error) =>  swal("Oops!", error.message, "error"));
 }
