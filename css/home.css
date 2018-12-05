@@ -481,9 +481,16 @@ body {
 }
 
 #quiz-not-taken {
-    padding-bottom: 2vw;
     text-align: center;
     font-size: 3vw;
     font-weight: bold;
+    color: black;
+}
+
+#instructions {
+    padding-bottom: 2vw;
+    text-align: center;
+    font-size: 1vw;
+    font-weight: normal;
     color: black;
 }
