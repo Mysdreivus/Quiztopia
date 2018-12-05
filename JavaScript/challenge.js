@@ -10,7 +10,7 @@ let users = [];
 let incomingChallenges = [];
 let acceptedChallenges = [];
 let userName = null;
-let nameIdMap = {};
+let nameIdMap = new Map();
 let tabName;
 
 window.onload = function () {
@@ -18,7 +18,7 @@ window.onload = function () {
         // if the user is authenticated
         if (user) {
             userId = user.uid;
-            dataRef.ref("users/" + user.uid + "/personalInfo").once('value').then((info) => {
+            dataRef.ref("users/" + userId + "/personalInfo").once('value').then((info) => {
                 info = info.val();
                 userName = info.fname + " " + info.lname;
                 return;
@@ -53,7 +53,6 @@ function mainController(s) {
 
 const mainAccepted = async () => {
     idx = 0;
-    alert("Entered mainAccepted()");
     let rawInChallenges = await getAcceptedChallenges(userId);
     rawInChallenges.forEach(function (challenge) {
         acceptedChallenges.push(challenge);
@@ -77,7 +76,13 @@ const main =  async () => {
         });
         // TODO: Fix this
         // check if the idx is near the end of array
-        updateChallengeUI(users.slice(idx, idx+ maxChallenges));
+        if (users.length > maxChallenges) {
+            updateChallengeUI(users.slice(idx, idx+ maxChallenges));
+            idx += maxChallenges;
+        }
+        else {
+            updateChallengeUI(users);
+        }
         // updateAcceptChallengeUI(incomingChallenges.slice(inIdx, idx + maxUsers));
     }
     else {
@@ -142,7 +147,6 @@ function updateIncomingChallengeUI(slicedChallenges) {
 
 // TODO: Fix this
 function updateAcceptedChallengeUI(slicedChallenges){
-    alert("updating accepted challenge UI");
     for (var i = 0; i < slicedChallenges.length; i++) {
         let rawData = slicedChallenges[i];
         let key = rawData.key;
@@ -166,14 +170,12 @@ const setEventListener3 = async (opId, opPtsRecv, buttonId, quizId) => {
     let ranQuiz = randomQuiz(quizzes);
 
     document.getElementById(buttonId).addEventListener('click', function () {
-        alert("Entered listener");
         Cookies.set('challenge_score', opPtsRecv);
         Cookies.set('opponentId', opId);
         Cookies.set('id', ranQuiz[0]);
         Cookies.set("challenge_type", tabName);
         dataRef.ref("users/" + userId + "/acceptedChallenges").child(quizId).remove()
             .then(() => {
-                alert("Entered here");
                 location.href="../HTML/take_challenge.html";
             })
             .catch((error) => swal("Oops!", error.message, "error"));
@@ -184,7 +186,6 @@ function setEventListener2(key, challengerId, buttonId) {
     document.getElementById(buttonId).addEventListener('click', function () {
         Cookies.set('id', key);
         Cookies.set('opponentId', challengerId);
-        alert("opponent Id is: " + challengerId);
         Cookies.set('challenge_type', tabName);
         dataRef.ref("users/" + userId + "/incomingChallenges").child(key).remove()
             .then(() => {
@@ -200,15 +201,17 @@ function updateChallengeUI(slicedUsers) {
     for (var i = 0; i < slicedUsers.length; i++) {
         let userInfo = slicedUsers[i];
         let id = userInfo.key;
+
         if (id !== userId) {
             userInfo = userInfo.val();
             userInfo = userInfo.personalInfo;
             let userName = userInfo.fname + " " + userInfo.lname;
-            nameIdMap[userName] = id;
+            // nameIdMap.set(userName, id);
 
             document.getElementById(playerIds[j]).innerText = userName;
             document.getElementById(numIds[j]).innerText = j+1;
             document.getElementById(buttonIds[j]).innerText = "Challenge";
+            nameIdMap[buttonIds[j]] = id;
             setEventListener(playerIds[j], buttonIds[j]);
             j += 1;
         }
@@ -226,8 +229,10 @@ async function getUsers() {
 
 // sends challenge to the opponent
 const challenge =  async (divId) => {
-    let opponentName = document.getElementById(divId).innerText;
-    let opponentId = nameIdMap[opponentName];
+    // let opponentName = document.getElementById(divId).innerText;
+    let opponentId = nameIdMap[divId];
+    // alert("opponent Name is: " + opponentName);
+    // let opponentId = nameIdMap[opponentName];
     // get quizzes from database
     let quizzes = await getQuizzes();
     // get random quiz
@@ -268,7 +273,8 @@ var randomQuiz = function (obj) {
 // sets event listener for each quiz card
 function setEventListener(playerId, buttonId) {
     document.getElementById(buttonId).addEventListener('click', function () {
-        challenge(playerId);
+        // challenge(playerId);
+        challenge(buttonId);
     });
 }
 
@@ -281,4 +287,8 @@ function emptyDivs() {
         document.getElementById(numIds[i]).innerText =  null;
         document.getElementById(buttonIds[i]).innerText = null;
     }
+}
+
+function backToHomePage() {
+    location.href = "../HTML/home.html";
 }
