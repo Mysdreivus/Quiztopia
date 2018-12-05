@@ -2,75 +2,99 @@
 <html lang="en">
 <head>
 
-    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Help</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/help.css" type="text/css">
+    <link rel="shortcut icon" href="../images/question-mark.ico">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../css/help.css" media="all">
+    <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Bootstrap Included-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- helper functions -->
+    <script src="../JavaScript/helperFunctions.js"></script>
+
 </head>
+
 <body>
+<!-- Add sidebar, col-sm-2 -->
 
+<!-- Main leaderboard takes up col-sm-6 -->
+<!--
 <div class="home-bg page-wrapper font-poppins">
-
-    <div class="row row-header">
-
-        <div class="col-sm-12 col-xs-12">
-            <div class="wrapper wrapper--vw70-r">
-                <div class="card card-4">
-                    <div class="card-body">
-                        <h1 id="help-header">HELP</h1>
-                    </div>
+-->
+<div class="container-fluid new-home-bg page-wrapper font-poppins p-b-100">
+    <div class="row equal">
+        <div class="col-sm-2 hidden-xs" >
+            <div class="card card-4" style="height: 100%;">
+                <div class="card-body">
+                    <!-- <h1 class="logo">LOGO</h1> -->
+                    <img src="../images/logo.png" width="100%" height="100%">
                 </div>
             </div>
         </div>
 
+        <div class="col-sm-10 col-xs-12" >
+            <div class="card card-4" style="height: 100%;">
+                <div class="card-body">
+                    <h1 id="quiz-title">HELP</h1>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row row-header p-t-15">
+    <div class = "row row-content p-t-15 equal">
 
-        <div class="col-sm-2 col-xs-2">
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
-                    <li style="font-size: 1vw;" class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
-                    <li class="p-t-15"><a href="#">My Quizzes</a></li>
-                    <li class="p-t-15"><a href="settings.html">Settings</a></li>
-                    <li class="p-t-15"><a href="#">Help</a></li>
-                    <li class="p-t-15"><a href="#">Logout</a></li>
-                </ul>
+        <div class="col-sm-2 col-12-xs">
+            <div class="card card-4" style="height: 90%">
+                <div class="card-body">
+                    <ul class="sidebar-nav" style="height: 100%">
+                        <li style="padding-top: 40px;"><a href="home.html">Dashboard</a></li>
+                        <li class="p-t-15"><a href="leaderBoard.html">Leaderboard</a></li>
+                        <li class="p-t-15"><a href="myQuizzes.html">My Quizzes</a></li>
+                        <li class="p-t-15"><a href="challenge.html">Challenges</a></li>
+                        <li class="p-t-15"><a href="settings.html">Settings</a></li>
+                        <li class="p-t-15"><a href="help.html">Help</a></li>
+                        <li class="p-t-15 p-b-6vw" onclick="logout()"><a>Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="col-sm-8 col-xs-8">
+        <div class="col-sm-10 col-xs-10">
             <div class="wrapper wrapper--vw70-r">
                 <div class="card card-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="card-body">
-
                                 <h1 class="help-titles p-b-15">What is QuizTopia?</h1>
                                 <p class="help-description p-t-15">This is a community where you can flex your
-                                brain muscles participating in or posting Quizzes.</p>
+                                    brain muscles participating in or posting Quizzes.</p>
 
                                 <h1 class="help-titles p-t-30">Take Quizzes!</h1>
                                 <p class="help-description p-t-15">Show your prowess by answering all quiz
-                                questions correctly.</p>
+                                    questions correctly.</p>
 
                                 <h1 class="help-titles p-t-30">Create Quizzes!</h1>
                                 <p class="help-description p-t-15">Tease the minds of others by designing
-                                your own quizzes.</p>
+                                    your own quizzes.</p>
 
                                 <h1 class="help-titles p-t-30">Climb the leaderboard!</h1>
                                 <p class="help-description p-t-15">Answer questions, pass quizzes and climb
-                                to the top of the rankings.</p>
-
-
-
+                                    to the top of the rankings.</p>
 
                             </div>
                         </div>
@@ -81,8 +105,31 @@
 
     </div>
 
-
-
 </div>
+
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCI8uOCe685Gqe0pu9pb1EZZ3-tuibuc34",
+        authDomain: "quiztopia-35e04.firebaseapp.com",
+        databaseURL: "https://quiztopia-35e04.firebaseio.com",
+        projectId: "quiztopia-35e04",
+        storageBucket: "quiztopia-35e04.appspot.com",
+        messagingSenderId: "485501403479"
+    };
+    firebase.initializeApp(config);
+</script>
+
 </body>
+
 </html>
