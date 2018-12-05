@@ -6,6 +6,22 @@ body {
 }
 */
 /* Check LoginSignUp.css for correct implementations */
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+.parent { display: -ms-flex; display: -webkit-flex; display: flex; }
+.parent>div { flex:1; }
+
+.wrap-panel {
+    word-wrap: break-word;
+}
+
+.category-button {
+}
+
 
 body,
 h1, h2, h3, h4, h5, h6,
@@ -18,10 +34,15 @@ fieldset, legend {
     padding: 0;
 }
 
+.main {
+    background-image: url("../images/dna.jpg");
+}
+
 body {
     font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
     font-weight: 400;
     font-size: 14px;
+
 }
 
 a {
@@ -33,8 +54,25 @@ button
     border-radius: 5px;
 }
 
+.btn
+{
+    display: inline-block;
+    line-height: 3vw;
+    padding: 0 3vw;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .home-bg {
-    background: #ff7a5a;
+    /* background: #ff7a5a; */
     /*
             linear-gradient(
                     rgba(255, 0, 0, 0.45),
@@ -43,17 +81,13 @@ button
     */
     background-size: cover;
 }
-/* RESPONSIVE WRAPPER */
-.wrapper--vw70-r {
-    max-width: 70vw;
+
+.new-home-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/graph.jpg");
 }
 
 .page-wrapper {
     min-height: 100vh;
-}
-
-.p-t-10 {
-    padding-top: 10px;
 }
 
 .p-t-15 {
@@ -64,36 +98,36 @@ button
     padding-top: 30px;
 }
 
-.p-t-50 {
-    padding-top: 50px;
-}
-
-.p-t-70 {
-    padding-top: 70px;
-}
-
-.p-b-100 {
-    padding-bottom: 100px;
+.p-t-3v {
+    padding-top: 3vw;
 }
 
 .p-t-130 {
     padding-top: 130px;
 }
 
-.p-b-30 {
-    padding-bottom: 30px;
+.p-t-70 {
+    padding-top: 70px;
+}
+
+.p-t-10 {
+    padding-top: 10px;
+}
+
+.p-b-15 {
+    padding-bottom: 15px;
+}
+
+.p-b-100 {
+    padding-bottom: 100px;
+}
+
+.p-b-6vw {
+    padding-bottom: 6vw;
 }
 
 .p-b-70 {
-    padding-bottom: 70px;
-}
-
-.p-b-130 {
-    padding-bottom: 130px;
-}
-
-.p-b-170 {
-    padding-bottom: 170px;
+    padding-bottom: 40px;
 }
 
 .p-l-15 {
@@ -112,11 +146,6 @@ button
     margin: 0 auto;
 }
 
-.wrapper--480 {
-    max-width: 480px;
-}
-
-
 .wrapper--w960 {
     max-width: 960px;
 }
@@ -126,7 +155,7 @@ button
 }
 
 .wrapper--w680 {
-    max-width: 680px;
+    max-width: 780px;
 }
 
 /* CARD INFORMATION, Adapted from bootstraps examples online */
@@ -135,11 +164,12 @@ button
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    background: #fff2ef;
 }
 
 .card-4 {
-    background: #fff2ef;
+    /* background: linear-gradient(#2193b0, #6dd5ed); */
+    background-color: #fff2ef;
+    opacity: 0.90;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -226,7 +256,7 @@ button
 
 .main {
     margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
+    font-size: 20px; /* Increased text to enable scrolling */
     padding: 0px 10px;
 }
 
@@ -259,15 +289,16 @@ button
 /* ALL IDS WILL BE BELOW FOR EASE OF FINDING*/
 
 #quiz-title {
-    text-align: center;
-    font-size: 4vw;
+    padding-left: 26%;
+    font-size: 64px;
     font-weight: bold;
     color: black;
 }
 
+
 .logo {
     text-align: center;
-    font-size: 64px;
+    font-size: 4vw;
     font-weight: bold;
     color: black;
 }
@@ -280,15 +311,15 @@ button
 }
 
 #usr-name {
-    font-size: 32px;
+    font-size: 30px;
     color: black;
     display: inline-block;
 }
 
 #category {
     text-align: center;
-    font-size: 1.7vw;
-    font-weight: bolder;
+    font-size: 30px;
+    font-weight: bold;
     color: black;
 }
 
@@ -311,24 +342,6 @@ button
     font-family: "Times New Roman", sans-serif;
     color: black;
 }
-
-/*
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}*/
-
-/*****SIDEBAR***/
 
 body {
     overflow-x: hidden;
@@ -357,7 +370,23 @@ body {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #fff2ef;
+    background: #fbc8d8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper-2 {
+    z-index: 1000;
+    position: fixed;
+    border-radius: 10px;
+    right: 250px;
+    width: 0;
+    height: 100%;
+    margin-right: -250px;
+    overflow-y: auto;
+    background: #fbc8d8;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -382,9 +411,8 @@ body {
 /* Sidebar Styles */
 
 .sidebar-nav {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
-    width: 250px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -396,7 +424,7 @@ body {
 }
 
 .sidebar-nav li a {
-    font-size: 1vw;
+    font-size: large;
     display: block;
     text-decoration: none;
     color: #000000;
@@ -404,8 +432,8 @@ body {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #ff5656;
-    background: rgba(251, 181, 176, 0.2);
+    color: #fff;
+    background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav li a:active,
@@ -443,7 +471,7 @@ body {
     }
 
     #sidebar-wrapper {
-        width: 15vw;
+        width: 250px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -461,209 +489,23 @@ body {
     }
 }
 
-/* ADDED NEW */
-
-#start-quiz
-{
-    padding-left: 26%;
-    font-size: 4vw; /* responsive text */
-    font-weight: bold;
-    color: black;
-}
-
-/* BUTTON */
-/* ==========================================================================
-   #BUTTON
-   ========================================================================== */
-.btn {
-    display: inline-block;
-    line-height: 50px;
-    padding: 0 50px;
-    -webkit-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    font-size: 18px;
-    color: #fff;
-    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
-}
-
-.btn--radius {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.btn--radius-2 {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-
-.btn--pill {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-}
-
-.btn--green {
-    background: #57b846;
-}
-
-.btn--yellowgreen {
-    background: yellowgreen;
-}
-
-.btn--yellow {
-    background: #f3fb62;
-}
-
-.btn--green:hover {
-    background: #4dae3c;
-}
-
-.btn--blue {
-    background: #4272d7;
-}
-
-.btn--blue:hover {
-    background: #3868cd;
-}
-
-
-/* Starting Quiz stuffs  */
-
-#quiz-name {
+#quiz-title {
+    padding-top: 0.5vw;
+    padding-left: 24vw;
     font-size: 6vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-weight: bold;
     color: black;
 }
 
-#author-name {
-    font-size: 2vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    color: black;
+#welcome-bar {
+    opacity: 0.90;
+    border-radius: 10px;
+    background-color: #fff2ef;
 }
 
-#category-name {
-    font-size: 1.5vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: normal;
-    color: black;
-}
-
-#description {
-    font-size: 1vw;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: lighter;
-    color: black;
-}
-
-/* Take Quiz */
-#take-quiz {
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-    color: black;
-}
-
-#logo-responsive {
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-    color: black;
-}
-
-
-#quiz-question {
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-}
-
-/*
-#question_1 {
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-} */
-
-#quiz-answer-1 {
-    text-align: left;
-    font-size: 1vw;
-    font-weight: lighter;
-}
-/* Create Quiz Stuff*/
-
-/* This will be what is responsible for each title in the card for create quizzes */
-
-.create-quiz-titles {
-    text-align: left;
-    font-size: 1.5vw;
-    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: bold;
-}
-
-.answer-question {
-    text-align: left;
-    font-size: 1vw;
-    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: bold;
-}
-
-.input1 {
-    border-radius: 5px;
-    width: 100%;
-}
-.input2 {
-    border-radius: 3px;
-    width: 100%;
-    height: 4em;
-}
-.select_bar {
-    width: 100%;
-}
-
-/**** HELP STUFF ****/
-#help-header {
-    text-align: center;
-    font-size: 5vw;
-    font-weight: bolder;
-    color: black;
-}
-
-.help-titles {
-    text-align: left;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-}
-
-.help-description {
-    text-align: left;
-    font-size: 1vw;
-    font-weight: normal;
-    color: black;
-}
-/**** SOME ADDED STUFFS FOR INPUT BOX FORMATTING****/
-input {
-    outline: none;
-    margin: 0;
-    border: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    width: 100%;
-    font-size: 14px;
-    font-family: inherit;
-}
-
-.input--style-4 {
-    line-height: 50px;
+.input--style-2 {
+    width: 40%;
+    line-height: 3vw;
     background: #fafafa;
     -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -680,29 +522,28 @@ input {
     transition: all 0.4s ease;
 }
 
-.input--style-4::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
-    color: #666;
+.settings-options {
+    text-align: left;
+    font-size: 1.5vw;
+    font-weight: bold;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    color: black;
 }
 
-.input--style-4:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #666;
-    opacity: 1;
+.wrapper--vw70-r {
+    max-width: 70vw;
 }
 
-.input--style-4::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #666;
-    opacity: 1;
+.help-titles {
+    text-align: left;
+    font-size: 2vw;
+    font-weight: bold;
+    color: black;
 }
 
-.input--style-4:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #666;
-}
-
-.input--style-4:-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #666;
+.help-description {
+    text-align: left;
+    font-size: 1.5vw;
+    font-weight: normal;
+    color: black;
 }
