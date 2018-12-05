@@ -76,6 +76,10 @@ async function getQuiz(uid, qid) {
     });
 }
 
+function returnToHome() {
+    location.href = "../HTML/home.html";
+}
+
 function submitQuiz() { // TODO -> Determine how it will be implemented...
     let user = firebase.auth().currentUser;
     if (user) {
