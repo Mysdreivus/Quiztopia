@@ -58,6 +58,7 @@ function updateHelper(input) {
 }
 
 function showPlayers(a) {
+    emptyDivs();
     for (var i = 0; i < a.length; i++) {
         document.getElementById(playerPointIds[i]).innerHTML = a[i][1];
         updateName(a[i][0], playerIds[i]);
@@ -93,13 +94,13 @@ function updateName(key, playerId) {
 
 function previous() {
     let x = idx - maxUsers;
-    if (x <= 0) {
+    if (x < 0) {
         swal("Oops!", "You can't go previous!", "error");
         return;
     }
     if ((idx - maxUsers) >= 0) {
-        showPlayers(topPlayers.slice(idx - maxUsers, idx));
         idx -= maxUsers;
+        showPlayers(topPlayers.slice(idx, idx+maxUsers));
     }
     else {
         showPlayers(topPlayers.slice(0, idx));
@@ -119,5 +120,13 @@ function next() {
     else {
         showPlayers(topPlayers.slice(idx, topPlayers.length));
         idx = topPlayers.length - 1;
+    }
+}
+
+function emptyDivs() {
+    for (var i=0; i < playerIds.length; i++) {
+        document.getElementById(playerPointIds[i]).innerHTML = null;
+        document.getElementById(playerIds[i]).innerHTML = null;
+        document.getElementById(rankIds[i]).innerHTML = null;
     }
 }
