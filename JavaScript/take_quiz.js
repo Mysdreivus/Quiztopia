@@ -1,11 +1,19 @@
 let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
 let user;
 let answers = [];
-let numQuestions = 6;      // TODO: use this when there are 6 questions
+const numQuestions = 5;      // TODO: use this when there are 6 questions
 // TODO: these 3 arrays needs to be updated in final push
-let questionIds = ['question_1'];
-let options = [['option1_1', 'option1_2', 'option1_3', 'option1_4']];
-let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']];
+const questionIds = ['question_1', 'question_2', 'question_3', 'question_4', 'question_5'];
+let options = [['option1_1', 'option1_2', 'option1_3', 'option1_4'],
+                ['option2_1', 'option2_2', 'option2_3', 'option2_4'],
+                ['option3_1', 'option3_2', 'option3_3', 'option3_4'],
+                ['option4_1', 'option4_2', 'option4_3', 'option4_4'],
+                ['option5_1', 'option5_2', 'option5_3', 'option5_4']];
+let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']
+    , ['val2_1', 'val2_2', 'val2_3', 'val2_4']
+    , ['val3_1', 'val3_2', 'val3_3', 'val3_4']
+    , ['val4_1', 'val4_2', 'val4_3', 'val4_4']
+    , ['val5_1', 'val5_2', 'val5_3', 'val5_4']];
 
 const numOptions = 4;
 const possiblePts = 6;
@@ -21,6 +29,7 @@ window.onload = function () {
         user = x;
 
         quizId = Cookies.get('id');
+        alert('quiz id is ' + quizId);
         // checking if the user has already taken the quiz
         dataRef.ref("users/" + user.uid + "/quizzesTaken").once('value', snapshot => {
             snapshot.forEach(function (val) {
@@ -106,11 +115,10 @@ function updateUI() {
 
     // displaying questions
     dataRef.ref("quizzes/" + quizId + "/questions").once('value')
-        .catch(function (error) {
-            swal("Oops!", error.message, "error");
-        })
         .then(function (snapshot) {
+            alert("got snapshot");
             snapshot.forEach(function (childsnapshot) {
+                alert("value of i is: " + idx);
                 let reqData = childsnapshot.val();
                 document.getElementById(questionIds[idx]).innerText = reqData.question;
 
@@ -131,8 +139,10 @@ function updateUI() {
 
                 // store the value of correct answer
                 answers.push(reqData.correct_answer);
+                idx += 1;
             });
-        });
+        })
+        .catch((error) => swal("Oops!", error.message, "error"));
 }
 
 // checks the answer and submits the result to firebase
@@ -241,11 +251,10 @@ function shuffle(arra1) {
 
 // reveals answer to the user
 function revealAnswer() {
-    let options, val;
     for (let i = 0; i < optionsVal.length; i++) {
-        options = optionsVal[i];
+        let options = optionsVal[i];
         for (let j = 0; j < numOptions; j++) {
-            val = document.getElementById(options[j]).value;
+            let val = document.getElementById(options[j]).value;
             if (val === answers[i]) {
                 document.getElementById(optionsVal[i][j]).checked = true;
             }
