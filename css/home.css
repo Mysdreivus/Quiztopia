@@ -79,6 +79,10 @@ button
     min-height: 100vh;
 }
 
+.p-t-5 {
+    padding-top: 5px;
+}
+
 .p-t-15 {
     padding-top: 15px;
 }
@@ -490,6 +494,87 @@ body {
 #instructions {
     padding-bottom: 2vw;
     text-align: center;
+    font-size: 1vw;
+    font-weight: normal;
+    color: black;
+}
+.color-1 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+.color-1:hover {
+    background-color: #7eaeab;
+}
+
+#quiz-id-2 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#quiz-id-2:hover{
+    background-color: #aead7b;
+}
+
+#quiz-id-3 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#quiz-id-3:hover{
+    background-color: #ae908e;
+}
+
+#quiz-id-4 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#quiz-id-4:hover{
+    background-color: #8d94ae;
+}
+
+#quiz-id-5 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#quiz-id-5:hover{
+    background-color: #6baeac;
+}
+
+#quiz-id-6 {
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#quiz-id-6:hover{
+    background-color: #ae7168;
+}
+
+/* Start quiz stuff */
+
+#quiz-name {
+    padding-bottom: 2vw;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: bold;
+    color: black;
+}
+
+#author-name {
+    font-size: 1vw;
+    font-weight: normal;
+    color: black;
+}
+
+#category-name {
+    font-size: 1vw;
+    font-weight: bold;
+    color: black;
+}
+
+#description {
     font-size: 1vw;
     font-weight: normal;
     color: black;
