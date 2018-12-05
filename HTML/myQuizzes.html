@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Quizzes</title>
     <link rel="shortcut icon" href="../images/question-mark.ico">
+    <!-- Personal CSS -->
     <link rel="stylesheet" href="../css/myQuizzes.css" media="all">
+    <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/question-mark.ico">
+
+    <!-- Bootstrap Included-->
+
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- helper functions -->
+    <script src="../JavaScript/helperFunctions.js"></script>
+
 </head>
 
-
 <body>
+<!-- Add sidebar, col-sm-2 -->
 
-<div class="container-fluid new-home-bg page-wrapper font-poppins">
-
+<!-- Main leaderboard takes up col-sm-6 -->
+<!--
+<div class="home-bg page-wrapper font-poppins">
+-->
+<div class="container-fluid new-home-bg page-wrapper font-poppins p-b-100">
     <div class="row equal">
-
-        <div class="col-sm-2 hidden-xs">
+        <div class="col-sm-2 hidden-xs" >
             <div class="card card-4" style="height: 100%;">
                 <div class="card-body">
                     <!-- <h1 class="logo">LOGO</h1> -->
@@ -34,11 +50,10 @@
         <div class="col-sm-10 col-xs-12" >
             <div class="card card-4" style="height: 100%;">
                 <div class="card-body">
-                    <h1 id="my-quiz">MY QUIZZES</h1>
+                    <h1 id="quiz-title">MY QUIZZES</h1>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class = "row row-content p-t-15 equal">
@@ -53,68 +68,81 @@
                         <li class="p-t-15"><a href="challenge.html">Challenges</a></li>
                         <li class="p-t-15"><a href="settings.html">Settings</a></li>
                         <li class="p-t-15"><a href="help.html">Help</a></li>
-                        <li style="margin-bottom: 100px;" class="p-t-15" onclick="logout()"><a>Logout</a></li>
+                        <li style="cursor: pointer;" class="p-t-15 p-b-6vw"  onclick="logout()"><a>Logout</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-10 col-xs-10 mContent">
-            <div class="wrapper wrapper--w680">
+        <div class="col-sm-10 col-xs-10">
+            <div class="wrapper wrapper--vw70-r">
                 <div class="card card-4">
                     <div class="card-body">
-                        <button type="button" class="btn btn-primary btn-success" onclick="createQuiz()">Create Quiz</button>
-                        <!--	quiz 1 info		-->
-                        <!--need css for quizBox-->
-                        <div id="quizBox1">
-                            <header id="quiz-name-1" class="quiz-names"></header>
-                            <p id="category-1"></p>
-                            <p id="desc-1"></p>
-                        </div>
+                        <div class="row">
+                            <div class="card-body">
+                                <h1 class="help-titles">Create a quiz</h1>
+                                <div class="p-t-30">
+                                <button type="button" class="btn btn-primary btn-success" onclick="createQuiz()">Create Quiz</button>
+                                </div>
+                                <h1 class="help-titles p-t-30 p-b-15">Edit a quiz</h1>
 
-                        <!--	quiz 2 info		-->
-                        <div id="quizBox2">
-                            <header id="quiz-name-2" class="quiz-names">header</header>
-                            <p id="category-2">category</p>
-                            <p id="desc-2">description</p>
-                        </div>
+                                <div id="quizBox1">
+                                    <header id="quiz-name-1" class="quiz-names"></header>
+                                    <p id="category-1"></p>
+                                    <p id="desc-1"></p>
+                                </div>
 
-                        <!--	quiz 3 info		-->
-                        <div id="quizBox3">
-                            <header id="quiz-name-3" class="quiz-names"></header>
-                            <p id="category-3"></p>
-                            <p id="desc-3"></p>
-                        </div>
+                                <div class="p-t-5"></div>
+                                <!--	quiz 2 info		-->
+                                <div id="quizBox2">
+                                    <header id="quiz-name-2" class="quiz-names"></header>
+                                    <p id="category-2"></p>
+                                    <p id="desc-2"></p>
+                                </div>
 
-                        <!--	quiz 4 info		-->
-                        <div id="quizBox4">
-                            <header id="quiz-name-4" class="quiz-names"></header>
-                            <p id="category-4"></p>
-                            <p id="desc-4"></p>
-                        </div>
+                                <div class="p-t-5"></div>
+                                <!--	quiz 3 info		-->
+                                <div id="quizBox3">
+                                    <header id="quiz-name-3" class="quiz-names"></header>
+                                    <p id="category-3"></p>
+                                    <p id="desc-3"></p>
+                                </div>
 
-                        <!--	quiz 5 info		-->
-                        <div id="quizBox5">
-                            <header id="quiz-name-5" class="quiz-names"></header>
-                            <p id="category-5"></p>
-                            <p id="desc-5"></p>
-                        </div>
+                                <div class="p-t-5"></div>
+                                <!--	quiz 4 info		-->
+                                <div id="quizBox4">
+                                    <header id="quiz-name-4" class="quiz-names"></header>
+                                    <p id="category-4"></p>
+                                    <p id="desc-4"></p>
+                                </div>
+                                <div class="p-t-5"></div>
+                                <!--	quiz 5 info		-->
+                                <div id="quizBox5">
+                                    <header id="quiz-name-5" class="quiz-names"></header>
+                                    <p id="category-5"></p>
+                                    <p id="desc-5"></p>
+                                </div>
 
-                        <!---->
-                        <br>
-                        <div id="next_prev">
-                            <!-- <button type="button" class="btn btn-primary">Next</button>
-                            <button type="button" class="btn btn-primary">Previous</button> -->
+                                <!---->
+                                <br>
+                                <div id="next_prev">
+                                    <!-- <button type="button" class="btn btn-primary">Next</button>
+                                    <button type="button" class="btn btn-primary">Previous</button> -->
+                                </div>
+                                <ul class="pager">
+                                    <li class="previous"><a onclick="Previous()">Previous</a></li>
+                                    <li class="next"><a onclick="next()">Next</a></li>
+                                </ul>
+
+                            </div>
                         </div>
-                        <ul class="pager">
-                            <li class="previous"><a onclick="Previous()">Previous</a></li>
-                            <li class="next"><a onclick="next()">Next</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
 </div>
 
 <!-- Firebase App is always required and must be first -->
@@ -144,7 +172,5 @@
 <script src="../JavaScript/myQuizzes.js"></script>
 
 </body>
-
-
 
 </html>
