@@ -536,14 +536,13 @@ body {
 
 .help-titles {
     text-align: left;
-    font-size: 2vw;
+    font-size: 25px;
     font-weight: bold;
     color: black;
 }
 
 .help-description {
-    text-align: left;
-    font-size: 1.5vw;
-    font-weight: normal;
+    font-size: 18px;
     color: black;
+    display: inline-block;
 }
