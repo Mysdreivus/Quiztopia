@@ -62,6 +62,10 @@ button
     padding-top: 130px;
 }
 
+.p-t-12v {
+    padding-top: 12vw;
+}
+
 .p-t-70 {
     padding-top: 70px;
 }
@@ -589,6 +593,25 @@ div.col-sm-10, div.col-xs-10 {width: 75%;}
         margin-right: 0;
     }
 }
+
+.new-home-bg {
+    background: linear-gradient(#2193b0, #6dd5ed);
+}
+
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+#my-quiz {
+    padding-top: 0.5vw;
+    padding-left: 15vw;
+    font-size: 6vw;
+    font-weight: bold;
+    color: black;
+}
+
 /*laptop*/
 /*@media (min-width: 769px) {*/
 

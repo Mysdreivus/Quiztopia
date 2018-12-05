@@ -41,3 +41,6 @@ body {
     width: 50%;
 }
 
+.new-home-bg {
+    background: linear-gradient(#2193b0, #6dd5ed);
+}
