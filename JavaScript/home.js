@@ -1,14 +1,14 @@
 let Cookies={set:function(b,c,a){b=[encodeURIComponent(b)+"="+encodeURIComponent(c)];a&&("expiry"in a&&("number"==typeof a.expiry&&(a.expiry=new Date(1E3*a.expiry+ +new Date)),b.push("expires="+a.expiry.toGMTString())),"domain"in a&&b.push("domain="+a.domain),"path"in a&&b.push("path="+a.path),"secure"in a&&a.secure&&b.push("secure"));document.cookie=b.join("; ")},get:function(b,c){for(var a=[],e=document.cookie.split(/; */),d=0;d<e.length;d++){var f=e[d].split("=");f[0]==encodeURIComponent(b)&&a.push(decodeURIComponent(f[1].replace(/\+/g,"%20")))}return c?a:a[0]},clear:function(b,c){c||(c={});c.expiry=-86400;this.set(b,"",c)}};
 let URL = "https://us-central1-quiztopia-35e04.cloudfunctions.net/getUntakenQuizzes";
 let initialCategory = "Random";
-let quizIds = ['quiz-id-1', 'quiz-id-2', 'quiz-id-3', 'quiz-id-4', 'quiz-id-5', 'quiz-id-6'];
+let quizIds = ['quiz-id-1', 'quiz-id-2', 'quiz-id-3', 'quiz-id-4', 'quiz-id-5'];
 let quizNames = [['quiz-name-1', 'author-1', 'desc-1'], ['quiz-name-2', 'author-2', 'desc-2']
     , ['quiz-name-3', 'author-3', 'desc-3'], ['quiz-name-4', 'author-4', 'desc-4']
-    , ['quiz-name-5', 'author-5', 'desc-5'], ['quiz-name-6', 'author-6', 'desc-6']];
+    , ['quiz-name-5', 'author-5', 'desc-5']];
 
 const NUM_LABELS_PER_QUIZ = 3;
 let currentPage = 1;
-const quizzesPerPage = quizIds.length;
+const quizzesPerPage = 5;
 let userId;
 
 let data;
@@ -132,7 +132,7 @@ function next() {
     // creating next button if it's the last page
     if(currentPage < lastPage) { // Not in last page...
         currentPage++;
-        fillQuizzesInPage(q, currentPage);
+        fillQuizzesInPage(data, currentPage);
     }
     else {
         swal("Oops!", "You can't go next than this!", "error");
@@ -143,7 +143,7 @@ function next() {
 function prev() {
     if(currentPage > 1) {
         currentPage--;
-        fillQuizzesInPage(q, currentPage);
+        fillQuizzesInPage(data, currentPage);
     }
     else {
         swal("Oops!", "You can't go previous than this!", "error");
@@ -170,9 +170,9 @@ function fillQuizzesInPage(q, page) {
     last = (last > q.length) ? q.length : last;
     let count = 0;
     for(first; first < last; first++) { // Generate each QuizEntry (HTML...)
-        quizData = JSON.parse(q[first]);
-        updateQuizInfo(quizData, first);
-        setEventListener(quizData, first);
+        var quizData = JSON.parse(q[first]);
+        updateQuizInfo(quizData, count);
+        setEventListener(quizData, count);
         count++;
     }
 }

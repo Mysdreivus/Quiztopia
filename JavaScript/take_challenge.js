@@ -144,9 +144,12 @@ function updateUI() {
     let idx = 0;
 
     // displaying questions
+    alert("Quiz Id is: " + quizId);
     dataRef.ref("quizzes/" + quizId + "/questions").once('value')
         .then(function (snapshot) {
             idx = 0;
+            let x = snapshot.val();
+            alert("Length of questions: " + x.length);
             snapshot.forEach(function (childsnapshot) {
                 let reqData = childsnapshot.val();
                 document.getElementById(questionIds[idx]).innerText = reqData.question;
