@@ -16,7 +16,7 @@ let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']
     , ['val5_1', 'val5_2', 'val5_3', 'val5_4']];
 
 const numOptions = 4;
-const possiblePts = 6;
+const possiblePts = 5; // There are a total of five questions...
 let quizId = null;
 let quizName = null;
 let quizAuthor = null;
@@ -125,7 +125,7 @@ function updateUI() {
 
                 // shuffled the array here
                 options[idx] = shuffle(options[idx]);
-
+                
                 // setting inner HTML for the otpions
                 document.getElementById(options[idx][0]).innerHTML = "<input type=\"radio\" name=\"answer\"" + idx+1 + " id=" + optionsVal[idx][0] + ">" + reqData.correct_answer;
                 document.getElementById(options[idx][1]).innerHTML = "<input type=\"radio\" name=\"answer\"" + idx+1 + " id=" + optionsVal[idx][1] + ">" + reqData.wrong_answers1;
