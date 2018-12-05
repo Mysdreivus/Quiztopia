@@ -479,3 +479,11 @@ body {
     border-radius: 10px;
     background-color: #fff2ef;
 }
+
+#quiz-not-taken {
+    padding-bottom: 2vw;
+    text-align: center;
+    font-size: 3vw;
+    font-weight: bold;
+    color: black;
+}
