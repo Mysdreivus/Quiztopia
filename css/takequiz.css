@@ -553,17 +553,17 @@ body {
     color: black;
 }
 
-#question_1 {
+.question {
     text-align: center;
     font-size: 2vw;
     font-weight: normal;
     color: black;
 }
 
-#quiz-answer-1 {
+.answers {
     text-align: left;
     font-size: 1vw;
-    font-weight: lighter;
+    font-weight: normal;
 }
 
 /* Take Quiz Things */

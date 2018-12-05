@@ -29,7 +29,7 @@ window.onload = function () {
         user = x;
 
         quizId = Cookies.get('id');
-        alert('quiz id is ' + quizId);
+        //alert('quiz id is ' + quizId);
         // checking if the user has already taken the quiz
         dataRef.ref("users/" + user.uid + "/quizzesTaken").once('value', snapshot => {
             snapshot.forEach(function (val) {
@@ -116,9 +116,9 @@ function updateUI() {
     // displaying questions
     dataRef.ref("quizzes/" + quizId + "/questions").once('value')
         .then(function (snapshot) {
-            alert("got snapshot");
+            //alert("got snapshot");
             snapshot.forEach(function (childsnapshot) {
-                alert("value of i is: " + idx);
+                //alert("value of i is: " + idx);
                 let reqData = childsnapshot.val();
                 document.getElementById(questionIds[idx]).innerText = reqData.question;
 

@@ -542,8 +542,7 @@ body {
 }
 
 .help-description {
-    text-align: left;
-    font-size: 1.5vw;
-    font-weight: normal;
+    font-size: 18px;
     color: black;
+    display: inline-block;
 }
