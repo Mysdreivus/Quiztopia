@@ -579,3 +579,67 @@ body {
     font-weight: normal;
     color: black;
 }
+
+.btn {
+    display: inline-block;
+    line-height: 50px;
+    padding: 0 50px;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+.btn--radius {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.btn--radius-2 {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.btn--pill {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.btn--green {
+    background: #57b846;
+}
+
+.btn--yellowgreen {
+    background: yellowgreen;
+}
+
+.btn--yellow {
+    background: #f3fb62;
+}
+
+.btn--green:hover {
+    background: #4dae3c;
+}
+
+.btn--blue {
+    background: #4272d7;
+}
+
+.btn--blue:hover {
+    background: #3868cd;
+}
+
+#start-button {
+    background-color: #4272d7;
+}
+
+#home-button {
+    background-color: #4dae3c;
+}

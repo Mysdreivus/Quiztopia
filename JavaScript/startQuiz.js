@@ -11,7 +11,12 @@ window.onload = function () {
         Cookies.set('id', id);
         location.href = "../HTML/take_quiz.html";
     });
-}
+
+    document.getElementById('home-button').addEventListener('click', function () {
+        location.href = "../HTML/home.html";
+    });
+
+};
 
 function updateUI(name, author, category, description) {
     document.getElementById('quiz-name').innerHTML = name;

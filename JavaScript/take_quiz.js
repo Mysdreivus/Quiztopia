@@ -145,6 +145,10 @@ function updateUI() {
         .catch((error) => swal("Oops!", error.message, "error"));
 }
 
+// Ruel - Added simple function, fix any potential errors if possible
+function returnToHome() {
+    location.href = "../HTML/home.html";
+}
 // checks the answer and submits the result to firebase
 function submitQuiz() {
     let categoryPoints = null;

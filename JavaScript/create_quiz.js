@@ -10,6 +10,11 @@ let wrongAnswersIds = [["wrong_answer1_1", "wrong_answer1_2", "wrong_answer1_3"]
                         ,["wrong_answer4_1", "wrong_answer4_2", "wrong_answer4_3"]
                         ,["wrong_answer5_1", "wrong_answer5_2", "wrong_answer5_3"]];
 
+// Fix this if it has any possible errors
+function returnToHome() {
+    location.href = "../HTML/home.html";
+}
+
 function submitQuiz() {
     // see if the user is authenticated
     let user = firebase.auth().currentUser;
