@@ -25,7 +25,7 @@ function signInGoogle() {
                             window.location.href = "../HTML/home.html";
                         }
                         else {
-                            alert("Please verify your email!");
+                            swal("Error!", "Please verify your email!", "error");
                         }
                     }
                 });
@@ -57,17 +57,17 @@ function signInGoogle() {
                                  window.location.href = "../HTML/home.html";
                             }
                             else {
-                                alert("Please verify your email!");
+                                swal("Error!", "Please verify your email!", "error");
                             }
                         }
                     });
                 });
             }
         }).catch(function(error) {
-            console.log("error", error);
+            swal("Error!", error.message, "error");
         });
       }).catch(function(error) {
-          console.log("error", error);
+          swal("Error!", error.message, "error");
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -88,17 +88,17 @@ function signin() {
     var password = document.getElementById("pwd_field").value;
     var signedIn = true;
     if (email.length < 4) {
-        alert('Please enter an email address.');
+        swal('Error!', 'Please enter an email address.', 'error');
         return;
     }
     if (password.length < 1) {
-        alert('Please enter a password.');
+        swal('Error!', 'Please enter a password.', 'error');
         return;
     }
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(function (error) {
-            alert(error);
+            swal("Error!", error.message, "error");
             signedIn = false;
         })
         .then(function () {
@@ -109,10 +109,14 @@ function signin() {
                             window.location.href = "../HTML/home.html";
                         }
                         else {
-                            alert("Please verify your email!");
+                            swal("Error!", "Please verify your email!", 'error');
                         }
                     }
                 });
             }
         });
+}
+
+function goToForgetPassword() {
+    location.href = "../HTML/forgetPassword.html";
 }

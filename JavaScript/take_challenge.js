@@ -16,7 +16,7 @@ let optionsVal = [['val1_1', 'val1_2', 'val1_3', 'val1_4']
     , ['val5_1', 'val5_2', 'val5_3', 'val5_4']];
 
 const numOptions = 4;
-const possiblePts = 6;
+const possiblePts = 5;
 let quizId = null;
 
 // TODO: new
@@ -66,8 +66,9 @@ window.onload = function () {
         challengeType = Cookies.get('challenge_type');
         opponentId = Cookies.get('opponentId');
         if (challengeType === 'accepted_challenges') {
-            opChallegneScore = Cookies.get('challenge_score');
-            opOverallScore = Cookies.get('overall_score');
+            // opChallegneScore = Cookies.get('challenge_score');
+            // opOverallScore = Cookies.get('overall_score');
+            opponentScore = Cookies.get('challenge_score');
             lastQuiz = Cookies.get('quiz');
         }
         // TODO: ######
@@ -144,12 +145,10 @@ function updateUI() {
     let idx = 0;
 
     // displaying questions
-    alert("Quiz Id is: " + quizId);
     dataRef.ref("quizzes/" + quizId + "/questions").once('value')
         .then(function (snapshot) {
             idx = 0;
             let x = snapshot.val();
-            alert("Length of questions: " + x.length);
             snapshot.forEach(function (childsnapshot) {
                 let reqData = childsnapshot.val();
                 document.getElementById(questionIds[idx]).innerText = reqData.question;
@@ -175,7 +174,6 @@ function updateUI() {
             });
         })
         .then(() => {
-            // TODO: database calls to retrieve information
             return dataRef.ref("leaderboard/Challenges/" + user.uid).once('value')
                 .then((data) => {
                     challengePoints = data.val();
@@ -183,7 +181,6 @@ function updateUI() {
                 })
         })
         .then(() => {
-            // TODO: database call to retrieve overall score
             return dataRef.ref("leaderboard/Overall/" + user.uid).once('value')
                 .then((score) => {
                     totalScore = score.val();
@@ -219,54 +216,66 @@ function submitQuiz() {
 
 // TODO: New stuff
 function displayFinalResult(yourPt, oppPt) {
-    if (yourPt > oppPt) {   // Win
-        // update database
-        dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore - 15)
+    if (yourPt !== oppPt) {
+        dataRef.ref("leaderboard/Challenge/" + opponentId).once('value').then((score) => {
+            opChallengeScore = score.val();
+        })
             .then(() => {
-                return dataRef.ref("leaderboard/Overall").child(opponentId).set(opOverallScore - 15);
-            })
-            .then(() => {
-                return dataRef.ref("leaderboard/Overall").child(user.uid).set(opOverallScore + 15);
-            })
-            .then(() => {
-                return dataRef.ref("leaderboard/Challenge").child(user.uid).set(opChallegneScore + 15);
-            })
-            .then(() => {
-                swal({
-                    title: "Congratulations",
-                    text: "You won!\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
-                    type: "success"
+                dataRef.ref("leaderboard/Overall/" + opponentId).once('value').then((score) => {
+                    opOverallScore = score.val();
                 })
-                    .then(() => {
-                        location.href = "../HTML/challenge.html";
-                    });
-            })
-            .catch((error) => swal("Oops!", error.message, "error"));
-    }
-    else if (yourPt < oppPt) {
-        // update database
-        dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore - 15)
-            .then(() => {
-                return dataRef.ref("leaderboard/Overall").child(opponentId).set(opOverallScore - 15);
             })
             .then(() => {
-                return dataRef.ref("leaderboard/Overall").child(user.uid).set(totalScore + 15);
-            })
-            .then(() => {
-                return dataRef.ref("leaderboard/Challenge").child(user.uid).set(challengePoints + 15);
-            })
-            .then(() => {
-                swal({
-                    title: "Better Luck Next Time!",
-                    text: "You lost\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
-                    type: "error",
-                    button: "ok"
-                })
-                    .then(() => {
-                        location.href = "../HTML/challenge.html";
-                    })
-            })
-            .catch((error) => swal("Oops!", error.message, "error"));
+                if (yourPt > oppPt) {   // Win
+                    // update database
+                    dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore - 15)
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Overall").child(opponentId).set(opOverallScore - 15);
+                        })
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Overall").child(user.uid).set(opOverallScore + 15);
+                        })
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Challenge").child(user.uid).set(opChallegneScore + 15);
+                        })
+                        .then(() => {
+                            swal({
+                                title: "Congratulations",
+                                text: "You won!\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
+                                type: "success"
+                            })
+                                .then(() => {
+                                    location.href = "../HTML/challenge.html";
+                                });
+                        })
+                        .catch((error) => swal("Oops!", error.message, "error"));
+                }
+                else if (yourPt < oppPt) {
+                    // update database
+                    dataRef.ref("leaderboard/Challenge").child(opponentId).set(opChallegneScore + 15)
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Overall").child(opponentId).set(opOverallScore + 15);
+                        })
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Overall").child(user.uid).set(totalScore - 15);
+                        })
+                        .then(() => {
+                            return dataRef.ref("leaderboard/Challenge").child(user.uid).set(challengePoints - 15);
+                        })
+                        .then(() => {
+                            swal({
+                                title: "Better Luck Next Time!",
+                                text: "You lost\nYou scored " + yourPt + " out of " + possiblePts + "\nYour opponent scored " + oppPt + " out of " + possiblePts,
+                                type: "error",
+                                button: "ok"
+                            })
+                                .then(() => {
+                                    location.href = "../HTML/challenge.html";
+                                })
+                        })
+                        .catch((error) => swal("Oops!", error.message, "error"));
+                }
+            });
     }
     else {
         swal({
@@ -316,7 +325,6 @@ function calculatePoints() {
         for (let j=0; j<numOptions; j++) {
             if (document.getElementById(optionsVal[i][j]).checked) {
                 if (document.getElementById(optionsVal[i][j]).value === answers[i]) {
-                    alert("Answer is right");
                     ptsReceived++;
                 }
                 break;
@@ -363,6 +371,3 @@ function revealAnswer() {
     }
 }
 
-
-
-// TODO: when the user clicks on refresh page, he should be given a alert message saying quiz is already taken, and redirected to home page

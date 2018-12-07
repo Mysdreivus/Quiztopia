@@ -8,16 +8,17 @@ function signUpCreate() {
     getInfo();
 
     if (email.length < 11) {
-        alert('Please enter an email address.');
+        swal("Error", 'Please enter an email address.', 'error');
         return;
     }
 
     if (!isPwdValid(password)) {
-        alert("Error:\n" +
+        swal("Error!",
             "A password\n" +
             "* must be at least six characters\n" +
             "* contains at least one lowercase character\n" +
-            "* contains at least one upper case character\n");
+            "* contains at least one upper case character\n"
+        , "error");
         return;
     }
     
@@ -33,14 +34,14 @@ function signUpCreate() {
                         // sending verfication email
                         user.sendEmailVerification()
                             .then(function () {
-                            // verfication email sent
-                            })
-                            .then(function () {
                                 user_id = user.uid;
                                 updateUserInfo(user_id);
                             })
                             .then(() => {
                                 initializeLeaderboard(user_id);
+                            })
+                            .catch((error) => {
+                                swal("Error!", error.message, "error");
                             })
                     }
                 });
