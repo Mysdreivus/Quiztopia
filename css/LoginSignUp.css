@@ -23,6 +23,10 @@ html {
     box-sizing: inherit;
 }
 
+.signin-google {
+    padding-left: 30%;
+}
+
 /* ==========================================================================
    #RESET
    ========================================================================== */
@@ -72,41 +76,16 @@ h1 {
     font-size: 36px;
 }
 
-h2 {
-    font-size: 30px;
-}
-
-h3 {
-    font-size: 24px;
-}
-
-h4 {
-    font-size: 18px;
-}
-
-h5 {
-    font-size: 15px;
-}
-
-h6 {
-    font-size: 13px;
-}
-
 /*==========================
         PAGE
 ==================================*/
 
 .sign-up-bg {
-    /*background: -webkit-gradient(linear, left bottom, left top, from(#f3fb62), to(#78d149));*/
-    /*background: -webkit-linear-gradient(bottom, #f3fb62 0%, #78D149 100%);*/
-    /*background: -moz-linear-gradient(bottom, #f3fb62 0%, #78D149 100%);*/
-    /*background: -o-linear-gradient(bottom, #f3fb62 0%, #78D149 100%);*/
-    /*background: linear-gradient(to top, #f3fb62 0%, #78D149 100%);*/
     background:
         /* top, transparent red, faked with gradient */
             linear-gradient(
-                    rgba(255, 0, 0, 0.45),
-                    rgba(255, 0, 0, 0.45)
+                    rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)
             ),
     url("../images/questionMark.jpg");
     background-size: cover;
@@ -147,7 +126,7 @@ h6 {
 .btn {
     display: inline-block;
     line-height: 50px;
-    padding: 0 50px;
+    padding: 0 95px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -216,17 +195,12 @@ h6 {
     min-height: 100vh;
 }
 
-#quiz-title {
-    text-align: center;
-    font-size: 56px;
-    font-weight: bold;
-    color: black;
-}
 
 #quiz-signup-heading {
+    font-family: 'Lato', sans-serif;
     text-align: center;
-    font-size: 4vw;
-    font-weight: bold;
+    font-size: 60px;
+    /* font-weight: bold; */
     color: black;
 }
 
@@ -235,13 +209,6 @@ h6 {
     margin: 0 auto;
 }
 
-.wrapper--w960 {
-    max-width: 960px;
-}
-
-.wrapper--w780 {
-    max-width: 780px;
-}
 
 .wrapper--w680 {
     max-width: 680px;
@@ -382,16 +349,6 @@ input {
     display: block;
     margin-bottom: 5px;
 }
-
-
-.label-name {
-    font-size: 16px;
-    color: #555;
-    text-transform: capitalize;
-    display: block;
-    margin-bottom: 5px;
-}
-.name {
-    font-size: 12px;
-    color: black;
+.label-forget-password {
+    padding-left: 25px;
 }

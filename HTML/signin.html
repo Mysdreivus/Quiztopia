@@ -15,43 +15,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
-    <div class="page-wrapper sign-up-bg p-t-70 p-b-70 70 font-poppins" id="login">
-        <div class="wrapper wrapper--w680">
+    <div class="page-wrapper sign-up-bg p-t-130">
+        <div class="wrapper wrapper--w680 p-t-70">
             <div class="card card-4">
                 <div class="card-body">
-                    <h1 id="quiz-title" class="p-b-70">QuizTopia</h1>
+                    <h1 id="quiz-signup-heading" class="p-b-70">QuizTopia</h1>
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">email</label>
-                                <br>
                                 <input class="input--style-4" type="email" name="email" id="email_field" >
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">password</label>
-                                <br>
                                 <input class="input--style-4" type="password" name="password" id="pwd_field" >
                             </div>
                         </div>
                     </div>
+
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--blue" onclick="signin()" >Login</button>
+                                <button class="btn btn--radius-2 btn--blue btn-block" onclick="signin()" >Login</button>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--green" onclick="signUp()">Sign Up</button>
+                                <button class="btn btn--radius-2 btn--green btn-block" onclick="signUp()">Sign Up</button>
                             </div>
                         </div>
                     </div>
-                    <div class="row row-space">
-                        <div class="p-t-15" style="align-content: center">
+                    <br>
+                    <div class="row">
+                        <div class="p-t-15 signin-google" >
                             <button class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button"
                                     onclick="signInGoogle()"
                                     data-provider-id="google.com" data-upgraded=",MaterialButton">
@@ -59,12 +62,10 @@
                                                                            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"></span>
                                 <span class="firebaseui-idp-text firebaseui-idp-text-long">Sign in with Google</span>
                                 <span class="firebaseui-idp-text firebaseui-idp-text-short">Google</span></button>
-                        </div>
-                    </div>
-                    <div class="row row-space">
                             <div class="p-t-15">
-                                <label class="label"><a href="forgetPassword.html">Forget Password?</a></label>
+                                <label class="label label-forget-password"><a href="forgetPassword.html">Forget Password?</a></label>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -137,8 +137,7 @@ function updateQuiz(user, qid) {
 // cloud function does rest of the job
 // sets deleted to be false
 // refreses the UI once again
-function deleteQuiz(user, qid) {
-    alert("quiz id is: " + qid);
+function deleteQuiz(useralert, qid) {
     firebase.database().ref(`users/${user}/quizzesCreated/${qid}/active`).set(false)
         .then(() => {
             deletedID = qid;
